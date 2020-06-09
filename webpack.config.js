@@ -26,5 +26,10 @@ module.exports = (env) => {
       ],
     },
     devtool: `source-map`,
+    resolve: {
+      alias: {
+        '@components': path.resolve(__dirname, `./src/components`),
+      }
+    }
   };
 };
