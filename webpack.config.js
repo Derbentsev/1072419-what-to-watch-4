@@ -32,6 +32,7 @@ module.exports = (env) => {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.webm'],
       alias: {
         '@components': path.resolve(__dirname, `./src/components`),
+        '@consts': path.resolve(__dirname, `./src`),
       }
     },
     plugins: [
