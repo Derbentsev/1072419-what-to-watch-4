@@ -1,4 +1,5 @@
 const path = require(`path`);
+const webpack = require(`webpack`);
 
 module.exports = (env) => {
   return {
@@ -26,5 +27,18 @@ module.exports = (env) => {
       ],
     },
     devtool: `source-map`,
+    resolve: {
+      modules: [`node_modules`, path.resolve(path.join(__dirname, `public`))],
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.webm'],
+      alias: {
+        '@components': path.resolve(__dirname, `./src/components`),
+        '@consts': path.resolve(__dirname, `./src`),
+      }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        React: `react`,
+      }),
+    ]
   };
 };
