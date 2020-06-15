@@ -1,5 +1,5 @@
 export const Main = (props) => {
-  const {title, genre, dateRelease, titles} = props;
+  const {title, genre, dateRelease, titles, onTitleClick} = props;
 
   return (
     <>
@@ -33,7 +33,11 @@ export const Main = (props) => {
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{title}</h2>
+              <h2
+                onClick = {onTitleClick}
+                className="movie-card__title">
+                {title}
+              </h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{genre}</span>
                 <span className="movie-card__year">{dateRelease}</span>
@@ -310,4 +314,5 @@ Main.propTypes = {
   genre: PropTypes.string.isRequired,
   dateRelease: PropTypes.string.isRequired,
   titles: PropTypes.arrayOf(PropTypes.string),
+  onTitleClick: PropTypes.func.isRequired,
 };

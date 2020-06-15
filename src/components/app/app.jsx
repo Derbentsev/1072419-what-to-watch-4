@@ -1,6 +1,8 @@
 import {Main} from '@components/main/main';
 
 
+const onTitleClick = () => {};
+
 export const App = (props) => {
   const {title, genre, dateRelease, titles} = props;
 
@@ -9,6 +11,7 @@ export const App = (props) => {
     genre = {genre}
     dateRelease = {dateRelease}
     titles = {titles}
+    onTitleClick = {onTitleClick}
   />;
 };
 

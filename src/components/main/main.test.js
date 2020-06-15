@@ -12,6 +12,7 @@ it(`Should Main screen render correctly`, () => {
       genre = {TitleMovieSettings.GENRE}
       dateRelease = {TitleMovieSettings.DATE_RELEASE}
       titles = {MovieSettings.TITLES}
+      onTitleClick = {() => {}}
     />)
     .toJSON();
 
