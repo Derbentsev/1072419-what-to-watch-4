@@ -31,13 +31,14 @@ module.exports = (env) => {
       modules: [`node_modules`, path.resolve(path.join(__dirname, `public`))],
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.webm'],
       alias: {
-        '@components': path.resolve(__dirname, `./src/components`),
-        '@consts': path.resolve(__dirname, `./src`),
+        '@components': path.resolve(__dirname, `./src/components/`),
+        '@consts': path.resolve(__dirname, `./src/consts/`),
       }
     },
     plugins: [
       new webpack.ProvidePlugin({
         React: `react`,
+        PropTypes: `prop-types`,
       }),
     ]
   };

@@ -11,7 +11,6 @@ ReactDOM.render(
       title = {TitleMovieSettings.TITLE}
       genre = {TitleMovieSettings.GENRE}
       dateRelease = {TitleMovieSettings.DATE_RELEASE}
-
       titles = {MovieSettings.TITLES}
     />,
     document.querySelector(`#root`)

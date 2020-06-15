@@ -1,6 +1,3 @@
-import PropTypes from 'prop-types';
-
-
 export const Main = (props) => {
   const {title, genre, dateRelease, titles} = props;
 
