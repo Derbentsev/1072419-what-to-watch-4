@@ -8,7 +8,6 @@ export const App = (props) => {
     title = {title}
     genre = {genre}
     dateRelease = {dateRelease}
-
     titles = {titles}
   />;
 };

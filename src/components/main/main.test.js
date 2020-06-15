@@ -1,17 +1,19 @@
-import ReactDOM from 'react-dom';
-import {App} from '@components/app/app';
+import {Main} from './main';
 import {
   TitleMovieSettings,
   MovieSettings,
 } from '@consts/consts';
 
 
-ReactDOM.render(
-    <App
+it(`Should Main screen render correctly`, () => {
+  const tree = renderer
+    .create(<Main
       title = {TitleMovieSettings.TITLE}
       genre = {TitleMovieSettings.GENRE}
       dateRelease = {TitleMovieSettings.DATE_RELEASE}
       titles = {MovieSettings.TITLES}
-    />,
-    document.querySelector(`#root`)
-);
+    />)
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
