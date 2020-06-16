@@ -1,17 +1,13 @@
 import {App} from './app.jsx';
-import {
-  TitleMovieSettings,
-  MovieSettings,
-} from '@consts/consts';
 
 
 it(`Render App`, () => {
   const tree = renderer
     .create(<App
-      title = {TitleMovieSettings.TITLE}
-      genre = {TitleMovieSettings.GENRE}
-      dateRelease = {TitleMovieSettings.DATE_RELEASE}
-      titles = {MovieSettings.TITLES}
+      title = 'On The Moon'
+      genre = 'comedy'
+      dateRelease = '01.01.2020'
+      titles = {[`1`, `2`, `3`]}
     />)
       .toJSON();
 

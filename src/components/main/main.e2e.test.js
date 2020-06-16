@@ -1,7 +1,4 @@
-import {
-  TitleMovieSettings,
-  MovieSettings,
-} from '@consts/consts';
+import {Main} from './main';
 
 
 it(`Should title be pressed`, () => {
@@ -9,15 +6,15 @@ it(`Should title be pressed`, () => {
 
   const mainScreen = shallow(
       <Main
-        title = {TitleMovieSettings.TITLE}
-        genre = {TitleMovieSettings.GENRE}
-        dateRelease = {TitleMovieSettings.DATE_RELEASE}
-        titles = {MovieSettings.TITLES}
+        title = 'On The Moon'
+        genre = 'comedy'
+        dateRelease = '01.01.2020'
+        titles = {[`1`, `2`, `3`]}
         onTitleClick = {onTitleClick}
       />
   );
 
-  const title = mainScreen.find(`movie-card__desc`);
+  const title = mainScreen.find(`.movie-card__desc`);
 
   title.props().onClick();
 
