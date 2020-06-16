@@ -14,7 +14,7 @@ it(`Should title be pressed`, () => {
       />
   );
 
-  const title = mainScreen.find(`.movie-card__desc`);
+  const title = mainScreen.find(`.movie-card__title`);
 
   title.props().onClick();
 
