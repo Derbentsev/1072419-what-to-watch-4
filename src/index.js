@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import {App} from '@components/app';
+import {App} from '@components/app/app';
 import {
   TitleMovieSettings,
   MovieSettings,
@@ -11,7 +11,6 @@ ReactDOM.render(
       title = {TitleMovieSettings.TITLE}
       genre = {TitleMovieSettings.GENRE}
       dateRelease = {TitleMovieSettings.DATE_RELEASE}
-
       titles = {MovieSettings.TITLES}
     />,
     document.querySelector(`#root`)
