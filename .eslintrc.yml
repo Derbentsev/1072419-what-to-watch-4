@@ -28,3 +28,4 @@ globals:
   renderer: true
   shallow: true
   mount: true
+  PureComponent: true

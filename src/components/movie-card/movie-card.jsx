@@ -1,6 +1,3 @@
-import {PureComponent} from 'react';
-
-
 export default class MovieCard extends PureComponent {
   constructor(props) {
     super(props);

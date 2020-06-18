@@ -1,5 +1,4 @@
 import MovieCard from '@components/movie-card/movie-card';
-import {PureComponent} from 'react';
 
 
 export default class MoviesList extends PureComponent {
