@@ -1,4 +1,4 @@
-import MovieCard from '@components/movie-card/movie-card';
+import {MovieCard} from '@components/movie-card/movie-card';
 
 
 export default class MoviesList extends PureComponent {
@@ -23,5 +23,8 @@ export default class MoviesList extends PureComponent {
 }
 
 MoviesList.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  })).isRequired,
 };
