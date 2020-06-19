@@ -1,9 +1,7 @@
 import ReactDOM from 'react-dom';
 import {App} from '@components/app/app';
-import {
-  TitleMovieSettings,
-  MovieSettings,
-} from '@consts/consts';
+import films from '@mocks/films';
+import {TitleMovieSettings} from '@consts/consts';
 
 
 ReactDOM.render(
@@ -11,7 +9,7 @@ ReactDOM.render(
       title = {TitleMovieSettings.TITLE}
       genre = {TitleMovieSettings.GENRE}
       dateRelease = {TitleMovieSettings.DATE_RELEASE}
-      titles = {MovieSettings.TITLES}
+      films = {films}
     />,
     document.querySelector(`#root`)
 );

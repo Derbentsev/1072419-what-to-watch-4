@@ -5,7 +5,9 @@ module.exports = {
   "testRegex": `(/tests/.|(\.|/)(test|spec))\.(jsx?|tsx?)$`,
   "moduleFileExtensions": [`ts`, `tsx`, `js`, `jsx`, `json`, `node`],
   "moduleNameMapper": {
-    "^@components(.)$": `/src/components$1`,
+    "^@components(.*)$": `<rootDir>/src/components/$1`,
+    "^@consts(.*)$": `<rootDir>/src/consts/$1`,
+    "^@mocks(.*)$": `<rootDir>/src/mocks/$1`,
   },
   "coveragePathIgnorePatterns": [`/test-setup.js`]
 };

@@ -1,4 +1,5 @@
-import {Main} from './main';
+import MoviesList from './movies-list';
+
 
 const mocks = [
   {
@@ -15,17 +16,12 @@ const mocks = [
   },
 ];
 
-
-it(`Should Main screen render correctly`, () => {
+it(`Render Movies List`, () => {
   const tree = renderer
-    .create(<Main
-      title = 'On The Moon'
-      genre = 'comedy'
-      dateRelease = '01.01.2020'
+    .create(<MoviesList
       films = {mocks}
-      onTitleClick = {() => {}}
     />)
-    .toJSON();
+      .toJSON();
 
   expect(tree).toMatchSnapshot();
 });
