@@ -1,4 +1,4 @@
-import MovieCard from './movie-card';
+import {MovieCard} from './movie-card';
 
 
 const mock = {
@@ -7,13 +7,17 @@ const mock = {
 };
 
 it(`When cursor on the movie card, has movie info`, () => {
-  const {film} = mock;
+  const film = mock;
+  const onMovieCardMouseOverSpy = jest.fn();
+
   const movieCard = shallow(<MovieCard
     film = {film}
+    onMovieCardMouseOver = {onMovieCardMouseOverSpy}
   />);
 
-  const card = movieCard.find(`.catalog__movies-card`);
-  card.simulate(`mouseover`);
+  const card = movieCard.find(`.small-movie-card`);
+  card.props().onMouseOver();
 
-  expect();
+  expect(onMovieCardMouseOverSpy.mock.calls.length).toBe(1);
+  expect(onMovieCardMouseOverSpy.mock.calls[0][0]).toBe(`title1`);
 });

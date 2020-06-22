@@ -41,7 +41,6 @@ module.exports = (env) => {
       new webpack.ProvidePlugin({
         React: `react`,
         PropTypes: `prop-types`,
-        PureComponent: [`react`, `PureComponent`]
       }),
     ]
   };

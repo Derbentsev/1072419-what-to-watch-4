@@ -1,10 +1,10 @@
-import {Main} from '@components/main/main';
+import Main from '@components/main/main';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 
 const onTitleClick = () => {};
 
-export default class App extends PureComponent {
+export default class App extends React.PureComponent {
   constructor(props) {
     super(props);
 

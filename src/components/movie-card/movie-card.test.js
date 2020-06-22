@@ -1,4 +1,4 @@
-import MovieCard from './movie-card';
+import {MovieCard} from './movie-card';
 
 
 const mock = {
@@ -7,9 +7,12 @@ const mock = {
 };
 
 it(`Render Movie Card`, () => {
+  const onMovieCardMouseOverSpy = jest.fn();
+
   const tree = renderer
     .create(<MovieCard
       film = {mock}
+      onMovieCardMouseOver = {onMovieCardMouseOverSpy}
     />)
       .toJSON();
 

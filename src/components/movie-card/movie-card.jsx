@@ -1,8 +1,11 @@
 export const MovieCard = (props) => {
-  const {film} = props;
+  const {film, onMovieCardMouseOver} = props;
 
   return (
-    <article className="small-movie-card catalog__movies-card">
+    <article
+      onMouseOver={onMovieCardMouseOver}
+      className="small-movie-card catalog__movies-card"
+    >
       <div className="small-movie-card__image">
         <img src={`img/${film.image}`} alt={film.title} width="280" height="175" />
       </div>
@@ -18,4 +21,5 @@ MovieCard.propTypes = {
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
   }).isRequired,
+  onMovieCardMouseOver: PropTypes.func.isRequired
 };
