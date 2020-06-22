@@ -1,4 +1,6 @@
-export const MoviePage = () => {
+export const MoviePage = (props) => {
+  const {title, genre, dateRelease, poster} = props;
+
   return (
     <>
         <section className="movie-card movie-card--full">
@@ -27,10 +29,10 @@ export const MoviePage = () => {
 
             <div className="movie-card__wrap">
               <div className="movie-card__desc">
-                <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+                <h2 className="movie-card__title">{title}</h2>
                 <p className="movie-card__meta">
-                  <span className="movie-card__genre">Drama</span>
-                  <span className="movie-card__year">2014</span>
+                  <span className="movie-card__genre">{genre}</span>
+                  <span className="movie-card__year">{dateRelease}</span>
                 </p>
 
                 <div className="movie-card__buttons">
@@ -55,7 +57,7 @@ export const MoviePage = () => {
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
               <div className="movie-card__poster movie-card__poster--big">
-                <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+                <img src={`img/${poster}`} alt="The Grand Budapest Hotel poster" width="218" height="327" />
               </div>
 
               <div className="movie-card__desc">
@@ -96,4 +98,11 @@ export const MoviePage = () => {
         </section>
     </>
   );
+};
+
+MoviePage.propTypes = {
+  title: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  dateRelease: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
 };

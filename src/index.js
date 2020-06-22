@@ -9,6 +9,7 @@ ReactDOM.render(
       title = {TitleMovieSettings.TITLE}
       genre = {TitleMovieSettings.GENRE}
       dateRelease = {TitleMovieSettings.DATE_RELEASE}
+      poster = {TitleMovieSettings.POSTER}
       films = {films}
     />,
     document.querySelector(`#root`)

@@ -1,4 +1,5 @@
 import Main from '@components/main/main';
+import {MoviePage} from '@components/movie-page/movie-page';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 
@@ -25,6 +26,19 @@ export default class App extends React.PureComponent {
     );
   }
 
+  _renderMovieCard() {
+    const {title, genre, dateRelease, poster} = this.props;
+
+    return (
+      <MoviePage
+        title = {title}
+        genre = {genre}
+        dateRelease = {dateRelease}
+        poster = {poster}
+      />
+    );
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -33,7 +47,7 @@ export default class App extends React.PureComponent {
             {this._renderWelcomeScreen()}
           </Route>
           <Route exact path='/dev-film'>
-
+            {this._renderMovieCard()}
           </Route>
         </Switch>
       </BrowserRouter>
@@ -45,6 +59,7 @@ App.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   dateRelease: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
