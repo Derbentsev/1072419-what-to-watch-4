@@ -3,15 +3,15 @@ import Main from './main';
 const mocks = [
   {
     title: `title1`,
-    image: `image1`,
+    poster: `image1`,
   },
   {
     title: `title1`,
-    image: `image1`,
+    poster: `image1`,
   },
   {
     title: `title1`,
-    image: `image1`,
+    poster: `image1`,
   },
 ];
 

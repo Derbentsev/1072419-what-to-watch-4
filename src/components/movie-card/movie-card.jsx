@@ -6,8 +6,8 @@ export const MovieCard = (props) => {
       onMouseOver={onMovieCardMouseOver}
       className="small-movie-card catalog__movies-card"
     >
-      <div className="small-movie-card__image">
-        <img src={`img/${film.image}`} alt={film.title} width="280" height="175" />
+      <div className="small-movie-card__poster">
+        <img src={`img/${film.poster}`} alt={film.title} width="280" height="175" />
       </div>
       <h3 className="small-movie-card__title">
         <a className="small-movie-card__link" href="movie-page.html">{film.title}</a>
@@ -19,7 +19,7 @@ export const MovieCard = (props) => {
 MovieCard.propTypes = {
   film: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
   }).isRequired,
   onMovieCardMouseOver: PropTypes.func.isRequired
 };

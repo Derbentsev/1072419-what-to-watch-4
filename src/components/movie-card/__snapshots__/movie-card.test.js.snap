@@ -6,7 +6,7 @@ exports[`Render Movie Card 1`] = `
   onMouseOver={[MockFunction]}
 >
   <div
-    className="small-movie-card__image"
+    className="small-movie-card__poster"
   >
     <img
       alt="title1"

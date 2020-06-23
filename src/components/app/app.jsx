@@ -9,6 +9,10 @@ export default class App extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    this.state = {
+      activeMoviePage: null,
+    };
+
     this._renderWelcomeScreen = this._renderWelcomeScreen.bind(this);
   }
 
@@ -27,14 +31,11 @@ export default class App extends React.PureComponent {
   }
 
   _renderMovieCard() {
-    const {title, genre, dateRelease, poster} = this.props;
+    const {films} = this.props;
 
     return (
       <MoviePage
-        title = {title}
-        genre = {genre}
-        dateRelease = {dateRelease}
-        poster = {poster}
+        film = {films[0]}
       />
     );
   }
@@ -59,9 +60,9 @@ App.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   dateRelease: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
   })).isRequired,
 };

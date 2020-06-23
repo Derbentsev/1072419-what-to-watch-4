@@ -1,5 +1,5 @@
 export const MoviePage = (props) => {
-  const {title, genre, dateRelease, poster} = props;
+  const {film} = props;
 
   return (
     <>
@@ -29,10 +29,10 @@ export const MoviePage = (props) => {
 
             <div className="movie-card__wrap">
               <div className="movie-card__desc">
-                <h2 className="movie-card__title">{title}</h2>
+                <h2 className="movie-card__title">{film.title}</h2>
                 <p className="movie-card__meta">
-                  <span className="movie-card__genre">{genre}</span>
-                  <span className="movie-card__year">{dateRelease}</span>
+                  <span className="movie-card__genre">{film.genre}</span>
+                  <span className="movie-card__year">{film.dateRelease}</span>
                 </p>
 
                 <div className="movie-card__buttons">
@@ -57,7 +57,7 @@ export const MoviePage = (props) => {
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
               <div className="movie-card__poster movie-card__poster--big">
-                <img src={`img/${poster}`} alt="The Grand Budapest Hotel poster" width="218" height="327" />
+                <img src={`img/${film.cover}`} alt="The Grand Budapest Hotel poster" width="218" height="327" />
               </div>
 
               <div className="movie-card__desc">
@@ -101,8 +101,10 @@ export const MoviePage = (props) => {
 };
 
 MoviePage.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  dateRelease: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
+  film: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    dateRelease: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+  }),
 };

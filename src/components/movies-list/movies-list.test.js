@@ -4,15 +4,15 @@ import MoviesList from './movies-list';
 const mocks = [
   {
     title: `title1`,
-    image: `image1`,
+    poster: `image1`,
   },
   {
-    title: `title1`,
-    image: `image1`,
+    title: `title2`,
+    poster: `image2`,
   },
   {
-    title: `title1`,
-    image: `image1`,
+    title: `title3`,
+    poster: `image3`,
   },
 ];
 

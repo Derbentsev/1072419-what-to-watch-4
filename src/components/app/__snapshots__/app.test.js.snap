@@ -263,7 +263,7 @@ Array [
           onMouseOver={[Function]}
         >
           <div
-            className="small-movie-card__image"
+            className="small-movie-card__poster"
           >
             <img
               alt="title1"
@@ -288,12 +288,12 @@ Array [
           onMouseOver={[Function]}
         >
           <div
-            className="small-movie-card__image"
+            className="small-movie-card__poster"
           >
             <img
-              alt="title1"
+              alt="title2"
               height="175"
-              src="img/image1"
+              src="img/image2"
               width="280"
             />
           </div>
@@ -304,7 +304,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              title1
+              title2
             </a>
           </h3>
         </article>
@@ -313,12 +313,12 @@ Array [
           onMouseOver={[Function]}
         >
           <div
-            className="small-movie-card__image"
+            className="small-movie-card__poster"
           >
             <img
-              alt="title1"
+              alt="title3"
               height="175"
-              src="img/image1"
+              src="img/image3"
               width="280"
             />
           </div>
@@ -329,7 +329,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              title1
+              title3
             </a>
           </h3>
         </article>

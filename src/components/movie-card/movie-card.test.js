@@ -3,7 +3,7 @@ import {MovieCard} from './movie-card';
 
 const mock = {
   title: `title1`,
-  image: `image1`,
+  poster: `image1`,
 };
 
 it(`Render Movie Card`, () => {

@@ -5,7 +5,7 @@ export default class MoviesList extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this._state = {
+    this.state = {
       activeFilmCard: null
     };
   }
@@ -34,6 +34,6 @@ export default class MoviesList extends React.PureComponent {
 MoviesList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
   })).isRequired
 };
