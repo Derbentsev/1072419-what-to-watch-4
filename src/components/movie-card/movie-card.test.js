@@ -13,6 +13,7 @@ it(`Render Movie Card`, () => {
     .create(<MovieCard
       film = {mock}
       onMovieCardMouseOver = {onMovieCardMouseOverSpy}
+      onMovieCardClick = {() => {}}
     />)
       .toJSON();
 

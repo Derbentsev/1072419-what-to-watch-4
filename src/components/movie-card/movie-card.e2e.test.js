@@ -13,6 +13,7 @@ it(`When cursor on the movie card, has movie info`, () => {
   const movieCard = shallow(<MovieCard
     film = {film}
     onMovieCardMouseOver = {onMovieCardMouseOverSpy}
+    onMovieCardClick = {() => {}}
   />);
 
   const card = movieCard.find(`.small-movie-card`);

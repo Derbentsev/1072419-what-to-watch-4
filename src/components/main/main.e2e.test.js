@@ -26,6 +26,7 @@ it(`Should title be pressed`, () => {
         dateRelease = '01.01.2020'
         films = {mocks}
         onTitleClick = {onTitleClick}
+        onMovieCardClick = {() => {}}
       />
   );
 

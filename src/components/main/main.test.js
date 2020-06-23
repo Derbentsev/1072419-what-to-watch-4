@@ -24,6 +24,7 @@ it(`Should Main screen render correctly`, () => {
       dateRelease = '01.01.2020'
       films = {mocks}
       onTitleClick = {() => {}}
+      onMovieCardClick = {() => {}}
     />)
     .toJSON();
 

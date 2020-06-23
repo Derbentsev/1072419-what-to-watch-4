@@ -20,6 +20,7 @@ it(`Render Movies List`, () => {
   const tree = renderer
     .create(<MoviesList
       films = {mocks}
+      onMovieCardClick = {() => {}}
     />)
       .toJSON();
 
