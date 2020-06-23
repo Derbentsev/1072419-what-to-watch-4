@@ -10,11 +10,11 @@ exports[`Render Movies List 1`] = `
   >
     <div
       className="small-movie-card__poster"
+      onClick={[Function]}
     >
       <img
         alt="title1"
         height="175"
-        onClick={[Function]}
         src="img/image1"
         width="280"
       />
@@ -37,11 +37,11 @@ exports[`Render Movies List 1`] = `
   >
     <div
       className="small-movie-card__poster"
+      onClick={[Function]}
     >
       <img
         alt="title2"
         height="175"
-        onClick={[Function]}
         src="img/image2"
         width="280"
       />
@@ -64,11 +64,11 @@ exports[`Render Movies List 1`] = `
   >
     <div
       className="small-movie-card__poster"
+      onClick={[Function]}
     >
       <img
         alt="title3"
         height="175"
-        onClick={[Function]}
         src="img/image3"
         width="280"
       />

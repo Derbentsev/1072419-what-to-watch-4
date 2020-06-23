@@ -264,11 +264,11 @@ Array [
         >
           <div
             className="small-movie-card__poster"
+            onClick={[Function]}
           >
             <img
               alt="title1"
               height="175"
-              onClick={[Function]}
               src="img/image1"
               width="280"
             />
@@ -291,11 +291,11 @@ Array [
         >
           <div
             className="small-movie-card__poster"
+            onClick={[Function]}
           >
             <img
               alt="title1"
               height="175"
-              onClick={[Function]}
               src="img/image1"
               width="280"
             />
@@ -318,11 +318,11 @@ Array [
         >
           <div
             className="small-movie-card__poster"
+            onClick={[Function]}
           >
             <img
               alt="title1"
               height="175"
-              onClick={[Function]}
               src="img/image1"
               width="280"
             />

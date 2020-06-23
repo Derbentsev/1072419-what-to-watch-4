@@ -6,13 +6,13 @@ export const MovieCard = (props) => {
       onMouseOver={onMovieCardMouseOver}
       className="small-movie-card catalog__movies-card"
     >
-      <div className="small-movie-card__poster">
-        <img
-          onClick={() => {
-            onMovieCardClick(film);
-          }}
-          src={`img/${film.poster}`} alt={film.title} width="280" height="175"
-        />
+      <div
+        onClick={() => {
+          onMovieCardClick(film);
+        }}
+        className="small-movie-card__poster"
+      >
+        <img src={`img/${film.poster}`} alt={film.title} width="280" height="175"/>
       </div>
       <h3 className="small-movie-card__title">
         <a
