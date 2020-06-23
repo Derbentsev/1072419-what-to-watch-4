@@ -1,15 +1,19 @@
-import MovieCard from './movie-card';
+import {MovieCard} from './movie-card';
 
 
 const mock = {
   title: `title1`,
-  image: `image1`,
+  poster: `image1`,
 };
 
 it(`Render Movie Card`, () => {
+  const onMovieCardMouseOverSpy = jest.fn();
+
   const tree = renderer
     .create(<MovieCard
       film = {mock}
+      onMovieCardMouseOver = {onMovieCardMouseOverSpy}
+      onMovieCardClick = {() => {}}
     />)
       .toJSON();
 

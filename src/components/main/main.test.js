@@ -1,17 +1,17 @@
-import {Main} from './main';
+import Main from './main';
 
 const mocks = [
   {
     title: `title1`,
-    image: `image1`,
+    poster: `image1`,
   },
   {
     title: `title1`,
-    image: `image1`,
+    poster: `image1`,
   },
   {
     title: `title1`,
-    image: `image1`,
+    poster: `image1`,
   },
 ];
 
@@ -24,6 +24,7 @@ it(`Should Main screen render correctly`, () => {
       dateRelease = '01.01.2020'
       films = {mocks}
       onTitleClick = {() => {}}
+      onMovieCardClick = {() => {}}
     />)
     .toJSON();
 

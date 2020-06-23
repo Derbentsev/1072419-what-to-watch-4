@@ -1,13 +1,17 @@
-import MovieCard from '@components/movie-card/movie-card';
+import {MovieCard} from '@components/movie-card/movie-card';
 
 
-export default class MoviesList extends PureComponent {
+export default class MoviesList extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      activeFilmCard: null
+    };
   }
 
   render() {
-    const {films} = this.props;
+    const {films, onMovieCardClick} = this.props;
 
     return (
       <div className="catalog__movies-list">
@@ -15,6 +19,12 @@ export default class MoviesList extends PureComponent {
           <MovieCard
             key = {i}
             film = {film}
+            onMovieCardMouseOver = {() => {
+              this.setState({
+                activeFilmCard: this
+              });
+            }}
+            onMovieCardClick = {onMovieCardClick}
           />
         ))}
       </div>
@@ -23,5 +33,9 @@ export default class MoviesList extends PureComponent {
 }
 
 MoviesList.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+  })).isRequired,
+  onMovieCardClick: PropTypes.func.isRequired,
 };

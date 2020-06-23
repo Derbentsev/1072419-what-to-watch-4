@@ -260,9 +260,11 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
-            className="small-movie-card__image"
+            className="small-movie-card__poster"
+            onClick={[Function]}
           >
             <img
               alt="title1"
@@ -277,6 +279,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               title1
             </a>
@@ -284,14 +287,16 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
-            className="small-movie-card__image"
+            className="small-movie-card__poster"
+            onClick={[Function]}
           >
             <img
-              alt="title1"
+              alt="title2"
               height="175"
-              src="img/image1"
+              src="img/image2"
               width="280"
             />
           </div>
@@ -301,21 +306,24 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
-              title1
+              title2
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
-            className="small-movie-card__image"
+            className="small-movie-card__poster"
+            onClick={[Function]}
           >
             <img
-              alt="title1"
+              alt="title3"
               height="175"
-              src="img/image1"
+              src="img/image3"
               width="280"
             />
           </div>
@@ -325,8 +333,9 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
-              title1
+              title3
             </a>
           </h3>
         </article>

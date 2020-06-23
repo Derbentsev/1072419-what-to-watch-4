@@ -14,6 +14,7 @@ module.exports = (env) => {
       open: true,
       inline: true,
       port: 1337,
+      historyApiFallback: true,
     },
     module: {
       rules: [
@@ -40,7 +41,6 @@ module.exports = (env) => {
       new webpack.ProvidePlugin({
         React: `react`,
         PropTypes: `prop-types`,
-        PureComponent: [`react`, `PureComponent`]
       }),
     ]
   };
