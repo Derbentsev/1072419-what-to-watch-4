@@ -7,7 +7,7 @@ export default class Main extends React.PureComponent {
   }
 
   render() {
-    const {title, genre, dateRelease, films, onTitleClick} = this.props;
+    const {title, genre, dateRelease, films, onTitleClick, onMovieCardClick} = this.props;
 
     return (
       <>
@@ -109,6 +109,7 @@ export default class Main extends React.PureComponent {
 
             <MoviesList
               films = {films}
+              onMovieCardClick = {onMovieCardClick}
             />
 
             <div className="catalog__more">
@@ -144,4 +145,5 @@ Main.propTypes = {
     poster: PropTypes.string.isRequired,
   })).isRequired,
   onTitleClick: PropTypes.func.isRequired,
+  onMovieCardClick: PropTypes.func.isRequired,
 };

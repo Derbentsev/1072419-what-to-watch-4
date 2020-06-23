@@ -10,7 +10,7 @@ export default class App extends React.PureComponent {
     super(props);
 
     this.state = {
-      activeMoviePage: null,
+      activeFilm: null,
     };
 
     this._renderWelcomeScreen = this._renderWelcomeScreen.bind(this);
@@ -18,6 +18,15 @@ export default class App extends React.PureComponent {
 
   _renderWelcomeScreen() {
     const {title, genre, dateRelease, films} = this.props;
+    const {activeFilm} = this.state;
+
+    if (activeFilm) {
+      return (
+        <MoviePage
+          film = {activeFilm}
+        />
+      );
+    }
 
     return (
       <Main
@@ -26,21 +35,28 @@ export default class App extends React.PureComponent {
         dateRelease = {dateRelease}
         films = {films}
         onTitleClick = {onTitleClick}
+        onMovieCardClick = {(film) => {
+          this.setState({
+            activeFilm: film
+          });
+        }}
       />
     );
   }
 
-  _renderMovieCard() {
-    const {films} = this.props;
+  _renderMoviePage() {
+    const {activeFilm} = this.state;
 
     return (
       <MoviePage
-        film = {films[0]}
+        film = {activeFilm}
       />
     );
   }
 
   render() {
+    const {films} = this.props;
+
     return (
       <BrowserRouter>
         <Switch>
@@ -48,7 +64,9 @@ export default class App extends React.PureComponent {
             {this._renderWelcomeScreen()}
           </Route>
           <Route exact path='/dev-film'>
-            {this._renderMovieCard()}
+            <MoviePage
+              film = {films[0]}
+            />
           </Route>
         </Switch>
       </BrowserRouter>

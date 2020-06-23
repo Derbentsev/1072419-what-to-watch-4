@@ -19,5 +19,4 @@ it(`When cursor on the movie card, has movie info`, () => {
   card.props().onMouseOver();
 
   expect(onMovieCardMouseOverSpy.mock.calls.length).toBe(1);
-  expect(onMovieCardMouseOverSpy.mock.calls[0][0]).toBe(`title1`);
 });

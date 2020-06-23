@@ -11,7 +11,7 @@ export default class MoviesList extends React.PureComponent {
   }
 
   render() {
-    const {films} = this.props;
+    const {films, onMovieCardClick} = this.props;
 
     return (
       <div className="catalog__movies-list">
@@ -24,6 +24,7 @@ export default class MoviesList extends React.PureComponent {
                 activeFilmCard: this
               });
             }}
+            onMovieCardClick = {onMovieCardClick}
           />
         ))}
       </div>
@@ -35,5 +36,6 @@ MoviesList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
-  })).isRequired
+  })).isRequired,
+  onMovieCardClick: PropTypes.func.isRequired,
 };
