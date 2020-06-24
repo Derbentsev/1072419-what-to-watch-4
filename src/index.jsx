@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import App from '@components/app/app';
 import films from '@mocks/films';
-import {TitleMovieSettings} from '@consts/consts';
+import {TitleMovieSettings} from '@consts/index';
 
 
 ReactDOM.render(

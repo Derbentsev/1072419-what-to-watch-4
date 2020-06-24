@@ -1,6 +1,5 @@
 import Main from '@components/main/main';
 import {MoviePage} from '@components/movie-page/movie-page';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 
 const onTitleClick = () => {};
