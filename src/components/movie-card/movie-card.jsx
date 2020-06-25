@@ -2,31 +2,23 @@ import VideoPlayer from '@components/video-player/video-player';
 
 
 export const MovieCard = (props) => {
-  const {film, onMovieCardMouseOver, onMovieCardClick} = props;
+  const {film, onMovieCardMouseEnter, onMovieCardClick} = props;
 
   return (
     <article
-      onMouseOver={onMovieCardMouseOver}
+      onMouseEnter={onMovieCardMouseEnter}
       className="small-movie-card catalog__movies-card"
+      onClick={(evt) => {
+        evt.preventDefault();
+        onMovieCardClick(film);
+      }}
     >
-      <div
-        onClick={() => {
-          onMovieCardClick(film);
-        }}
-        className="small-movie-card__poster"
-      >
-        <VideoPlayer
-          isPlaying = {true}
-          src = {film.src}
-          poster = {film.poster}
-        />
-      </div>
+      <VideoPlayer
+        src = {film.src}
+        poster = {film.poster}
+      />
       <h3 className="small-movie-card__title">
         <a
-          onClick={(evt) => {
-            evt.preventDefault();
-            onMovieCardClick(film);
-          }}
           className="small-movie-card__link" href="movie-page.html">{film.title}
         </a>
       </h3>
@@ -40,6 +32,6 @@ MovieCard.propTypes = {
     poster: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
   }).isRequired,
-  onMovieCardMouseOver: PropTypes.func.isRequired,
+  onMovieCardMouseEnter: PropTypes.func.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
 };

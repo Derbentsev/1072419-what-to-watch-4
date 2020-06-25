@@ -8,6 +8,14 @@ export default class MoviesList extends React.PureComponent {
     this.state = {
       activeFilmCard: null
     };
+
+    this._onMovieCardMouseEnter = this._onMovieCardMouseEnter.bind(this);
+  }
+
+  _onMovieCardMouseEnter() {
+    this.setState({
+      activeFilmCard: this
+    });
   }
 
   render() {
@@ -19,11 +27,7 @@ export default class MoviesList extends React.PureComponent {
           <MovieCard
             key = {i}
             film = {film}
-            onMovieCardMouseOver = {() => {
-              this.setState({
-                activeFilmCard: this
-              });
-            }}
+            onMovieCardMouseEnter = {this._onMovieCardMouseEnter}
             onMovieCardClick = {onMovieCardClick}
           />
         ))}
