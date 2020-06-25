@@ -1,3 +1,6 @@
+import VideoPlayer from '@components/video-player/video-player';
+
+
 export const MovieCard = (props) => {
   const {film, onMovieCardMouseOver, onMovieCardClick} = props;
 
