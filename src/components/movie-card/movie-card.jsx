@@ -15,7 +15,11 @@ export const MovieCard = (props) => {
         }}
         className="small-movie-card__poster"
       >
-        <img src={`img/${film.poster}`} alt={film.title} width="280" height="175"/>
+        <VideoPlayer
+          isPlaying = {true}
+          src = {film.src}
+          poster = {film.poster}
+        />
       </div>
       <h3 className="small-movie-card__title">
         <a
@@ -34,6 +38,7 @@ MovieCard.propTypes = {
   film: PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
   }).isRequired,
   onMovieCardMouseOver: PropTypes.func.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
