@@ -13,7 +13,9 @@ export default class VideoPlayer extends React.PureComponent {
       isPlaying: false,
     };
 
-    this._ff = this._ff.bind(this);
+    this._togglePlayingState = this._togglePlayingState.bind(this);
+    this._handleMouseEnter = this._handleMouseEnter.bind(this);
+    this._handleMouseLeave = this._handleMouseLeave.bind(this);
   }
 
   componentWillUnmount() {
@@ -33,8 +35,20 @@ export default class VideoPlayer extends React.PureComponent {
     video.load();
   }
 
-  _ff() {
+  _togglePlayingState() {
     this.setState({isPlaying: !this.state.isPlaying});
+  }
+
+  _handleMouseEnter() {
+    this._timeout = setTimeout(this._togglePlayingState, DELAY_ON_MOUSE_ENTER);
+  }
+
+  _handleMouseLeave() {
+    if (this.state.isPlaying || this._timeout) {
+      clearTimeout(this._timeout);
+      this._timeout = null;
+      this.setState({isPlaying: false});
+    }
   }
 
   render() {
@@ -44,16 +58,8 @@ export default class VideoPlayer extends React.PureComponent {
       <>
         <div
           className="small-movie-card__poster"
-          onMouseEnter={() => {
-            this._timeout = setTimeout(this._ff, DELAY_ON_MOUSE_ENTER);
-          }}
-          onMouseLeave={() => {
-            if (this.state.isPlaying || this._timeout) {
-              clearTimeout(this._timeout);
-              this._timeout = null;
-              this.setState({isPlaying: false});
-            }
-          }}
+          onMouseEnter={this._handleMouseEnter}
+          onMouseLeave={this._handleMouseLeave}
         >
           <video width="280" height="175" poster={`img/${poster}`} muted={true} ref={this._videoRef}>
             <source src={src} type="video/webm"></source>
