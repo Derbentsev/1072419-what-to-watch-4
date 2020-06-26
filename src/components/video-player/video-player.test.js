@@ -2,8 +2,8 @@ import VideoPlayer from './video-player';
 
 
 const mocks = {
-  src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-  poster: `fantastic-beasts-the-crimes-of-grindelwald.jpg`
+  src: `src1`,
+  poster: `poster1`
 };
 
 it(`Render Video Player`, () => {
