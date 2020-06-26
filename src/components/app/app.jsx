@@ -81,5 +81,6 @@ App.propTypes = {
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
   })).isRequired,
 };

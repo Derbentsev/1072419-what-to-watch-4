@@ -8,6 +8,7 @@ const mocks = [
     genre: `genre1`,
     dateRelease: `2015`,
     cover: `the-grand-budapest-hotel-poster.jpg`,
+    src: `src1`,
   },
   {
     title: `title2`,
@@ -15,6 +16,7 @@ const mocks = [
     genre: `genre2`,
     dateRelease: `2016`,
     cover: `the-grand-budapest-hotel-poster.jpg`,
+    src: `src2`,
   },
   {
     title: `title3`,
@@ -22,6 +24,7 @@ const mocks = [
     genre: `genre3`,
     dateRelease: `2017`,
     cover: `the-grand-budapest-hotel-poster.jpg`,
+    src: `src3`,
   },
 ];
 
