@@ -9,8 +9,11 @@ const MovieSettings = {
   TITLES: [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`],
 };
 
+const DELAY_ON_MOUSE_ENTER = 2000;
+
 
 export {
   TitleMovieSettings,
   MovieSettings,
+  DELAY_ON_MOUSE_ENTER,
 };

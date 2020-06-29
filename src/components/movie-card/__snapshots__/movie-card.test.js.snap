@@ -3,18 +3,29 @@
 exports[`Render Movie Card 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  onMouseOver={[MockFunction]}
+  onClick={[Function]}
+  onMouseEnter={[MockFunction]}
 >
   <div
     className="small-movie-card__poster"
-    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
-    <img
-      alt="title1"
+    <video
       height="175"
-      src="img/image1"
+      muted={true}
+      poster="img/image1"
       width="280"
-    />
+    >
+      <source
+        src="src1"
+        type="video/webm"
+      />
+      <source
+        src="src1"
+        type="video/mp4"
+      />
+    </video>
   </div>
   <h3
     className="small-movie-card__title"
@@ -22,7 +33,6 @@ exports[`Render Movie Card 1`] = `
     <a
       className="small-movie-card__link"
       href="movie-page.html"
-      onClick={[Function]}
     >
       title1
     </a>

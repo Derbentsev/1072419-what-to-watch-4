@@ -1,15 +1,10 @@
 import MoviesList from '@components/movies-list/movies-list';
 
 
-export default class Main extends React.PureComponent {
-  constructor(props) {
-    super(props);
-  }
+export const Main = (props) => {
+  const {title, genre, dateRelease, films, onTitleClick, onMovieCardClick} = props;
 
-  render() {
-    const {title, genre, dateRelease, films, onTitleClick, onMovieCardClick} = this.props;
-
-    return (
+  return (
       <>
         <section className="movie-card">
           <div className="movie-card__bg">
@@ -132,9 +127,8 @@ export default class Main extends React.PureComponent {
           </footer>
         </div>
       </>
-    );
-  }
-}
+  );
+};
 
 Main.propTypes = {
   title: PropTypes.string.isRequired,
@@ -143,7 +137,11 @@ Main.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
   })).isRequired,
   onTitleClick: PropTypes.func.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
 };
+
+
+export default Main;

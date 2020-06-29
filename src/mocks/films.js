@@ -5,6 +5,7 @@ export default [
     genre: `genre1`,
     dateRelease: `2011`,
     cover: `the-grand-budapest-hotel-poster.jpg`,
+    src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     title: `title2`,
@@ -12,6 +13,7 @@ export default [
     genre: `genre2`,
     dateRelease: `2012`,
     cover: `the-grand-budapest-hotel-poster.jpg`,
+    src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     title: `title3`,
@@ -19,6 +21,7 @@ export default [
     genre: `genre3`,
     dateRelease: `2013`,
     cover: `the-grand-budapest-hotel-poster.jpg`,
+    src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     title: `title4`,
@@ -26,6 +29,7 @@ export default [
     genre: `genre4`,
     dateRelease: `2014`,
     cover: `the-grand-budapest-hotel-poster.jpg`,
+    src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     title: `title5`,
@@ -33,6 +37,7 @@ export default [
     genre: `genre5`,
     dateRelease: `2015`,
     cover: `the-grand-budapest-hotel-poster.jpg`,
+    src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     title: `title6`,
@@ -40,6 +45,7 @@ export default [
     genre: `genre6`,
     dateRelease: `2016`,
     cover: `the-grand-budapest-hotel-poster.jpg`,
+    src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     title: `title7`,
@@ -47,6 +53,7 @@ export default [
     genre: `genre7`,
     dateRelease: `2017`,
     cover: `the-grand-budapest-hotel-poster.jpg`,
+    src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     title: `title8`,
@@ -54,5 +61,6 @@ export default [
     genre: `genre8`,
     dateRelease: `2018`,
     cover: `the-grand-budapest-hotel-poster.jpg`,
+    src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
 ];

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Video Player 1`] = `
+<div
+  className="small-movie-card__poster"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <video
+    height="175"
+    muted={true}
+    poster="img/poster1"
+    width="280"
+  >
+    <source
+      src="src1"
+      type="video/webm"
+    />
+    <source
+      src="src1"
+      type="video/mp4"
+    />
+  </video>
+</div>
+`;
