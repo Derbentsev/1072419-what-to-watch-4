@@ -1,8 +1,5 @@
-import VideoPlayer from '@components/video-player/video-player';
-
-
-export const MovieCard = (props) => {
-  const {film, onMovieCardMouseEnter, onMovieCardClick} = props;
+const MovieCard = (props) => {
+  const {film, onMovieCardMouseEnter, onMovieCardClick, renderPlayer} = props;
 
   return (
     <article
@@ -13,10 +10,9 @@ export const MovieCard = (props) => {
         onMovieCardClick(film);
       }}
     >
-      <VideoPlayer
-        src = {film.src}
-        poster = {film.poster}
-      />
+
+      {renderPlayer(film.src, film.poster)}
+
       <h3 className="small-movie-card__title">
         <a
           className="small-movie-card__link" href="movie-page.html">{film.title}
@@ -34,4 +30,8 @@ MovieCard.propTypes = {
   }).isRequired,
   onMovieCardMouseEnter: PropTypes.func.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
+  renderPlayer: PropTypes.func.isRequired,
 };
+
+
+export default MovieCard;
