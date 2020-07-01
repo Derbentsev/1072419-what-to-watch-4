@@ -43,7 +43,7 @@ export default class Tabs extends React.PureComponent {
 
           {this.state.activeTab === TabNames.OVERVIEW && <TabOverview film = {film}/>}
           {this.state.activeTab === TabNames.DETAILS && <TabDetails film = {film}/>}
-          {this.state.activeTab === TabNames.REVIEWS && <TabReviews film = {film}/>}
+          {this.state.activeTab === TabNames.REVIEWS && <TabReviews reviews = {film.reviews}/>}
 
         </div>
       </>

@@ -19,7 +19,7 @@ export default class VideoPlayer extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    this._timeout = null;
+    clearTimeout(this._timeout);
   }
 
   componentDidUpdate() {

@@ -4,24 +4,45 @@ const TabOverview = (props) => {
   return (
     <>
     <div className="movie-rating">
-      <div className="movie-rating__score">8,9</div>
+      <div className="movie-rating__score">{film.ratingScore}</div>
       <p className="movie-rating__meta">
-        <span className="movie-rating__level">Very good</span>
-        <span className="movie-rating__count">240 ratings</span>
+        <span className="movie-rating__level">{film.ratingLevel}</span>
+        <span className="movie-rating__count">{film.ratingCount}</span>
       </p>
     </div>
 
     <div className="movie-card__text">
-      <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.</p>
+      {film.description}
+      <p className="movie-card__director"><strong>Director: {film.director}</strong></p>
 
-      <p>Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
-
-      <p className="movie-card__director"><strong>Director: Wes Andreson</strong></p>
-
-      <p className="movie-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
+      <p className="movie-card__starring"><strong>Starring: {film.actors.join(`, `).split()}</strong></p>
     </div>
     </>
   );
+};
+
+TabOverview.propTypes = {
+  film: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    dateRelease: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    ratingScore: PropTypes.string.isRequired,
+    ratingLevel: PropTypes.string.isRequired,
+    ratingCount: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    runTime: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      comment: PropTypes.string.isRequired,
+      rating: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+    })),
+  }).isRequired,
 };
 
 

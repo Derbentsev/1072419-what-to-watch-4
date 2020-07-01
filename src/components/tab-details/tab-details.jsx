@@ -1,4 +1,4 @@
-const tabDetails = (props) => {
+const TabDetails = (props) => {
   const {film} = props;
 
   return (
@@ -7,23 +7,12 @@ const tabDetails = (props) => {
       <div className="movie-card__text-col">
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Director</strong>
-          <span className="movie-card__details-value">Wes Andreson</span>
+          <span className="movie-card__details-value">{film.director}</span>
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Starring</strong>
           <span className="movie-card__details-value">
-            Bill Murray, <br/>
-            Edward Norton, <br/>
-            Jude Law, <br/>
-            Willem Dafoe, <br/>
-            Saoirse Ronan, <br/>
-            Tony Revoloru, <br/>
-            Tilda Swinton, <br/>
-            Tom Wilkinson, <br/>
-            Owen Wilkinson, <br/>
-            Adrien Brody, <br/>
-            Ralph Fiennes, <br/>
-            Jeff Goldblum
+            {film.actors.join(`, `).split()}
           </span>
         </p>
       </div>
@@ -31,15 +20,15 @@ const tabDetails = (props) => {
       <div className="movie-card__text-col">
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Run Time</strong>
-          <span className="movie-card__details-value">1h 39m</span>
+          <span className="movie-card__details-value">{film.runTime}</span>
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Genre</strong>
-          <span className="movie-card__details-value">Comedy</span>
+          <span className="movie-card__details-value">{film.genre}</span>
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Released</strong>
-          <span className="movie-card__details-value">2014</span>
+          <span className="movie-card__details-value">{film.dateRelease}</span>
         </p>
       </div>
     </div>
@@ -47,5 +36,29 @@ const tabDetails = (props) => {
   );
 };
 
+TabDetails.propTypes = {
+  film: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    dateRelease: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    ratingScore: PropTypes.string.isRequired,
+    ratingLevel: PropTypes.string.isRequired,
+    ratingCount: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    runTime: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      comment: PropTypes.string.isRequired,
+      rating: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+    })),
+  }).isRequired,
+};
 
-export default tabDetails;
+
+export default TabDetails;
