@@ -1,5 +1,5 @@
 import Main from '@components/main/main';
-import {MoviePage} from '@components/movie-page/movie-page';
+import MoviePage from '@components/movie-page/movie-page';
 
 
 const onTitleClick = () => {};

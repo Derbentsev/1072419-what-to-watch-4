@@ -16,7 +16,7 @@ const sameGenreFilms = (currentFilm, films) => {
   return filteredFilms;
 };
 
-export const MoviePage = (props) => {
+const MoviePage = (props) => {
   const {film, films, onMovieCardClick} = props;
 
   const sameFilms = sameGenreFilms(film, films);
@@ -161,3 +161,6 @@ MoviePage.propTypes = {
   }).isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
 };
+
+
+export default MoviePage;

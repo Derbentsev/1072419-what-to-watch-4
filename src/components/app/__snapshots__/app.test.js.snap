@@ -271,15 +271,15 @@ Array [
             <video
               height="175"
               muted={true}
-              poster="img/image1"
+              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             >
               <source
-                src="src1"
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
                 type="video/webm"
               />
               <source
-                src="src1"
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
                 type="video/mp4"
               />
             </video>
@@ -308,15 +308,15 @@ Array [
             <video
               height="175"
               muted={true}
-              poster="img/image2"
+              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             >
               <source
-                src="src2"
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
                 type="video/webm"
               />
               <source
-                src="src2"
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
                 type="video/mp4"
               />
             </video>
@@ -328,7 +328,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              title2
+              title1
             </a>
           </h3>
         </article>
@@ -345,15 +345,15 @@ Array [
             <video
               height="175"
               muted={true}
-              poster="img/image3"
+              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             >
               <source
-                src="src3"
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
                 type="video/webm"
               />
               <source
-                src="src3"
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
                 type="video/mp4"
               />
             </video>
@@ -365,7 +365,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              title3
+              title1
             </a>
           </h3>
         </article>
