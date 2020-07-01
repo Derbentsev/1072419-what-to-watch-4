@@ -1,8 +1,25 @@
 import Tabs from '@components/tabs/tabs';
+import MoviesList from '@components/movies-list/movies-list';
 
+
+const SAME_FILMS_COUNT = 4;
+
+const sameGenreFilms = (currentFilm, films) => {
+  const index = films.indexOf(currentFilm);
+
+  films.splice(index, 1);
+
+  const filteredFilms = films
+    .filter((film) => film.genre === currentFilm.genre)
+    .splice(0, SAME_FILMS_COUNT);
+
+  return filteredFilms;
+};
 
 export const MoviePage = (props) => {
-  const {film} = props;
+  const {film, films, onMovieCardClick} = props;
+
+  const sameFilms = sameGenreFilms(film, films);
 
   return (
     <>
@@ -70,11 +87,57 @@ export const MoviePage = (props) => {
             </div>
           </div>
         </section>
+
+        <div className="page-content">
+          <section className="catalog catalog--like-this">
+            <h2 className="catalog__title">More like this</h2>
+
+            <MoviesList
+              films = {sameFilms}
+              onMovieCardClick = {onMovieCardClick}
+            />
+          </section>
+
+          <footer className="page-footer">
+            <div className="logo">
+              <a href="main.html" className="logo__link logo__link--light">
+                <span className="logo__letter logo__letter--1">W</span>
+                <span className="logo__letter logo__letter--2">T</span>
+                <span className="logo__letter logo__letter--3">W</span>
+              </a>
+            </div>
+
+            <div className="copyright">
+              <p>© 2019 What to watch Ltd.</p>
+            </div>
+          </footer>
+        </div>
     </>
   );
 };
 
 MoviePage.propTypes = {
+  films: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    dateRelease: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    ratingScore: PropTypes.string.isRequired,
+    ratingLevel: PropTypes.string.isRequired,
+    ratingCount: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    runTime: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      comment: PropTypes.string.isRequired,
+      rating: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+    })),
+  })).isRequired,
   film: PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
@@ -96,4 +159,5 @@ MoviePage.propTypes = {
       date: PropTypes.string.isRequired,
     })),
   }).isRequired,
+  onMovieCardClick: PropTypes.func.isRequired,
 };

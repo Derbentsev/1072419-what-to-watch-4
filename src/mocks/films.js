@@ -43,7 +43,7 @@ export default [
   {
     title: `title2`,
     poster: `bohemian-rhapsody.jpg`,
-    genre: `genre2`,
+    genre: `genre1`,
     dateRelease: `2012`,
     cover: `the-grand-budapest-hotel-poster.jpg`,
     src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
@@ -84,7 +84,7 @@ export default [
   {
     title: `title3`,
     poster: `macbeth.jpg`,
-    genre: `genre3`,
+    genre: `genre1`,
     dateRelease: `2013`,
     cover: `the-grand-budapest-hotel-poster.jpg`,
     src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
