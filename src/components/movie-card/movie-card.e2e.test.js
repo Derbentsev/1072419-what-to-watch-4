@@ -1,4 +1,4 @@
-import {MovieCard} from './movie-card';
+import MovieCard from './movie-card';
 
 
 const mocks = {
@@ -8,13 +8,13 @@ const mocks = {
 };
 
 it(`When cursor on the movie card, has movie info`, () => {
-  const film = mocks;
   const onMovieCardMouseEnterSpy = jest.fn();
 
   const movieCard = shallow(<MovieCard
-    film = {film}
+    film = {mocks}
     onMovieCardMouseEnter = {onMovieCardMouseEnterSpy}
     onMovieCardClick = {() => {}}
+    renderPlayer = {() => {}}
   />);
 
   const card = movieCard.find(`.small-movie-card`);
@@ -24,13 +24,13 @@ it(`When cursor on the movie card, has movie info`, () => {
 });
 
 it(`When mouse click on movie card`, () => {
-  const film = mocks;
   const onMovieCardClickSpy = jest.fn();
 
   const movieCard = shallow(<MovieCard
-    film = {film}
+    film = {mocks}
     onMovieCardMouseEnter = {() => {}}
     onMovieCardClick = {onMovieCardClickSpy}
+    renderPlayer = {() => {}}
   />);
 
   const movieCardElement = movieCard.find(`.small-movie-card`);

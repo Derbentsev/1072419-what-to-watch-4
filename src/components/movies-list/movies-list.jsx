@@ -1,5 +1,8 @@
-import {MovieCard} from '@components/movie-card/movie-card';
+import MovieCard from '@components/movie-card/movie-card';
+import withVideoPlayer from '@hocs/with-video-player/with-video-player';
 
+
+const MovieCardWrapped = withVideoPlayer(MovieCard);
 
 export default class MoviesList extends React.PureComponent {
   constructor(props) {
@@ -24,7 +27,7 @@ export default class MoviesList extends React.PureComponent {
     return (
       <div className="catalog__movies-list">
         {films.map((film, i) => (
-          <MovieCard
+          <MovieCardWrapped
             key = {i}
             film = {film}
             onMovieCardMouseEnter = {this._onMovieCardMouseEnter}

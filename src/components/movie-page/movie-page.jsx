@@ -1,5 +1,25 @@
-export const MoviePage = (props) => {
-  const {film} = props;
+import Tabs from '@components/tabs/tabs';
+import MoviesList from '@components/movies-list/movies-list';
+
+
+const SAME_FILMS_COUNT = 4;
+
+const sameGenreFilms = (currentFilm, films) => {
+  const index = films.indexOf(currentFilm);
+
+  films.splice(index, 1);
+
+  const filteredFilms = films
+    .filter((film) => film.genre === currentFilm.genre)
+    .splice(0, SAME_FILMS_COUNT);
+
+  return filteredFilms;
+};
+
+const MoviePage = (props) => {
+  const {film, films, onMovieCardClick} = props;
+
+  const sameFilms = sameGenreFilms(film, films);
 
   return (
     <>
@@ -60,51 +80,87 @@ export const MoviePage = (props) => {
                 <img src={`img/${film.cover}`} alt="The Grand Budapest Hotel poster" width="218" height="327" />
               </div>
 
-              <div className="movie-card__desc">
-                <nav className="movie-nav movie-card__nav">
-                  <ul className="movie-nav__list">
-                    <li className="movie-nav__item movie-nav__item--active">
-                      <a href="#" className="movie-nav__link">Overview</a>
-                    </li>
-                    <li className="movie-nav__item">
-                      <a href="#" className="movie-nav__link">Details</a>
-                    </li>
-                    <li className="movie-nav__item">
-                      <a href="#" className="movie-nav__link">Reviews</a>
-                    </li>
-                  </ul>
-                </nav>
+              <Tabs
+                film = {film}
+              />
 
-                <div className="movie-rating">
-                  <div className="movie-rating__score">8,9</div>
-                  <p className="movie-rating__meta">
-                    <span className="movie-rating__level">Very good</span>
-                    <span className="movie-rating__count">240 ratings</span>
-                  </p>
-                </div>
-
-                <div className="movie-card__text">
-                  <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes {`Gustave's`} friend and protege.</p>
-
-                  <p>Gustave prides himself on providing first-className service to the {`hotel's`} guests, including satisfying the sexual needs of the many elderly women who stay there. When one of {`Gustave's`} lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
-
-                  <p className="movie-card__director"><strong>Director: Wes Andreson</strong></p>
-
-                  <p className="movie-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
-                </div>
-              </div>
             </div>
           </div>
         </section>
+
+        <div className="page-content">
+          <section className="catalog catalog--like-this">
+            <h2 className="catalog__title">More like this</h2>
+
+            <MoviesList
+              films = {sameFilms}
+              onMovieCardClick = {onMovieCardClick}
+            />
+          </section>
+
+          <footer className="page-footer">
+            <div className="logo">
+              <a href="main.html" className="logo__link logo__link--light">
+                <span className="logo__letter logo__letter--1">W</span>
+                <span className="logo__letter logo__letter--2">T</span>
+                <span className="logo__letter logo__letter--3">W</span>
+              </a>
+            </div>
+
+            <div className="copyright">
+              <p>© 2019 What to watch Ltd.</p>
+            </div>
+          </footer>
+        </div>
     </>
   );
 };
 
 MoviePage.propTypes = {
-  film: PropTypes.shape({
+  films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     dateRelease: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired,
-  }),
+    src: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    ratingScore: PropTypes.string.isRequired,
+    ratingLevel: PropTypes.string.isRequired,
+    ratingCount: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    runTime: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      comment: PropTypes.string.isRequired,
+      rating: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+    })),
+  })).isRequired,
+  film: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    dateRelease: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    ratingScore: PropTypes.string.isRequired,
+    ratingLevel: PropTypes.string.isRequired,
+    ratingCount: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    runTime: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      comment: PropTypes.string.isRequired,
+      rating: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+    })),
+  }).isRequired,
+  onMovieCardClick: PropTypes.func.isRequired,
 };
+
+
+export default MoviePage;

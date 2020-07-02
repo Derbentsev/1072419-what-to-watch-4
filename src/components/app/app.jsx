@@ -1,5 +1,5 @@
 import Main from '@components/main/main';
-import {MoviePage} from '@components/movie-page/movie-page';
+import MoviePage from '@components/movie-page/movie-page';
 
 
 const onTitleClick = () => {};
@@ -13,6 +13,13 @@ export default class App extends React.PureComponent {
     };
 
     this._renderWelcomeScreen = this._renderWelcomeScreen.bind(this);
+    this._onMovieCardClick = this._onMovieCardClick.bind(this);
+  }
+
+  _onMovieCardClick(film) {
+    this.setState({
+      activeFilm: film
+    });
   }
 
   _renderWelcomeScreen() {
@@ -23,6 +30,8 @@ export default class App extends React.PureComponent {
       return (
         <MoviePage
           film = {activeFilm}
+          films = {films}
+          onMovieCardClick = {this._onMovieCardClick}
         />
       );
     }
@@ -34,11 +43,7 @@ export default class App extends React.PureComponent {
         dateRelease = {dateRelease}
         films = {films}
         onTitleClick = {onTitleClick}
-        onMovieCardClick = {(film) => {
-          this.setState({
-            activeFilm: film
-          });
-        }}
+        onMovieCardClick = {this._onMovieCardClick}
       />
     );
   }
@@ -65,6 +70,8 @@ export default class App extends React.PureComponent {
           <Route exact path='/dev-film'>
             <MoviePage
               film = {films[0]}
+              films = {films}
+              onMovieCardClick = {this._onMovieCardClick}
             />
           </Route>
         </Switch>
@@ -81,6 +88,21 @@ App.propTypes = {
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
+    dateRelease: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    ratingScore: PropTypes.string.isRequired,
+    ratingLevel: PropTypes.string.isRequired,
+    ratingCount: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    runTime: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      comment: PropTypes.string.isRequired,
+      rating: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+    })),
   })).isRequired,
 };

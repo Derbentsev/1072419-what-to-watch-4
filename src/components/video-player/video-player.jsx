@@ -19,9 +19,7 @@ export default class VideoPlayer extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    const video = this._videoRef.current;
-
-    video.autoplay = false;
+    clearTimeout(this._timeout);
   }
 
   componentDidUpdate() {

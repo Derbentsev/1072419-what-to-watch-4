@@ -1,4 +1,4 @@
-import {MovieCard} from './movie-card';
+import MovieCard from './movie-card';
 
 
 const mock = {
@@ -15,6 +15,7 @@ it(`Render Movie Card`, () => {
       film = {mock}
       onMovieCardMouseEnter = {onMovieCardMouseEnterSpy}
       onMovieCardClick = {() => {}}
+      renderPlayer = {() => {}}
     />)
       .toJSON();
 

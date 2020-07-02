@@ -8,6 +8,7 @@ module.exports = {
     "^@components(.*)$": `<rootDir>/src/components/$1`,
     "^@consts(.*)$": `<rootDir>/src/consts/$1`,
     "^@mocks(.*)$": `<rootDir>/src/mocks/$1`,
+    "^@hocs(.*)$": `<rootDir>/src/hocs/$1`,
   },
   "coveragePathIgnorePatterns": [`/test-setup.js`]
 };
