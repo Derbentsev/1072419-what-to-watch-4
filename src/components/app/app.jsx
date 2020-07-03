@@ -1,10 +1,12 @@
 import Main from '@components/main/main';
 import MoviePage from '@components/movie-page/movie-page';
+import {connect} from 'react-redux';
+import {ActionCreator} from '@src/reducer';
 
 
 const onTitleClick = () => {};
 
-export default class App extends React.PureComponent {
+class App extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -18,12 +20,12 @@ export default class App extends React.PureComponent {
 
   _onMovieCardClick(film) {
     this.setState({
-      activeFilm: film
+      activeFilm: film,
     });
   }
 
   _renderWelcomeScreen() {
-    const {title, genre, dateRelease, films} = this.props;
+    const {title, genre, dateRelease, films, onFilterClick} = this.props;
     const {activeFilm} = this.state;
 
     if (activeFilm) {
@@ -43,6 +45,7 @@ export default class App extends React.PureComponent {
         dateRelease = {dateRelease}
         films = {films}
         onTitleClick = {onTitleClick}
+        onFilterClick = {onFilterClick}
         onMovieCardClick = {this._onMovieCardClick}
       />
     );
@@ -84,6 +87,7 @@ App.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   dateRelease: PropTypes.string.isRequired,
+  onFilterClick: PropTypes.func.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
@@ -106,3 +110,18 @@ App.propTypes = {
     })),
   })).isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  currentFilter: state.currentFilter,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onFilterClick(films) {
+    dispatch(ActionCreator.getFilmsByGenre(films));
+    dispatch(ActionCreator.changeFilter());
+  },
+});
+
+
+export {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

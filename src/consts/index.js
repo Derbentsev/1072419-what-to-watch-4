@@ -17,10 +17,24 @@ const TabNames = {
   REVIEWS: `Reviews`,
 };
 
+const FilterNames = {
+  ALL: `All genres`,
+  COMEDIES: `Comedies`,
+  CRIME: `Crime`,
+  DOCUMENTARY: `Documentary`,
+  DRAMAS: `Dramas`,
+  HORROR: `Horror`,
+  KIDS_AND_FAMILY: `Kids & Family`,
+  ROMANCE: `Romance`,
+  SCI_FI: `Sci-Fi`,
+  THRILLERS: `Thrillers`,
+};
+
 
 export {
   TitleMovieSettings,
   MovieSettings,
   DELAY_ON_MOUSE_ENTER,
   TabNames,
+  FilterNames,
 };
