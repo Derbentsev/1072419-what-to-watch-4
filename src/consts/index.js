@@ -30,6 +30,8 @@ const FilterNames = {
   THRILLERS: `Thrillers`,
 };
 
+const FILTER_ALL_GENRES_NAME = `All genres`;
+
 
 export {
   TitleMovieSettings,
@@ -37,4 +39,5 @@ export {
   DELAY_ON_MOUSE_ENTER,
   TabNames,
   FilterNames,
+  FILTER_ALL_GENRES_NAME,
 };

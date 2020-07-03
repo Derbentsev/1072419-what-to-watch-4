@@ -25,7 +25,16 @@ class App extends React.PureComponent {
   }
 
   _renderWelcomeScreen() {
-    const {title, genre, dateRelease, films, onFilterClick} = this.props;
+    const {
+      title,
+      genre,
+      dateRelease,
+      films,
+      onFilterClick,
+      currentFilter,
+      filteredFilms,
+    } = this.props;
+
     const {activeFilm} = this.state;
 
     if (activeFilm) {
@@ -47,6 +56,8 @@ class App extends React.PureComponent {
         onTitleClick = {onTitleClick}
         onFilterClick = {onFilterClick}
         onMovieCardClick = {this._onMovieCardClick}
+        currentFilter = {currentFilter}
+        filteredFilms = {filteredFilms}
       />
     );
   }
@@ -88,6 +99,28 @@ App.propTypes = {
   genre: PropTypes.string.isRequired,
   dateRelease: PropTypes.string.isRequired,
   onFilterClick: PropTypes.func.isRequired,
+  currentFilter: PropTypes.string.isRequired,
+  filteredFilms: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    dateRelease: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    ratingScore: PropTypes.string.isRequired,
+    ratingLevel: PropTypes.string.isRequired,
+    ratingCount: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    runTime: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      comment: PropTypes.string.isRequired,
+      rating: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+    })),
+  })),
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
@@ -113,12 +146,13 @@ App.propTypes = {
 
 const mapStateToProps = (state) => ({
   currentFilter: state.currentFilter,
+  filteredFilms: state.filteredFilms,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onFilterClick(films) {
-    dispatch(ActionCreator.getFilmsByGenre(films));
-    dispatch(ActionCreator.changeFilter());
+  onFilterClick(filteredFilms, filterName) {
+    dispatch(ActionCreator.setFilteredFilms(filteredFilms));
+    dispatch(ActionCreator.changeFilter(filterName));
   },
 });
 

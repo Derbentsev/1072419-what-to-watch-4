@@ -1,28 +1,36 @@
-import {getUniqueGenres} from '@utils/';
+import {FILTER_ALL_GENRES_NAME} from '@consts/';
+import {
+  getUniqueGenres,
+  getFilmsByGenre,
+} from '@utils/';
+
 
 const FiltersByGenre = (props) => {
-  const {films, onFilterClick} = props;
+  const {
+    films,
+    onFilterClick,
+    currentFilter,
+  } = props;
 
   const uniqueGenres = getUniqueGenres(films);
+  uniqueGenres.unshift(FILTER_ALL_GENRES_NAME);
 
   return (
     <>
-      <li
-        onClick={() => {
-          onFilterClick();
-        }}
-        className="catalog__genres-item catalog__genres-item--active"
-      >
-        <a href="#" className="catalog__genres-link">All genres</a>
-      </li>
-
-      {uniqueGenres.map((item, index) => {
+      {uniqueGenres.map((genre, index) => {
         return (
           <li
-            onClick={onFilterClick}
-            className="catalog__genres-item"
-            key={index}>
-            <a href="#" className="catalog__genres-link">{item}</a>
+            className={`catalog__genres-item ${genre === currentFilter && `catalog__genres-item--active`}`}
+            key={index}
+            onClick={(evt) => {
+              evt.preventDefault();
+              const filmsByGenre = getFilmsByGenre(films, evt.target.textContent);
+              onFilterClick(filmsByGenre, evt.target.textContent);
+            }}
+          >
+            <a href="#" className="catalog__genres-link">
+              {genre}
+            </a>
           </li>
         );
       })}
@@ -37,6 +45,7 @@ FiltersByGenre.propTypes = {
     poster: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
   })).isRequired,
+  currentFilter: PropTypes.string.isRequired,
 };
 
 

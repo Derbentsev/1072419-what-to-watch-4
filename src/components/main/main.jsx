@@ -3,7 +3,17 @@ import FiltersByGenre from '@components/filters-by-genre/filters-by-genre';
 
 
 export const Main = (props) => {
-  const {title, genre, dateRelease, films, onTitleClick, onMovieCardClick, onFilterClick} = props;
+  const {
+    title,
+    genre,
+    dateRelease,
+    films,
+    onTitleClick,
+    onMovieCardClick,
+    onFilterClick,
+    currentFilter,
+    filteredFilms,
+  } = props;
 
   return (
       <>
@@ -74,11 +84,12 @@ export const Main = (props) => {
               <FiltersByGenre
                 films = {films}
                 onFilterClick = {onFilterClick}
+                currentFilter = {currentFilter}
               />
             </ul>
 
             <MoviesList
-              films = {films}
+              films = {filteredFilms ? filteredFilms : films}
               onMovieCardClick = {onMovieCardClick}
             />
 
@@ -114,9 +125,15 @@ Main.propTypes = {
     poster: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
   })).isRequired,
+  filteredFilms: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+  })),
   onTitleClick: PropTypes.func.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
   onFilterClick: PropTypes.func.isRequired,
+  currentFilter: PropTypes.string.isRequired,
 };
 
 

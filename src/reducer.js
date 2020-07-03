@@ -3,13 +3,13 @@ import {FilterNames} from '@consts/';
 
 
 const initialState = {
-  genreFilter: FilterNames.ALL,
+  currentFilter: FilterNames.ALL,
   filteredFilms: null,
 };
 
 const ActionType = {
   CHANGE_FILTER: `CHANGE_FILTER`,
-  GET_FILMS_BY_GENRE: `GET_FILMS_BY_GENRE`,
+  GET_FILTERED_FILMS: `GET_FILTERED_FILMS`,
 };
 
 const ActionCreator = {
@@ -17,9 +17,9 @@ const ActionCreator = {
     type: ActionType.CHANGE_FILTER,
     payload: currentFilter,
   }),
-  getFilmsByGenre: (films) => ({
-    type: ActionType.GET_FILMS_BY_GENRE,
-    payload: films,
+  setFilteredFilms: (filteredFilms) => ({
+    type: ActionType.GET_FILTERED_FILMS,
+    payload: filteredFilms,
   }),
 };
 
@@ -30,9 +30,9 @@ const reducer = (state = initialState, action) => {
         currentFilter: action.payload,
       });
 
-    case ActionType.GET_FILMS_BY_GENRE:
+    case ActionType.GET_FILTERED_FILMS:
       return extend(state, {
-        films: action.payload,
+        filteredFilms: action.payload,
       });
   }
 
