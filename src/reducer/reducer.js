@@ -9,7 +9,7 @@ const initialState = {
 
 const ActionType = {
   CHANGE_FILTER: `CHANGE_FILTER`,
-  GET_FILTERED_FILMS: `GET_FILTERED_FILMS`,
+  SET_FILTERED_FILMS: `GET_FILTERED_FILMS`,
 };
 
 const ActionCreator = {
@@ -18,7 +18,7 @@ const ActionCreator = {
     payload: currentFilter,
   }),
   setFilteredFilms: (filteredFilms) => ({
-    type: ActionType.GET_FILTERED_FILMS,
+    type: ActionType.SET_FILTERED_FILMS,
     payload: filteredFilms,
   }),
 };
@@ -30,7 +30,7 @@ const reducer = (state = initialState, action) => {
         currentFilter: action.payload,
       });
 
-    case ActionType.GET_FILTERED_FILMS:
+    case ActionType.SET_FILTERED_FILMS:
       return extend(state, {
         filteredFilms: action.payload,
       });

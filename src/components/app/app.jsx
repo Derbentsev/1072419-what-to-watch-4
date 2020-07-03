@@ -1,7 +1,7 @@
 import Main from '@components/main/main';
 import MoviePage from '@components/movie-page/movie-page';
 import {connect} from 'react-redux';
-import {ActionCreator} from '@src/reducer';
+import {ActionCreator} from '@src/reducer/reducer';
 
 
 const onTitleClick = () => {};

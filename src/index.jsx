@@ -4,7 +4,7 @@ import films from '@mocks/films';
 import {TitleMovieSettings} from '@consts/index';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import {reducer} from './reducer';
+import {reducer} from '@src/reducer/reducer';
 
 
 const store = createStore(
