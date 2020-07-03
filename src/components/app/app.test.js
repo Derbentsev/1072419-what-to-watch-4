@@ -1,7 +1,11 @@
 import App from './app.jsx';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
 
 
-const mocks = [
+const mockStore = configureStore([]);
+
+const films = [
   {
     title: `title1`,
     poster: `fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -75,14 +79,22 @@ const mocks = [
 
 
 it(`Render App`, () => {
+  const store = mockStore({
+    currentFilter: `All`,
+    filteredFilms: null,
+  });
+
   const tree = renderer
-    .create(<App
-      title = 'On The Moon'
-      genre = 'comedy'
-      dateRelease = '01.01.2020'
-      films = {mocks}
-    />)
-      .toJSON();
+    .create(
+        <Provider store = {store}>
+          <App
+            title = 'On The Moon'
+            genre = 'comedy'
+            dateRelease = '01.01.2020'
+            films = {films}
+          />
+        </Provider>
+    ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });
