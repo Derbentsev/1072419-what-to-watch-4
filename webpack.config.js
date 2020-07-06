@@ -36,6 +36,8 @@ module.exports = (env) => {
         '@consts': path.resolve(__dirname, `./src/consts/`),
         '@mocks': path.resolve(__dirname, `./src/mocks/`),
         '@hocs': path.resolve(__dirname, `./src/hocs/`),
+        '@utils': path.resolve(__dirname, `./src/utils/`),
+        '@src': path.resolve(__dirname, `./src/`),
       }
     },
     plugins: [

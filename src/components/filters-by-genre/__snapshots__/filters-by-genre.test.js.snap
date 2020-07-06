@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Filters By Genre 1`] = `
+Array [
+  <li
+    className="catalog__genres-item false"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      All genres
+    </a>
+  </li>,
+  <li
+    className="catalog__genres-item false"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      genre1
+    </a>
+  </li>,
+]
+`;

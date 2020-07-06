@@ -1,6 +1,7 @@
 import Main from './main';
 
-const mocks = [
+
+const films = [
   {
     title: `title1`,
     poster: `image1`,
@@ -18,6 +19,19 @@ const mocks = [
   },
 ];
 
+const filteredFilms = [
+  {
+    title: `title1`,
+    poster: `image1`,
+    src: `src1`,
+  },
+  {
+    title: `title2`,
+    poster: `image2`,
+    src: `src2`,
+  },
+];
+
 
 it(`Should Main screen render correctly`, () => {
   const tree = renderer
@@ -25,9 +39,12 @@ it(`Should Main screen render correctly`, () => {
       title = 'On The Moon'
       genre = 'comedy'
       dateRelease = '01.01.2020'
-      films = {mocks}
+      films = {films}
       onTitleClick = {() => {}}
       onMovieCardClick = {() => {}}
+      onFilterClick = {() => {}}
+      currentFilter = 'All'
+      filteredFilms = {filteredFilms}
     />)
     .toJSON();
 

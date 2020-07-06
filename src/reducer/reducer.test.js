@@ -1,9 +1,5 @@
-import App from './app.jsx';
-import {Provider} from 'react-redux';
-import configureStore from 'redux-mock-store';
+import {reducer, ActionType, ActionCreator} from './reducer';
 
-
-const mockStore = configureStore([]);
 
 const films = [
   {
@@ -77,24 +73,55 @@ const films = [
   },
 ];
 
-
-it(`Render App`, () => {
-  const store = mockStore({
-    currentFilter: `All`,
+it(`Reducer without additional parameters should return initial state`, () => {
+  expect(reducer(void 0, {})).toEqual({
+    currentFilter: `All genres`,
     filteredFilms: null,
   });
+});
 
-  const tree = renderer
-    .create(
-        <Provider store = {store}>
-          <App
-            title = 'On The Moon'
-            genre = 'comedy'
-            dateRelease = '01.01.2020'
-            films = {films}
-          />
-        </Provider>
-    ).toJSON();
+it(`Reducer should change current filter`, () => {
+  expect(reducer({
+    currentFilter: `All genres`,
+    filteredFilms: null,
+  }, {
+    type: ActionType.CHANGE_FILTER,
+    payload: `Genre1`,
+  })).toEqual({
+    currentFilter: `Genre1`,
+    filteredFilms: null,
+  });
+});
 
-  expect(tree).toMatchSnapshot();
+it(`Reducer should change filtered films`, () => {
+  expect(reducer({
+    currentFilter: `All genres`,
+    filteredFilms: null,
+  }, {
+    type: ActionType.SET_FILTERED_FILMS,
+    payload: films,
+  })).toEqual({
+    currentFilter: `All genres`,
+    filteredFilms: films,
+  });
+});
+
+describe(`Action creators work correctly`, () => {
+  it(`Action creator for change filter returns correct action`, () => {
+    expect(ActionCreator
+      .changeFilter(`Genre1`))
+      .toEqual({
+        type: ActionType.CHANGE_FILTER,
+        payload: `Genre1`,
+      });
+  });
+
+  it(`Action creator for set filtered films returns correct action`, () => {
+    expect(ActionCreator
+      .setFilteredFilms(films))
+      .toEqual({
+        type: ActionType.SET_FILTERED_FILMS,
+        payload: films,
+      });
+  });
 });

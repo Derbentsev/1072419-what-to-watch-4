@@ -1,9 +1,5 @@
-import App from './app.jsx';
-import {Provider} from 'react-redux';
-import configureStore from 'redux-mock-store';
+import FiltersByGenre from './filters-by-genre';
 
-
-const mockStore = configureStore([]);
 
 const films = [
   {
@@ -77,24 +73,13 @@ const films = [
   },
 ];
 
-
-it(`Render App`, () => {
-  const store = mockStore({
-    currentFilter: `All`,
-    filteredFilms: null,
-  });
-
+it(`Render Filters By Genre`, () => {
   const tree = renderer
-    .create(
-        <Provider store = {store}>
-          <App
-            title = 'On The Moon'
-            genre = 'comedy'
-            dateRelease = '01.01.2020'
-            films = {films}
-          />
-        </Provider>
-    ).toJSON();
+    .create(<FiltersByGenre
+      films = {films}
+      onFilterClick = {() => {}}
+      currentFilter = 'All'
+    />).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

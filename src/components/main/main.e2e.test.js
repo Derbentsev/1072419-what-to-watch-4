@@ -19,6 +19,19 @@ const mocks = [
   },
 ];
 
+const filteredFilms = [
+  {
+    title: `title1`,
+    poster: `image1`,
+    src: `src1`,
+  },
+  {
+    title: `title2`,
+    poster: `image2`,
+    src: `src2`,
+  },
+];
+
 
 it(`Should title be pressed`, () => {
   const onTitleClick = jest.fn();
@@ -31,6 +44,9 @@ it(`Should title be pressed`, () => {
         films = {mocks}
         onTitleClick = {onTitleClick}
         onMovieCardClick = {() => {}}
+        onFilterClick = {() => {}}
+        currentFilter = 'All'
+        filteredFilms = {filteredFilms}
       />
   );
 

@@ -1,9 +1,5 @@
-import App from './app.jsx';
-import {Provider} from 'react-redux';
-import configureStore from 'redux-mock-store';
+import FiltersByGenre from './filters-by-genre';
 
-
-const mockStore = configureStore([]);
 
 const films = [
   {
@@ -77,24 +73,26 @@ const films = [
   },
 ];
 
+it(`Should Filter be pressed`, () => {
+  const onFilterClick = jest.fn();
 
-it(`Render App`, () => {
-  const store = mockStore({
-    currentFilter: `All`,
-    filteredFilms: null,
-  });
+  const mockEvent = {
+    preventDefault: () => {},
+    target: {
+      textContent: `All`,
+    },
+  };
 
-  const tree = renderer
-    .create(
-        <Provider store = {store}>
-          <App
-            title = 'On The Moon'
-            genre = 'comedy'
-            dateRelease = '01.01.2020'
-            films = {films}
-          />
-        </Provider>
-    ).toJSON();
+  const filters = shallow(
+      <FiltersByGenre
+        films = {films}
+        onFilterClick = {onFilterClick}
+        currentFilter = 'All'
+      />);
 
-  expect(tree).toMatchSnapshot();
+  const filterElement = filters.find(`.catalog__genres-item`).at(0);
+
+  filterElement.props().onClick(mockEvent);
+
+  expect(onFilterClick.mock.calls.length).toBe(1);
 });

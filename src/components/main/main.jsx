@@ -1,8 +1,19 @@
 import MoviesList from '@components/movies-list/movies-list';
+import FiltersByGenre from '@components/filters-by-genre/filters-by-genre';
 
 
 export const Main = (props) => {
-  const {title, genre, dateRelease, films, onTitleClick, onMovieCardClick} = props;
+  const {
+    title,
+    genre,
+    dateRelease,
+    films,
+    onTitleClick,
+    onMovieCardClick,
+    onFilterClick,
+    currentFilter,
+    filteredFilms,
+  } = props;
 
   return (
       <>
@@ -70,40 +81,15 @@ export const Main = (props) => {
             <h2 className="catalog__title visually-hidden">Catalog</h2>
 
             <ul className="catalog__genres-list">
-              <li className="catalog__genres-item catalog__genres-item--active">
-                <a href="#" className="catalog__genres-link">All genres</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Comedies</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Crime</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Documentary</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Dramas</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Horror</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Kids & Family</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Romance</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Sci-Fi</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Thrillers</a>
-              </li>
+              <FiltersByGenre
+                films = {films}
+                onFilterClick = {onFilterClick}
+                currentFilter = {currentFilter}
+              />
             </ul>
 
             <MoviesList
-              films = {films}
+              films = {filteredFilms ? filteredFilms : films}
               onMovieCardClick = {onMovieCardClick}
             />
 
@@ -139,8 +125,15 @@ Main.propTypes = {
     poster: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
   })).isRequired,
+  filteredFilms: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+  })),
   onTitleClick: PropTypes.func.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
+  onFilterClick: PropTypes.func.isRequired,
+  currentFilter: PropTypes.string.isRequired,
 };
 
 

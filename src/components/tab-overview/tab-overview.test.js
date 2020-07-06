@@ -1,4 +1,3 @@
-import TabOverwiew from './tab-overview';
 import TabOverview from './tab-overview';
 
 
