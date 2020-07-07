@@ -1,5 +1,5 @@
 const MovieCard = (props) => {
-  const {film, onMovieCardMouseEnter, onMovieCardClick, renderPlayer} = props;
+  const {film, onMovieCardMouseEnter, handleMovieCardClick, renderPlayer} = props;
 
   return (
     <article
@@ -7,7 +7,7 @@ const MovieCard = (props) => {
       className="small-movie-card catalog__movies-card"
       onClick={(evt) => {
         evt.preventDefault();
-        onMovieCardClick(film);
+        handleMovieCardClick(film);
       }}
     >
 
@@ -29,7 +29,7 @@ MovieCard.propTypes = {
     src: PropTypes.string.isRequired,
   }).isRequired,
   onMovieCardMouseEnter: PropTypes.func.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
+  handleMovieCardClick: PropTypes.func.isRequired,
   renderPlayer: PropTypes.func.isRequired,
 };
 

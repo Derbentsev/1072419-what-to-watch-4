@@ -1,4 +1,4 @@
-import MovieCard from '@components/movie-card/movie-card';
+import MovieCard from '@components/movie-card/movie-card.connect';
 import withVideoPlayer from '@hocs/with-video-player/with-video-player';
 
 
@@ -22,7 +22,7 @@ export default class MoviesList extends React.PureComponent {
   }
 
   render() {
-    const {films, onMovieCardClick} = this.props;
+    const {films} = this.props;
 
     return (
       <div className="catalog__movies-list">
@@ -31,7 +31,6 @@ export default class MoviesList extends React.PureComponent {
             key = {i}
             film = {film}
             onMovieCardMouseEnter = {this._onMovieCardMouseEnter}
-            onMovieCardClick = {onMovieCardClick}
           />
         ))}
       </div>
@@ -45,5 +44,4 @@ MoviesList.propTypes = {
     poster: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
   })).isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
 };

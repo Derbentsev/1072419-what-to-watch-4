@@ -40,7 +40,6 @@ it(`Should Main screen render correctly`, () => {
       genre = 'comedy'
       dateRelease = '01.01.2020'
       films = {films}
-      onTitleClick = {() => {}}
       onMovieCardClick = {() => {}}
       onFilterClick = {() => {}}
       currentFilter = 'All'

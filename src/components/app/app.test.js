@@ -1,4 +1,4 @@
-import App from './app.jsx';
+import App from './app.connect';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 

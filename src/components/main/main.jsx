@@ -1,5 +1,5 @@
-import MoviesList from '@components/movies-list/movies-list';
-import FiltersByGenre from '@components/filters-by-genre/filters-by-genre';
+import MoviesList from '@components/movies-list/movies-list.connect';
+import FiltersByGenre from '@components/filters-by-genre/filters-by-genre.connect';
 
 
 export const Main = (props) => {
@@ -7,12 +7,6 @@ export const Main = (props) => {
     title,
     genre,
     dateRelease,
-    films,
-    onTitleClick,
-    onMovieCardClick,
-    onFilterClick,
-    currentFilter,
-    filteredFilms,
   } = props;
 
   return (
@@ -48,7 +42,6 @@ export const Main = (props) => {
 
               <div className="movie-card__desc">
                 <h2
-                  onClick = {onTitleClick}
                   className="movie-card__title">
                   {title}
                 </h2>
@@ -81,17 +74,10 @@ export const Main = (props) => {
             <h2 className="catalog__title visually-hidden">Catalog</h2>
 
             <ul className="catalog__genres-list">
-              <FiltersByGenre
-                films = {films}
-                onFilterClick = {onFilterClick}
-                currentFilter = {currentFilter}
-              />
+              <FiltersByGenre/>
             </ul>
 
-            <MoviesList
-              films = {filteredFilms ? filteredFilms : films}
-              onMovieCardClick = {onMovieCardClick}
-            />
+            <MoviesList/>
 
             <div className="catalog__more">
               <button className="catalog__button" type="button">Show more</button>
@@ -120,20 +106,6 @@ Main.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   dateRelease: PropTypes.string.isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-  })).isRequired,
-  filteredFilms: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-  })),
-  onTitleClick: PropTypes.func.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
-  onFilterClick: PropTypes.func.isRequired,
-  currentFilter: PropTypes.string.isRequired,
 };
 
 
