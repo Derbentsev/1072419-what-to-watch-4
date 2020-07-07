@@ -1,15 +1,28 @@
 import MoviesList from '@components/movies-list/movies-list.connect';
 import FiltersByGenre from '@components/filters-by-genre/filters-by-genre.connect';
+import ShowMoreButton from '@components/show-more-button/show-more-button';
 
 
-export const Main = (props) => {
-  const {
-    title,
-    genre,
-    dateRelease,
-  } = props;
+class Main extends React.PureComponent {
+  constructor(props) {
+    super(props);
 
-  return (
+    this._onShowMoreButtonClick = this._onShowMoreButtonClick.bind(this);
+  }
+
+  _onShowMoreButtonClick() {
+
+  }
+
+  render() {
+    const {
+      title,
+      genre,
+      dateRelease,
+      films,
+    } = this.props;
+
+    return (
       <>
         <section className="movie-card">
           <div className="movie-card__bg">
@@ -77,11 +90,13 @@ export const Main = (props) => {
               <FiltersByGenre/>
             </ul>
 
-            <MoviesList/>
+            <MoviesList
+              films = {films}
+            />
 
-            <div className="catalog__more">
-              <button className="catalog__button" type="button">Show more</button>
-            </div>
+            <ShowMoreButton
+              onShowMoreButtonClick = {this._onShowMoreButtonClick}
+            />
           </section>
 
           <footer className="page-footer">
@@ -99,8 +114,9 @@ export const Main = (props) => {
           </footer>
         </div>
       </>
-  );
-};
+    );
+  }
+}
 
 Main.propTypes = {
   title: PropTypes.string.isRequired,

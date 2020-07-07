@@ -1,4 +1,4 @@
-import Main from '@components/main/main';
+import Main from '@components/main/main.connect';
 import MoviePage from '@components/movie-page/movie-page.connect';
 
 
