@@ -10,5 +10,9 @@ const ShowMoreButton = (props) => {
   );
 };
 
+ShowMoreButton.propTypes = {
+  onShowMoreButtonClick: PropTypes.func.isRequired,
+};
+
 
 export default ShowMoreButton;

@@ -1,6 +1,6 @@
 import MoviesList from '@components/movies-list/movies-list.connect';
 import FiltersByGenre from '@components/filters-by-genre/filters-by-genre.connect';
-import ShowMoreButton from '@components/show-more-button/show-more-button';
+import ShowMoreButton from '@components/show-more-button/show-more-button.connect';
 
 
 class Main extends React.PureComponent {
@@ -20,6 +20,7 @@ class Main extends React.PureComponent {
       genre,
       dateRelease,
       films,
+      filmsAllLength,
     } = this.props;
 
     return (
@@ -94,9 +95,11 @@ class Main extends React.PureComponent {
               films = {films}
             />
 
-            <ShowMoreButton
-              onShowMoreButtonClick = {this._onShowMoreButtonClick}
-            />
+            {filmsAllLength !== films.length &&
+              <ShowMoreButton
+                onShowMoreButtonClick = {this._onShowMoreButtonClick}
+              />
+            }
           </section>
 
           <footer className="page-footer">
@@ -122,6 +125,27 @@ Main.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   dateRelease: PropTypes.string.isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    dateRelease: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    ratingScore: PropTypes.string.isRequired,
+    ratingLevel: PropTypes.string.isRequired,
+    ratingCount: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    runTime: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      comment: PropTypes.string.isRequired,
+      rating: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+    })),
+  })).isRequired,
 };
 
 

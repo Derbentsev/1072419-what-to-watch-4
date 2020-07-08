@@ -1,16 +1,18 @@
 import {extend} from '@utils/';
 import filmsAll from '@mocks/films';
+import {START_FILMS_CARD_COUNT} from '@consts/';
 
 
 const initialState = {
   activeFilm: null,
   films: filmsAll,
-  showedFilmsCount: 0,
+  showedFilmsCount: START_FILMS_CARD_COUNT,
 };
 
 const ActionType = {
   SET_ACTIVE_FILM: `SET_ACTIVE_FILM`,
-  SET_SHOWED_FILMS_COUNT: `SET_SHOWED_FILMS_COUNT`
+  SET_SHOWED_FILMS_COUNT: `SET_SHOWED_FILMS_COUNT`,
+  RESET_SHOWED_FILMS_COUNT: `RESET_SHOWED_FILMS_COUNT`,
 };
 
 const ActionCreator = {
@@ -21,6 +23,10 @@ const ActionCreator = {
   setShowedFilmsCount: (count) => ({
     type: ActionType.SET_SHOWED_FILMS_COUNT,
     payload: count,
+  }),
+  resetShowedFilmsCount: () => ({
+    type: ActionType.RESET_SHOWED_FILMS_COUNT,
+    payload: 0,
   }),
 };
 
@@ -33,6 +39,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_SHOWED_FILMS_COUNT:
       return extend(state, {
         showedFilmsCount: state.showedFilmsCount + action.payload,
+      });
+    case ActionType.RESET_SHOWED_FILMS_COUNT:
+      return extend(state, {
+        showedFilmsCount: START_FILMS_CARD_COUNT,
       });
   }
 

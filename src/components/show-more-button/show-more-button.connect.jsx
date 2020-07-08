@@ -1,6 +1,6 @@
 import ShowMoreButton from './show-more-button';
 import {connect} from 'react-redux';
-import {ActionCreator} from './actions/reducer';
+import {ActionCreator} from '@components/app/reducer/reducer';
 import {SHOW_FILM_CARD_BY_BUTTON} from '@consts/';
 
 
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-connect(mapStateToProps, mapDispatchToProps)(ShowMoreButton);
+export default connect(mapStateToProps, mapDispatchToProps)(ShowMoreButton);
