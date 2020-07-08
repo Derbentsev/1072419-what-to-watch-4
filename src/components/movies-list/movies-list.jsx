@@ -1,8 +1,8 @@
 import MovieCard from '@components/movie-card/movie-card.connect';
-import withVideoPlayer from '@hocs/with-video-player/with-video-player';
+import withActiveVideoPlayer from '@hocs/with-active-video-player/with-active-video-player';
 
 
-const MovieCardWrapped = withVideoPlayer(MovieCard);
+const MovieCardWrapped = withActiveVideoPlayer(MovieCard);
 
 export default class MoviesList extends React.PureComponent {
   constructor(props) {
