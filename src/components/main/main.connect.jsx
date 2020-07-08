@@ -4,8 +4,8 @@ import {getFilmsByGenre} from './selectors/index';
 
 
 const mapStateToProps = (state) => ({
-  films: getFilmsByGenre(state.appReducer.films, state.filterReducer.currentFilter, state.appReducer.showedFilmsCount),
-  filmsAllLength: state.appReducer.films.length,
+  films: getFilmsByGenre(state.films, state.currentFilter),
+  showedFilmsCount: state.showedFilmsCount,
 });
 
 

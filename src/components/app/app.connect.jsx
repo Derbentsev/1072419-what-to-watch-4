@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 
 const mapStateToProps = (state) => ({
-  activeFilm: state.appReducer.activeFilm,
+  activeFilm: state.activeFilm,
 });
 
 

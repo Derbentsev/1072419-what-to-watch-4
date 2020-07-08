@@ -31,7 +31,7 @@ const FilterNames = {
 };
 
 const FILTER_ALL_GENRES_NAME = `All genres`;
-const START_FILMS_CARD_COUNT = 4;
+const START_FILMS_CARD_COUNT = 8;
 const SHOW_FILM_CARD_BY_BUTTON = 8;
 
 

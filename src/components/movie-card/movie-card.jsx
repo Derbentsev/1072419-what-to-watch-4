@@ -1,10 +1,15 @@
 const MovieCard = (props) => {
-  const {film, onMovieCardMouseEnter, handleMovieCardClick, renderPlayer} = props;
+  const {
+    film,
+    handleMovieCardMouseEnter,
+    handleMovieCardClick,
+    renderPlayer
+  } = props;
 
   return (
     <article
-      onMouseEnter={onMovieCardMouseEnter}
       className="small-movie-card catalog__movies-card"
+      onMouseEnter={handleMovieCardMouseEnter}
       onClick={(evt) => {
         evt.preventDefault();
         handleMovieCardClick(film);
@@ -28,7 +33,7 @@ MovieCard.propTypes = {
     poster: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
   }).isRequired,
-  onMovieCardMouseEnter: PropTypes.func.isRequired,
+  handleMovieCardMouseEnter: PropTypes.func.isRequired,
   handleMovieCardClick: PropTypes.func.isRequired,
   renderPlayer: PropTypes.func.isRequired,
 };

@@ -3,11 +3,11 @@ import App from '@components/app/app.connect';
 import {TitleMovieSettings} from '@consts/index';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import rootReducer from '@src/reducer/reducer';
+import reducer from '@src/reducer/reducer';
 
 
 const store = createStore(
-    rootReducer,
+    reducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
 );
 

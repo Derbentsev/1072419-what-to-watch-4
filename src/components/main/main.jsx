@@ -3,25 +3,17 @@ import FiltersByGenre from '@components/filters-by-genre/filters-by-genre.connec
 import ShowMoreButton from '@components/show-more-button/show-more-button.connect';
 
 
-class Main extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this._onShowMoreButtonClick = this._onShowMoreButtonClick.bind(this);
-  }
-
-  _onShowMoreButtonClick() {
-
-  }
-
+export default class Main extends React.PureComponent {
   render() {
     const {
       title,
       genre,
       dateRelease,
       films,
-      filmsAllLength,
+      showedFilmsCount,
     } = this.props;
+
+    const slicedFilms = films.slice(0, showedFilmsCount);
 
     return (
       <>
@@ -92,14 +84,10 @@ class Main extends React.PureComponent {
             </ul>
 
             <MoviesList
-              films = {films}
+              films = {slicedFilms}
             />
 
-            {filmsAllLength !== films.length &&
-              <ShowMoreButton
-                onShowMoreButtonClick = {this._onShowMoreButtonClick}
-              />
-            }
+            {slicedFilms.length !== films.length && <ShowMoreButton/>}
           </section>
 
           <footer className="page-footer">
@@ -125,6 +113,7 @@ Main.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   dateRelease: PropTypes.string.isRequired,
+  showedFilmsCount: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
@@ -147,6 +136,3 @@ Main.propTypes = {
     })),
   })).isRequired,
 };
-
-
-export default Main;

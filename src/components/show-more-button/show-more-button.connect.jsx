@@ -1,11 +1,11 @@
 import ShowMoreButton from './show-more-button';
 import {connect} from 'react-redux';
-import {ActionCreator} from '@components/app/reducer/reducer';
+import {ActionCreator} from '@reducer/reducer';
 import {SHOW_FILM_CARD_BY_BUTTON} from '@consts/';
 
 
 const mapStateToProps = (state) => ({
-  showedFilmsCount: state.appReducer.showedFilmsCount,
+  showedFilmsCount: state.showedFilmsCount,
 });
 
 const mapDispatchToProps = (dispatch) => ({

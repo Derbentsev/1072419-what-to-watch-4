@@ -4,7 +4,6 @@ exports[`Render Movie Card 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
   onClick={[Function]}
-  onMouseEnter={[MockFunction]}
 >
   <h3
     className="small-movie-card__title"
