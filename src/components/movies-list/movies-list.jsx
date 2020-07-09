@@ -5,24 +5,8 @@ import withActiveVideoPlayer from '@hocs/with-active-video-player/with-active-vi
 const MovieCardWrapped = withActiveVideoPlayer(MovieCard);
 
 export default class MoviesList extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeFilmCard: null
-    };
-
-    this._handleMovieCardMouseEnter = this._handleMovieCardMouseEnter.bind(this);
-  }
-
-  _handleMovieCardMouseEnter() {
-    this.setState({
-      activeFilmCard: this
-    });
-  }
-
   render() {
-    const {films} = this.props;
+    const {films, _handleMovieCardMouseEnter} = this.props;
 
     return (
       <div className="catalog__movies-list">
@@ -30,7 +14,7 @@ export default class MoviesList extends React.PureComponent {
           <MovieCardWrapped
             key = {i}
             film = {film}
-            handleMovieCardMouseEnter = {this._handleMovieCardMouseEnter}
+            handleMovieCardMouseEnter = {_handleMovieCardMouseEnter}
           />
         ))}
       </div>
@@ -44,4 +28,5 @@ MoviesList.propTypes = {
     poster: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
   })).isRequired,
+  _handleMovieCardMouseEnter: PropTypes.func.isRequired,
 };

@@ -1,5 +1,6 @@
 import Tabs from '@components/tabs/tabs';
 import MoviesList from '@components/movies-list/movies-list';
+import withMoviesList from '@hocs/with-movies-list/with-movies-list';
 
 
 const SAME_FILMS_COUNT = 4;
@@ -15,6 +16,8 @@ const sameGenreFilms = (currentFilm, films) => {
 
   return filteredFilms;
 };
+
+const MoviesListWrapped = withMoviesList(MoviesList);
 
 
 const MoviePage = (props) => {
@@ -93,7 +96,7 @@ const MoviePage = (props) => {
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
 
-            <MoviesList
+            <MoviesListWrapped
               films = {sameFilms}
             />
           </section>

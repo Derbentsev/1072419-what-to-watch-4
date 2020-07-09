@@ -58,7 +58,7 @@ App.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   dateRelease: PropTypes.string.isRequired,
-  activeFilm: PropTypes.arrayOf(PropTypes.shape({
+  activeFilm: PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
@@ -78,5 +78,5 @@ App.propTypes = {
       author: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
     })),
-  })),
+  }),
 };

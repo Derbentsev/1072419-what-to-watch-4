@@ -1,7 +1,10 @@
-import MoviesList from '@components/movies-list/movies-list.connect';
 import FiltersByGenre from '@components/filters-by-genre/filters-by-genre.connect';
 import ShowMoreButton from '@components/show-more-button/show-more-button.connect';
+import MoviesList from '@components/movies-list/movies-list.connect';
+import withMoviesList from '@hocs/with-movies-list/with-movies-list';
 
+
+const MoviesListWrapped = withMoviesList(MoviesList);
 
 export default class Main extends React.PureComponent {
   render() {
@@ -83,7 +86,7 @@ export default class Main extends React.PureComponent {
               <FiltersByGenre/>
             </ul>
 
-            <MoviesList
+            <MoviesListWrapped
               films = {slicedFilms}
             />
 
