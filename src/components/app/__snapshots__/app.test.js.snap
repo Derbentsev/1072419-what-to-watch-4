@@ -80,7 +80,6 @@ Array [
         >
           <h2
             className="movie-card__title"
-            onClick={[Function]}
           >
             On The Moon
           </h2>
@@ -179,129 +178,7 @@ Array [
       </ul>
       <div
         className="catalog__movies-list"
-      >
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          <div
-            className="small-movie-card__poster"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            <video
-              height="175"
-              muted={true}
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              width="280"
-            >
-              <source
-                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-                type="video/webm"
-              />
-              <source
-                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-                type="video/mp4"
-              />
-            </video>
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              title1
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          <div
-            className="small-movie-card__poster"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            <video
-              height="175"
-              muted={true}
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              width="280"
-            >
-              <source
-                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-                type="video/webm"
-              />
-              <source
-                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-                type="video/mp4"
-              />
-            </video>
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              title1
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          <div
-            className="small-movie-card__poster"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            <video
-              height="175"
-              muted={true}
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              width="280"
-            >
-              <source
-                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-                type="video/webm"
-              />
-              <source
-                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-                type="video/mp4"
-              />
-            </video>
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              title1
-            </a>
-          </h3>
-        </article>
-      </div>
-      <div
-        className="catalog__more"
-      >
-        <button
-          className="catalog__button"
-          type="button"
-        >
-          Show more
-        </button>
-      </div>
+      />
     </section>
     <footer
       className="page-footer"

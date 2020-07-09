@@ -16,10 +16,11 @@ const sameGenreFilms = (currentFilm, films) => {
   return filteredFilms;
 };
 
-const MoviePage = (props) => {
-  const {film, films, onMovieCardClick} = props;
 
-  const sameFilms = sameGenreFilms(film, films);
+const MoviePage = (props) => {
+  const {films, activeFilm} = props;
+
+  const sameFilms = sameGenreFilms(activeFilm, films);
 
   return (
     <>
@@ -49,10 +50,10 @@ const MoviePage = (props) => {
 
             <div className="movie-card__wrap">
               <div className="movie-card__desc">
-                <h2 className="movie-card__title">{film.title}</h2>
+                <h2 className="movie-card__title">{activeFilm.title}</h2>
                 <p className="movie-card__meta">
-                  <span className="movie-card__genre">{film.genre}</span>
-                  <span className="movie-card__year">{film.dateRelease}</span>
+                  <span className="movie-card__genre">{activeFilm.genre}</span>
+                  <span className="movie-card__year">{activeFilm.dateRelease}</span>
                 </p>
 
                 <div className="movie-card__buttons">
@@ -77,11 +78,11 @@ const MoviePage = (props) => {
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
               <div className="movie-card__poster movie-card__poster--big">
-                <img src={`img/${film.cover}`} alt="The Grand Budapest Hotel poster" width="218" height="327" />
+                <img src={`img/${activeFilm.cover}`} alt="The Grand Budapest Hotel poster" width="218" height="327" />
               </div>
 
               <Tabs
-                film = {film}
+                film = {activeFilm}
               />
 
             </div>
@@ -94,7 +95,6 @@ const MoviePage = (props) => {
 
             <MoviesList
               films = {sameFilms}
-              onMovieCardClick = {onMovieCardClick}
             />
           </section>
 
@@ -138,7 +138,7 @@ MoviePage.propTypes = {
       date: PropTypes.string.isRequired,
     })),
   })).isRequired,
-  film: PropTypes.shape({
+  activeFilm: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
@@ -158,8 +158,7 @@ MoviePage.propTypes = {
       author: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
     })),
-  }).isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
+  })).isRequired,
 };
 
 

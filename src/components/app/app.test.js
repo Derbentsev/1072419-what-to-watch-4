@@ -1,9 +1,7 @@
-import App from './app.jsx';
+import App from './app';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-
-const mockStore = configureStore([]);
 
 const films = [
   {
@@ -77,11 +75,14 @@ const films = [
   },
 ];
 
+const mockStore = configureStore([]);
 
 it(`Render App`, () => {
   const store = mockStore({
-    currentFilter: `All`,
-    filteredFilms: null,
+    activeFilm: null,
+    films,
+    showedFilmsCount: 8,
+    currentFilter: `filter1`,
   });
 
   const tree = renderer
@@ -91,7 +92,6 @@ it(`Render App`, () => {
             title = 'On The Moon'
             genre = 'comedy'
             dateRelease = '01.01.2020'
-            films = {films}
           />
         </Provider>
     ).toJSON();

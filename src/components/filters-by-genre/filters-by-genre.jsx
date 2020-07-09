@@ -1,8 +1,5 @@
 import {FILTER_ALL_GENRES_NAME} from '@consts/';
-import {
-  getUniqueGenres,
-  getFilmsByGenre,
-} from '@utils/';
+import {getUniqueGenres} from '@utils/';
 
 
 const FiltersByGenre = (props) => {
@@ -24,8 +21,7 @@ const FiltersByGenre = (props) => {
             key={index}
             onClick={(evt) => {
               evt.preventDefault();
-              const filmsByGenre = getFilmsByGenre(films, evt.target.textContent);
-              onFilterClick(filmsByGenre, evt.target.textContent);
+              onFilterClick(evt.target.textContent);
             }}
           >
             <a href="#" className="catalog__genres-link">
@@ -40,12 +36,12 @@ const FiltersByGenre = (props) => {
 
 FiltersByGenre.propTypes = {
   onFilterClick: PropTypes.func.isRequired,
+  currentFilter: PropTypes.string.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
   })).isRequired,
-  currentFilter: PropTypes.string.isRequired,
 };
 
 

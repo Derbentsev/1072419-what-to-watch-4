@@ -1,21 +1,21 @@
-import MoviesList from '@components/movies-list/movies-list';
-import FiltersByGenre from '@components/filters-by-genre/filters-by-genre';
+import MoviesList from '@components/movies-list/movies-list.connect';
+import FiltersByGenre from '@components/filters-by-genre/filters-by-genre.connect';
+import ShowMoreButton from '@components/show-more-button/show-more-button.connect';
 
 
-export const Main = (props) => {
-  const {
-    title,
-    genre,
-    dateRelease,
-    films,
-    onTitleClick,
-    onMovieCardClick,
-    onFilterClick,
-    currentFilter,
-    filteredFilms,
-  } = props;
+export default class Main extends React.PureComponent {
+  render() {
+    const {
+      title,
+      genre,
+      dateRelease,
+      films,
+      showedFilmsCount,
+    } = this.props;
 
-  return (
+    const slicedFilms = films.slice(0, showedFilmsCount);
+
+    return (
       <>
         <section className="movie-card">
           <div className="movie-card__bg">
@@ -48,7 +48,6 @@ export const Main = (props) => {
 
               <div className="movie-card__desc">
                 <h2
-                  onClick = {onTitleClick}
                   className="movie-card__title">
                   {title}
                 </h2>
@@ -81,21 +80,14 @@ export const Main = (props) => {
             <h2 className="catalog__title visually-hidden">Catalog</h2>
 
             <ul className="catalog__genres-list">
-              <FiltersByGenre
-                films = {films}
-                onFilterClick = {onFilterClick}
-                currentFilter = {currentFilter}
-              />
+              <FiltersByGenre/>
             </ul>
 
             <MoviesList
-              films = {filteredFilms ? filteredFilms : films}
-              onMovieCardClick = {onMovieCardClick}
+              films = {slicedFilms}
             />
 
-            <div className="catalog__more">
-              <button className="catalog__button" type="button">Show more</button>
-            </div>
+            {slicedFilms.length !== films.length && <ShowMoreButton/>}
           </section>
 
           <footer className="page-footer">
@@ -113,28 +105,34 @@ export const Main = (props) => {
           </footer>
         </div>
       </>
-  );
-};
+    );
+  }
+}
 
 Main.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   dateRelease: PropTypes.string.isRequired,
+  showedFilmsCount: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    dateRelease: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    ratingScore: PropTypes.string.isRequired,
+    ratingLevel: PropTypes.string.isRequired,
+    ratingCount: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    runTime: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      comment: PropTypes.string.isRequired,
+      rating: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+    })),
   })).isRequired,
-  filteredFilms: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-  })),
-  onTitleClick: PropTypes.func.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
-  onFilterClick: PropTypes.func.isRequired,
-  currentFilter: PropTypes.string.isRequired,
 };
-
-
-export default Main;
