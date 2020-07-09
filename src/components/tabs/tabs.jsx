@@ -4,52 +4,33 @@ import TabReviews from '@components/tab-reviews/tab-reviews';
 import {TabNames} from '@consts/';
 
 
-export default class Tabs extends React.PureComponent {
-  constructor(props) {
-    super(props);
+const Tabs = (props) => {
+  const {film, handleOnTab, activeTab} = props;
 
-    this.state = {activeTab: TabNames.OVERVIEW};
+  return (
+    <>
+      <div className="movie-card__desc">
+        <nav className="movie-nav movie-card__nav">
+          <ul className="movie-nav__list">
+            <li className={`movie-nav__item ${activeTab === TabNames.OVERVIEW ? `movie-nav__item--active` : ``}`}>
+              <a href="#" onClick={handleOnTab} className="movie-nav__link">Overview</a>
+            </li>
+            <li className={`movie-nav__item ${activeTab === TabNames.DETAILS ? `movie-nav__item--active` : ``}`}>
+              <a href="#" onClick={handleOnTab} className="movie-nav__link">Details</a>
+            </li>
+            <li className={`movie-nav__item ${activeTab === TabNames.REVIEWS ? `movie-nav__item--active` : ``}`}>
+              <a href="#" onClick={handleOnTab} className="movie-nav__link">Reviews</a>
+            </li>
+          </ul>
+        </nav>
 
-    this._handleOnTab = this._handleOnTab.bind(this);
-  }
-
-  _handleOnTab(evt) {
-    evt.preventDefault();
-
-    this.setState({
-      activeTab: evt.target.textContent
-    });
-  }
-
-  render() {
-    const {film} = this.props;
-
-    return (
-      <>
-        <div className="movie-card__desc">
-          <nav className="movie-nav movie-card__nav">
-            <ul className="movie-nav__list">
-              <li className={`movie-nav__item ${this.state.activeTab === TabNames.OVERVIEW ? `movie-nav__item--active` : ``}`}>
-                <a href="#" onClick={this._handleOnTab} className="movie-nav__link">Overview</a>
-              </li>
-              <li className={`movie-nav__item ${this.state.activeTab === TabNames.DETAILS ? `movie-nav__item--active` : ``}`}>
-                <a href="#" onClick={this._handleOnTab} className="movie-nav__link">Details</a>
-              </li>
-              <li className={`movie-nav__item ${this.state.activeTab === TabNames.REVIEWS ? `movie-nav__item--active` : ``}`}>
-                <a href="#" onClick={this._handleOnTab} className="movie-nav__link">Reviews</a>
-              </li>
-            </ul>
-          </nav>
-
-          {this.state.activeTab === TabNames.OVERVIEW && <TabOverview film = {film}/>}
-          {this.state.activeTab === TabNames.DETAILS && <TabDetails film = {film}/>}
-          {this.state.activeTab === TabNames.REVIEWS && <TabReviews reviews = {film.reviews}/>}
-
-        </div>
-      </>
-    );
-  }
-}
+        {activeTab === TabNames.OVERVIEW && <TabOverview film = {film}/>}
+        {activeTab === TabNames.DETAILS && <TabDetails film = {film}/>}
+        {activeTab === TabNames.REVIEWS && <TabReviews reviews = {film.reviews}/>}
+      </div>
+    </>
+  );
+};
 
 Tabs.propTypes = {
   film: PropTypes.shape({
@@ -73,4 +54,9 @@ Tabs.propTypes = {
       date: PropTypes.string.isRequired,
     })),
   }).isRequired,
+  handleOnTab: PropTypes.func.isRequired,
+  activeTab: PropTypes.string.isRequired,
 };
+
+
+export default Tabs;

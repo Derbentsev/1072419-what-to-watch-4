@@ -20,7 +20,7 @@ const withMoviesList = (Component) => {
       return (
         <Component
           {...this.props}
-          _handleMovieCardMouseEnter={this._handleMovieCardMouseEnter}
+          handleMovieCardMouseEnter={this._handleMovieCardMouseEnter}
         />
       );
     }
