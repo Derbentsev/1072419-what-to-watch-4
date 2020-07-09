@@ -1,18 +1,20 @@
 import VideoPlayer from './video-player';
 
 
-const mocks = {
-  src: `src1`,
-  poster: `poster1`
-};
-
 it(`Render Video Player`, () => {
   const tree = renderer
-    .create(<VideoPlayer
-      src = {mocks.src}
-      poster = {mocks.poster}
-    />)
-    .toJSON();
+    .create(
+        <VideoPlayer
+          handleMouseEnter = {() => {}}
+          handleMouseLeave = {() => {}}
+        >
+
+          <video />
+        </VideoPlayer>, {
+          createNodeMock: () => {
+            return {};
+          }
+        }).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

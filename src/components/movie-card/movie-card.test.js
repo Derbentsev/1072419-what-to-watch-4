@@ -13,8 +13,8 @@ it(`Render Movie Card`, () => {
   const tree = renderer
     .create(<MovieCard
       film = {mock}
-      onMovieCardMouseEnter = {onMovieCardMouseEnterSpy}
-      onMovieCardClick = {() => {}}
+      handleMovieCardMouseEnter = {onMovieCardMouseEnterSpy}
+      handleMovieCardClick = {() => {}}
       renderPlayer = {() => {}}
     />)
       .toJSON();

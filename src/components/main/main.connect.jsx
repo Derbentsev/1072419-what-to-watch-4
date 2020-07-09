@@ -4,7 +4,7 @@ import {getFilmsByGenre} from './selectors/index';
 
 
 const mapStateToProps = (state) => ({
-  films: getFilmsByGenre(state.films, state.currentFilter),
+  films: getFilmsByGenre(state),
   showedFilmsCount: state.showedFilmsCount,
 });
 

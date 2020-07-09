@@ -1,7 +1,7 @@
 import Tabs from './tabs';
 
 
-const mocks = {
+const mockfilm = {
   title: `title1`,
   poster: `fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   genre: `genre1`,
@@ -46,7 +46,9 @@ const mocks = {
 it(`Render Tabs`, () => {
   const tree = renderer
     .create(<Tabs
-      film = {mocks}
+      film = {mockfilm}
+      handleOnTab = {() => {}}
+      activeTab = 'genre1'
     />)
     .toJSON();
 

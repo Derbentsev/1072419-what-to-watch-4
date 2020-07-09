@@ -32,12 +32,6 @@ export default class App extends React.PureComponent {
     );
   }
 
-  _renderMoviePage() {
-    return (
-      <MoviePage/>
-    );
-  }
-
   render() {
     return (
       <BrowserRouter>

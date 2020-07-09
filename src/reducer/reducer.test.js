@@ -417,7 +417,7 @@ const films = [
 
 
 it(`Reducer without additional parameters should return initial state`, () => {
-  expect(reducer(void 0, {})).toEqual({
+  expect(reducer(undefined, {type: `brr`})).toEqual({
     activeFilm: null,
     films,
     showedFilmsCount: 8,
