@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 
 const mockStore = configureStore();
 
-const mockFilms = [
+const films = [
   {
     title: `title1`,
     poster: `fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -80,8 +80,10 @@ const mockFilms = [
 
 it(`Render Movie Page`, () => {
   const store = mockStore({
-    films: mockFilms,
-    activeFilm: mockFilms[0],
+    activeFilm: films[0],
+    films,
+    showedFilmsCount: 8,
+    currentFilter: `filter1`,
   });
 
   const tree = renderer

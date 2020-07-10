@@ -79,6 +79,7 @@ const mockStore = configureStore([]);
 
 it(`Should Main screen render correctly`, () => {
   const store = mockStore({
+    activeFilm: null,
     films,
     showedFilmsCount: 8,
     currentFilter: `filter1`,

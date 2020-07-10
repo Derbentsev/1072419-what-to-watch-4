@@ -1,27 +1,24 @@
 import VideoPlayer from './video-player';
 
 
-const mocks = {
-  src: `src1`,
-  poster: `poster1`
-};
-const mockTimeout = 5000;
-
 it(`play and pause video`, () => {
+  const mockFunctionMouseEnter = jest.fn();
+  const mockFunctionMouseLeave = jest.fn();
+
   jest.useFakeTimers();
 
   const videoPlayer = shallow(<VideoPlayer
-    src = {mocks.src}
-    poster = {mocks.poster}
-  />);
+    handleMouseEnter = {mockFunctionMouseEnter}
+    handleMouseLeave = {mockFunctionMouseLeave}
+  >
+    <video />
+  </VideoPlayer>);
 
-  const v = videoPlayer.find(`.small-movie-card__poster`);
-  v.props().onMouseEnter();
+  const playerElement = videoPlayer.find(`.small-movie-card__poster`);
 
-  expect(videoPlayer.state(`isPlaying`)).toEqual(false);
-  expect(setTimeout).toHaveBeenCalledTimes(1);
+  playerElement.props().onMouseEnter();
+  expect(mockFunctionMouseEnter).toHaveBeenCalledTimes(1);
 
-  setTimeout(() => {
-    videoPlayer.state(`isPlaying`).toEqual(true);
-  }, mockTimeout);
+  playerElement.props().onMouseLeave();
+  expect(mockFunctionMouseLeave).toHaveBeenCalledTimes(1);
 });

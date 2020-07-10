@@ -1,7 +1,9 @@
 import MoviesList from './movies-list';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
 
 
-const mocks = [
+const films = [
   {
     title: `title1`,
     poster: `image1`,
@@ -19,13 +21,25 @@ const mocks = [
   },
 ];
 
+const mockStore = configureStore([]);
+
 it(`Render Movies List`, () => {
+  const store = mockStore({
+    activeFilm: null,
+    films,
+    showedFilmsCount: 8,
+    currentFilter: `filter1`,
+  });
+
   const tree = renderer
-    .create(<MoviesList
-      films = {mocks}
-      onMovieCardClick = {() => {}}
-    />)
-      .toJSON();
+    .create(
+        <Provider store = {store}>
+          <MoviesList
+            films = {films}
+            handleMovieCardMouseEnter = {() => {}}
+          />
+        </Provider>
+    ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

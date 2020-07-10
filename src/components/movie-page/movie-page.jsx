@@ -1,5 +1,7 @@
 import Tabs from '@components/tabs/tabs';
+import withActiveTab from '@hocs/with-active-tab/with-active-tab';
 import MoviesList from '@components/movies-list/movies-list';
+import withMoviesList from '@hocs/with-movies-list/with-movies-list';
 
 
 const SAME_FILMS_COUNT = 4;
@@ -16,10 +18,12 @@ const sameGenreFilms = (currentFilm, films) => {
   return filteredFilms;
 };
 
+const MoviesListWrapped = withMoviesList(MoviesList);
+const TabsWrapped = withActiveTab(Tabs);
+
 
 const MoviePage = (props) => {
   const {films, activeFilm} = props;
-
   const sameFilms = sameGenreFilms(activeFilm, films);
 
   return (
@@ -81,7 +85,7 @@ const MoviePage = (props) => {
                 <img src={`img/${activeFilm.cover}`} alt="The Grand Budapest Hotel poster" width="218" height="327" />
               </div>
 
-              <Tabs
+              <TabsWrapped
                 film = {activeFilm}
               />
 
@@ -93,7 +97,7 @@ const MoviePage = (props) => {
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
 
-            <MoviesList
+            <MoviesListWrapped
               films = {sameFilms}
             />
           </section>
@@ -138,7 +142,7 @@ MoviePage.propTypes = {
       date: PropTypes.string.isRequired,
     })),
   })).isRequired,
-  activeFilm: PropTypes.arrayOf(PropTypes.shape({
+  activeFilm: PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
@@ -158,7 +162,7 @@ MoviePage.propTypes = {
       author: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
     })),
-  })).isRequired,
+  }).isRequired,
 };
 
 
