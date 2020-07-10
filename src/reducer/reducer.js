@@ -1,5 +1,5 @@
 import {extend} from '@utils/';
-import filmsAll from '@mocks/films';
+import {films as filmsAll} from '@mocks/films';
 import {
   FilterNames,
   START_FILMS_CARD_COUNT,

@@ -67,7 +67,13 @@ const withVideoPlayer = (Component) => {
     }
   }
 
-  WithVideoPlayer.propTypes = {};
+  WithVideoPlayer.propTypes = {
+    film: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      poster: PropTypes.string.isRequired,
+      src: PropTypes.string.isRequired,
+    }).isRequired,
+  };
 
   return WithVideoPlayer;
 };

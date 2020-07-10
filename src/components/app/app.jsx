@@ -1,5 +1,6 @@
 import Main from '@components/main/main.connect';
 import MoviePage from '@components/movie-page/movie-page.connect';
+import FullVideoPlayer from '@components/full-video-player/full-video-player';
 
 
 export default class App extends React.PureComponent {
@@ -15,11 +16,16 @@ export default class App extends React.PureComponent {
       genre,
       dateRelease,
       activeFilm,
+      fullVideoPlayer,
     } = this.props;
 
     if (activeFilm) {
       return (
         <MoviePage/>
+      );
+    } else if (fullVideoPlayer) {
+      return (
+        <FullVideoPlayer/>
       );
     }
 
