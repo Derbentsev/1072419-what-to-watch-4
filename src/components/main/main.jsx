@@ -1,17 +1,19 @@
 import FiltersByGenre from '@components/filters-by-genre/filters-by-genre.connect';
-import ShowMoreButton from '@components/show-more-button/show-more-button.connect';
 import MoviesList from '@components/movies-list/movies-list.connect';
 import withMoviesList from '@hocs/with-movies-list/with-movies-list';
+import {SHOW_FILM_CARD_BY_BUTTON} from '@consts/';
 
 
 const MoviesListWrapped = withMoviesList(MoviesList);
+
 
 const Main = (props) => {
   const {
     filmPromo,
     films,
-    showedFilmsCount,
     handleOnPlayClick,
+    setShowedFilmsCount,
+    showedFilmsCount,
   } = props;
 
   const slicedFilms = films.slice(0, showedFilmsCount);
@@ -88,14 +90,27 @@ const Main = (props) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <ul className="catalog__genres-list">
-            <FiltersByGenre/>
+            <FiltersByGenre
+              setShowedFilmsCount = {setShowedFilmsCount}
+            />
           </ul>
 
           <MoviesListWrapped
             films = {slicedFilms}
           />
 
-          {slicedFilms.length !== films.length && <ShowMoreButton/>}
+          {slicedFilms.length !== films.length &&
+            <div className="catalog__more">
+              <button onClick={() => {
+                setShowedFilmsCount(SHOW_FILM_CARD_BY_BUTTON);
+              }}
+              className="catalog__button"
+              type="button"
+              >
+                Show more
+              </button>
+            </div>
+          }
         </section>
 
         <footer className="page-footer">
@@ -117,6 +132,8 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
+  setShowedFilmsCount: PropTypes.func.isRequired,
+  handleOnPlayClick: PropTypes.func.isRequired,
   showedFilmsCount: PropTypes.number.isRequired,
   filmPromo: PropTypes.shape({
     title: PropTypes.string.isRequired,

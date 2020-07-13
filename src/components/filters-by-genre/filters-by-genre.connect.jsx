@@ -11,7 +11,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onFilterClick(filterName) {
     dispatch(ActionCreator.changeFilter(filterName));
-    dispatch(ActionCreator.resetShowedFilmsCount());
   },
 });
 

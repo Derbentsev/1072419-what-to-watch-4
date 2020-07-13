@@ -420,7 +420,6 @@ it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(undefined, {type: `brr`})).toEqual({
     activeFilm: null,
     films,
-    showedFilmsCount: 8,
     currentFilter: `All genres`,
     activeFullVideoPlayer: null,
   });
@@ -436,17 +435,6 @@ it(`Reducer should change current filter`, () => {
   })).toEqual({
     currentFilter: `Genre1`,
     filteredFilms: null,
-  });
-});
-
-it(`Reducer should change showed films count`, () => {
-  expect(reducer({
-    showedFilmsCount: 8,
-  }, {
-    type: ActionType.SET_SHOWED_FILMS_COUNT,
-    payload: 3,
-  })).toEqual({
-    showedFilmsCount: 11,
   });
 });
 
