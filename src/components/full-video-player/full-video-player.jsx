@@ -5,9 +5,12 @@ class FullVideoPlayer extends React.PureComponent {
     this.state = {
       isPlaying: false,
       isFullScreen: false,
+      duration: 0,
     };
 
     this._videoRef = React.createRef();
+
+    this._progress = 0;
 
     this._handlePlayClick = this._handlePlayClick.bind(this);
     this._handleFullScreenClick = this._handleFullScreenClick.bind(this);
@@ -15,14 +18,24 @@ class FullVideoPlayer extends React.PureComponent {
 
   _handlePlayClick(evt) {
     evt.preventDefault();
-
     this.setState({isPlaying: !this.state.isPlaying});
   }
 
   _handleFullScreenClick(evt) {
     evt.preventDefault();
-
     this.setState({isFullScreen: !this.state.isFullScreen});
+  }
+
+  componentDidMount() {
+    const video = this._videoRef.current;
+
+    video.ontimeupdate = () => {
+      this._progress = (video.currentTime / video.duration) * 100;
+
+      this.setState({
+        duration: Math.floor(video.duration - video.currentTime),
+      });
+    };
   }
 
   componentDidUpdate() {
@@ -36,19 +49,20 @@ class FullVideoPlayer extends React.PureComponent {
   }
 
   render() {
-    const {activeFullVideoPlayer} = this.props;
+    const {
+      activeFullVideoPlayer,
+      handleOnExitClick,
+    } = this.props;
 
     return (
       <>
         <div className="player">
-          <video src={activeFullVideoPlayer.src} className="player__video" poster="img/player-poster.jpg" ref={this._videoRef} />
+          <video src={activeFullVideoPlayer.src} muted={true} className="player__video" poster="img/player-poster.jpg" ref={this._videoRef} />
 
           <button
             type="button"
             className="player__exit"
-            onClick={() => {
-              activeFullVideoPlayer = null;
-            }}
+            onClick={handleOnExitClick}
           >
             Exit
           </button>
@@ -56,10 +70,12 @@ class FullVideoPlayer extends React.PureComponent {
           <div className={`player__controls ${this.state.isFullScreen ? `visually-hidden` : ``}`}>
             <div className="player__controls-row">
               <div className="player__time">
-                <progress className="player__progress" value="0" max="100"></progress>
-                <div className="player__toggler">Toggler</div>
+                <progress className="player__progress" value={this._progress} max="100"></progress>
+                <div className="player__toggler" style={{left: this._progress + `%`}}>Toggler</div>
               </div>
-              <div className="player__time-value">{activeFullVideoPlayer.runTime}</div>
+              <div className="player__time-value">
+                {this.state.duration}
+              </div>
             </div>
 
             <div className="player__controls-row">
