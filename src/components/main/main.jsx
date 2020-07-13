@@ -8,11 +8,10 @@ const MoviesListWrapped = withMoviesList(MoviesList);
 
 const Main = (props) => {
   const {
-    title,
-    genre,
-    dateRelease,
+    filmPromo,
     films,
     showedFilmsCount,
+    handleOnPlayClick,
   } = props;
 
   const slicedFilms = films.slice(0, showedFilmsCount);
@@ -51,15 +50,22 @@ const Main = (props) => {
             <div className="movie-card__desc">
               <h2
                 className="movie-card__title">
-                {title}
+                {filmPromo.title}
               </h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{genre}</span>
-                <span className="movie-card__year">{dateRelease}</span>
+                <span className="movie-card__genre">{filmPromo.genre}</span>
+                <span className="movie-card__year">{filmPromo.dateRelease}</span>
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button
+                  className="btn btn--play movie-card__button"
+                  type="button"
+                  onClick={(evt) => {
+                    evt.preventDefault();
+                    handleOnPlayClick(filmPromo);
+                  }}
+                >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use href="#play-s"></use>
                   </svg>
@@ -111,10 +117,28 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  dateRelease: PropTypes.string.isRequired,
   showedFilmsCount: PropTypes.number.isRequired,
+  filmPromo: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    dateRelease: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    ratingScore: PropTypes.string.isRequired,
+    ratingLevel: PropTypes.string.isRequired,
+    ratingCount: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    runTime: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      comment: PropTypes.string.isRequired,
+      rating: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+    })),
+  }).isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,

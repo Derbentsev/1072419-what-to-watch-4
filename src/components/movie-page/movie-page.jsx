@@ -128,6 +128,7 @@ const MoviePage = (props) => {
 };
 
 MoviePage.propTypes = {
+  handleOnPlayClick: PropTypes.func.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,

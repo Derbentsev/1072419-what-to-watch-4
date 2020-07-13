@@ -422,6 +422,7 @@ it(`Reducer without additional parameters should return initial state`, () => {
     films,
     showedFilmsCount: 8,
     currentFilter: `All genres`,
+    activeFullVideoPlayer: null,
   });
 });
 

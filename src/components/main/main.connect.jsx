@@ -1,6 +1,7 @@
 import Main from './main';
 import {connect} from 'react-redux';
 import {getFilmsByGenre} from './selectors/index';
+import {ActionCreator} from '@reducer/reducer';
 
 
 const mapStateToProps = (state) => ({
@@ -8,5 +9,11 @@ const mapStateToProps = (state) => ({
   showedFilmsCount: state.showedFilmsCount,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  handleOnPlayClick(film) {
+    dispatch(ActionCreator.setActiveFullVideoPlayer(film));
+  },
+});
 
-export default connect(mapStateToProps)(Main);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

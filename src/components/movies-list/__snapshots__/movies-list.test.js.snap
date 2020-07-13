@@ -18,17 +18,9 @@ exports[`Render Movies List 1`] = `
         height="175"
         muted={true}
         poster="img/image1"
+        src="src1"
         width="280"
-      >
-        <source
-          src="src1"
-          type="video/webm"
-        />
-        <source
-          src="src1"
-          type="video/mp4"
-        />
-      </video>
+      />
     </div>
     <h3
       className="small-movie-card__title"
@@ -55,17 +47,9 @@ exports[`Render Movies List 1`] = `
         height="175"
         muted={true}
         poster="img/image2"
+        src="src2"
         width="280"
-      >
-        <source
-          src="src2"
-          type="video/webm"
-        />
-        <source
-          src="src2"
-          type="video/mp4"
-        />
-      </video>
+      />
     </div>
     <h3
       className="small-movie-card__title"
@@ -92,17 +76,9 @@ exports[`Render Movies List 1`] = `
         height="175"
         muted={true}
         poster="img/image3"
+        src="src3"
         width="280"
-      >
-        <source
-          src="src3"
-          type="video/webm"
-        />
-        <source
-          src="src3"
-          type="video/mp4"
-        />
-      </video>
+      />
     </div>
     <h3
       className="small-movie-card__title"
