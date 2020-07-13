@@ -1,11 +1,9 @@
-import App from './app';
+import FullVideoPlayer from './full-video-player';
 import {connect} from 'react-redux';
 
 
 const mapStateToProps = (state) => ({
-  activeFilm: state.activeFilm,
   activeFullVideoPlayer: state.activeFullVideoPlayer,
 });
 
-
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(FullVideoPlayer);

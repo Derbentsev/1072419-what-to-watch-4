@@ -1,6 +1,6 @@
 import Main from '@components/main/main.connect';
 import MoviePage from '@components/movie-page/movie-page.connect';
-import FullVideoPlayer from '@components/full-video-player/full-video-player';
+import FullVideoPlayer from '@components/full-video-player/full-video-player.connect';
 
 
 export default class App extends React.PureComponent {
@@ -16,16 +16,17 @@ export default class App extends React.PureComponent {
       genre,
       dateRelease,
       activeFilm,
-      fullVideoPlayer,
+      activeFullVideoPlayer,
+      filmPromo,
     } = this.props;
 
-    if (activeFilm) {
-      return (
-        <MoviePage/>
-      );
-    } else if (fullVideoPlayer) {
+    if (activeFullVideoPlayer) {
       return (
         <FullVideoPlayer/>
+      );
+    } else if (activeFilm) {
+      return (
+        <MoviePage/>
       );
     }
 
@@ -39,6 +40,8 @@ export default class App extends React.PureComponent {
   }
 
   render() {
+    const {filmPromo} = this.props;
+
     return (
       <BrowserRouter>
         <Switch>
@@ -47,6 +50,11 @@ export default class App extends React.PureComponent {
           </Route>
           <Route exact path='/dev-film'>
             <MoviePage/>
+          </Route>
+          <Route exact path='/dev-player'>
+            <FullVideoPlayer
+              activeFullVideoPlayer = {filmPromo}
+            />
           </Route>
         </Switch>
       </BrowserRouter>

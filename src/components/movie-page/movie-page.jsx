@@ -23,7 +23,7 @@ const TabsWrapped = withActiveTab(Tabs);
 
 
 const MoviePage = (props) => {
-  const {films, activeFilm} = props;
+  const {films, activeFilm, handleOnPlayClick} = props;
   const sameFilms = sameGenreFilms(activeFilm, films);
 
   return (
@@ -61,7 +61,14 @@ const MoviePage = (props) => {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button className="btn btn--play movie-card__button" type="button">
+                  <button
+                    className="btn btn--play movie-card__button"
+                    type="button"
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      handleOnPlayClick(activeFilm);
+                    }}
+                  >
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use href="#play-s"></use>
                     </svg>

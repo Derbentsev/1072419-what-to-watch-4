@@ -4,6 +4,7 @@ import {TitleMovieSettings} from '@consts/index';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import reducer from '@src/reducer/reducer';
+import {filmPromo} from '@mocks/films';
 
 
 const store = createStore(
@@ -18,6 +19,7 @@ ReactDOM.render(
         genre = {TitleMovieSettings.GENRE}
         dateRelease = {TitleMovieSettings.DATE_RELEASE}
         poster = {TitleMovieSettings.POSTER}
+        filmPromo = {filmPromo}
       />
     </Provider>,
     document.querySelector(`#root`)
