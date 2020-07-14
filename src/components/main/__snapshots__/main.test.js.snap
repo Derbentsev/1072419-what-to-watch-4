@@ -80,28 +80,23 @@ Array [
         >
           <h2
             className="movie-card__title"
-          >
-            On The Moon
-          </h2>
+          />
           <p
             className="movie-card__meta"
           >
             <span
               className="movie-card__genre"
-            >
-              comedy
-            </span>
+            />
             <span
               className="movie-card__year"
-            >
-              01.01.2020
-            </span>
+            />
           </p>
           <div
             className="movie-card__buttons"
           >
             <button
               className="btn btn--play movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg

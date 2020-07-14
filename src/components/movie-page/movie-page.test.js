@@ -1,4 +1,4 @@
-import MoviePage from './movie-page';
+import MoviePage from './movie-page.connect';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 
@@ -84,6 +84,7 @@ it(`Render Movie Page`, () => {
     films,
     showedFilmsCount: 8,
     currentFilter: `filter1`,
+    handleOnPlayClick: () => {}
   });
 
   const tree = renderer

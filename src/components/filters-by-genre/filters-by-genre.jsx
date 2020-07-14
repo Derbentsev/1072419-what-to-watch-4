@@ -7,6 +7,7 @@ const FiltersByGenre = (props) => {
     films,
     onFilterClick,
     currentFilter,
+    setShowedFilmsCount,
   } = props;
 
   const uniqueGenres = getUniqueGenres(films);
@@ -22,6 +23,7 @@ const FiltersByGenre = (props) => {
             onClick={(evt) => {
               evt.preventDefault();
               onFilterClick(evt.target.textContent);
+              setShowedFilmsCount();
             }}
           >
             <a href="#" className="catalog__genres-link">
@@ -35,6 +37,7 @@ const FiltersByGenre = (props) => {
 };
 
 FiltersByGenre.propTypes = {
+  setShowedFilmsCount: PropTypes.func.isRequired,
   onFilterClick: PropTypes.func.isRequired,
   currentFilter: PropTypes.string.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({

@@ -88,6 +88,7 @@ it(`Should Filter be pressed`, () => {
         films = {films}
         onFilterClick = {onFilterClick}
         currentFilter = 'All'
+        setShowedFilmsCount = {() => {}}
       />);
 
   const filterElement = filters.find(`.catalog__genres-item`).at(0);

@@ -58,16 +58,19 @@ const withVideoPlayer = (Component) => {
           handleMouseEnter = {this._handleMouseEnter}
           handleMouseLeave = {this._handleMouseLeave}
         >
-          <video width="280" height="175" poster={`img/${film.poster}`} muted={true} ref={this._videoRef}>
-            <source src={film.src} type="video/webm"></source>
-            <source src={film.src} type="video/mp4"></source>
-          </video>
+          <video src={film.src} width="280" height="175" poster={`img/${film.poster}`} muted={true} ref={this._videoRef} />
         </Component>
       );
     }
   }
 
-  WithVideoPlayer.propTypes = {};
+  WithVideoPlayer.propTypes = {
+    film: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      poster: PropTypes.string.isRequired,
+      src: PropTypes.string.isRequired,
+    }).isRequired,
+  };
 
   return WithVideoPlayer;
 };

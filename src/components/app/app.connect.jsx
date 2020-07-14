@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 
 const mapStateToProps = (state) => ({
   activeFilm: state.activeFilm,
+  activeFullVideoPlayer: state.activeFullVideoPlayer,
 });
 
 

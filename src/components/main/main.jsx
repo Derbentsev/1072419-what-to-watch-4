@@ -1,17 +1,18 @@
 import FiltersByGenre from '@components/filters-by-genre/filters-by-genre.connect';
-import ShowMoreButton from '@components/show-more-button/show-more-button.connect';
 import MoviesList from '@components/movies-list/movies-list.connect';
 import withMoviesList from '@hocs/with-movies-list/with-movies-list';
+import {SHOW_FILM_CARD_BY_BUTTON} from '@consts/';
 
 
 const MoviesListWrapped = withMoviesList(MoviesList);
 
+
 const Main = (props) => {
   const {
-    title,
-    genre,
-    dateRelease,
+    filmPromo,
     films,
+    handleOnPlayClick,
+    setShowedFilmsCount,
     showedFilmsCount,
   } = props;
 
@@ -51,15 +52,22 @@ const Main = (props) => {
             <div className="movie-card__desc">
               <h2
                 className="movie-card__title">
-                {title}
+                {filmPromo.title}
               </h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{genre}</span>
-                <span className="movie-card__year">{dateRelease}</span>
+                <span className="movie-card__genre">{filmPromo.genre}</span>
+                <span className="movie-card__year">{filmPromo.dateRelease}</span>
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button
+                  className="btn btn--play movie-card__button"
+                  type="button"
+                  onClick={(evt) => {
+                    evt.preventDefault();
+                    handleOnPlayClick(filmPromo);
+                  }}
+                >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use href="#play-s"></use>
                   </svg>
@@ -82,14 +90,27 @@ const Main = (props) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <ul className="catalog__genres-list">
-            <FiltersByGenre/>
+            <FiltersByGenre
+              setShowedFilmsCount = {setShowedFilmsCount}
+            />
           </ul>
 
           <MoviesListWrapped
             films = {slicedFilms}
           />
 
-          {slicedFilms.length !== films.length && <ShowMoreButton/>}
+          {slicedFilms.length !== films.length &&
+            <div className="catalog__more">
+              <button onClick={() => {
+                setShowedFilmsCount(SHOW_FILM_CARD_BY_BUTTON);
+              }}
+              className="catalog__button"
+              type="button"
+              >
+                Show more
+              </button>
+            </div>
+          }
         </section>
 
         <footer className="page-footer">
@@ -111,10 +132,30 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  dateRelease: PropTypes.string.isRequired,
+  setShowedFilmsCount: PropTypes.func.isRequired,
+  handleOnPlayClick: PropTypes.func.isRequired,
   showedFilmsCount: PropTypes.number.isRequired,
+  filmPromo: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    dateRelease: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    ratingScore: PropTypes.string.isRequired,
+    ratingLevel: PropTypes.string.isRequired,
+    ratingCount: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    runTime: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      comment: PropTypes.string.isRequired,
+      rating: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+    })),
+  }).isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
