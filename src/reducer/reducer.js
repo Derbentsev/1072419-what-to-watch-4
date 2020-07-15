@@ -1,13 +1,10 @@
 import {extend} from '@utils/';
-import {films as filmsAll} from '@mocks/films';
-import {
-  FilterNames,
-} from '@consts/';
+import {FilterNames} from '@consts/';
 
 
 const initialState = {
   activeFilm: null,
-  films: filmsAll,
+  films: [],
   currentFilter: FilterNames.ALL,
   activeFullVideoPlayer: null,
 };
@@ -16,6 +13,7 @@ const ActionType = {
   SET_ACTIVE_FILM: `SET_ACTIVE_FILM`,
   CHANGE_FILTER: `CHANGE_FILTER`,
   SET_ACTIVE_FULL_VIDEO_PLAYER: `SET_ACTIVE_FULL_VIDEO_PLAYER`,
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
 };
 
 const ActionCreator = {
@@ -47,11 +45,18 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         activeFullVideoPlayer: action.payload,
       });
+    case ActionType.REQUIRED_AUTHORIZATION:
+      return Object.assign({}, state, {
+        authorizationStatus: action.payload,
+      });
   }
 
   return state;
 };
 
 
-export default reducer;
-export {ActionType, ActionCreator};
+export {
+  reducer,
+  ActionType,
+  ActionCreator
+};
