@@ -1,6 +1,6 @@
 import FiltersByGenre from './filters-by-genre';
 import {connect} from 'react-redux';
-import {ActionCreator} from '@reducer/reducer';
+import {ActionCreator} from '@reducer/filter/filter';
 
 
 const mapStateToProps = (state) => ({

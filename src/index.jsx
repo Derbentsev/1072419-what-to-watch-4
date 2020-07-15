@@ -2,13 +2,13 @@ import ReactDOM from 'react-dom';
 import App from '@components/app/app.connect';
 import {createStore, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
-import {reducer, ActionCreator} from '@reducer/reducer';
+import reducer from '@reducer/reducer';
 import {filmPromo} from '@mocks/films';
 import thunk from 'redux-thunk';
 import {createAPI} from '@api/api';
 import {AuthorizationStatus} from '@consts/';
 import {Operation as DataOperation} from '@reducer/data/data';
-import {Operation as UserOperation} from '@reducer/user/user';
+import {Operation as UserOperation, ActionCreator} from '@reducer/user/user';
 
 
 const onUnauthorized = () => {

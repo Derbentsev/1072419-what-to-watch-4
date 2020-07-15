@@ -1,6 +1,6 @@
 import MoviePage from './movie-page';
 import {connect} from 'react-redux';
-import {ActionCreator} from '@reducer/reducer';
+import {ActionCreator} from '@reducer/player/player';
 
 
 const mapStateToProps = (state) => ({

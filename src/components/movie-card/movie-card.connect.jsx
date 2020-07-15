@@ -1,6 +1,6 @@
 import MovieCard from './movie-card';
 import {connect} from 'react-redux';
-import {ActionCreator} from '@reducer/reducer';
+import {ActionCreator} from '@reducer/film/film';
 
 
 const mapDispatchToProps = (dispatch) => ({

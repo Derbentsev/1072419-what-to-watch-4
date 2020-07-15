@@ -47,13 +47,14 @@ const reducer = (state = initialState, action) => {
         authorizationStatus: action.payload,
       });
   }
+
+  return state;
 };
 
 
 export {
   ActionCreator,
   ActionType,
-  AuthorizationStatus,
   Operation,
   reducer,
 };
