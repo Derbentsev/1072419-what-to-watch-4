@@ -14,7 +14,6 @@ export default class App extends React.PureComponent {
     const {
       activeFilm,
       activeFullVideoPlayer,
-      filmPromo,
     } = this.props;
 
     if (activeFullVideoPlayer) {
@@ -28,15 +27,11 @@ export default class App extends React.PureComponent {
     }
 
     return (
-      <Main
-        filmPromo = {filmPromo}
-      />
+      <Main/>
     );
   }
 
   render() {
-    const {filmPromo} = this.props;
-
     return (
       <BrowserRouter>
         <Switch>
@@ -47,9 +42,7 @@ export default class App extends React.PureComponent {
             <MoviePage/>
           </Route>
           <Route exact path='/dev-player'>
-            <FullVideoPlayer
-              activeFullVideoPlayer = {filmPromo}
-            />
+            <FullVideoPlayer/>
           </Route>
         </Switch>
       </BrowserRouter>
@@ -80,28 +73,6 @@ App.propTypes = {
       date: PropTypes.string.isRequired,
     })),
   }),
-  filmPromo: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    dateRelease: PropTypes.number.isRequired,
-    cover: PropTypes.string.isRequired,
-    videoSrc: PropTypes.string.isRequired,
-    previewVideoSrc: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    ratingScore: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    runTime: PropTypes.number.isRequired,
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      comment: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-      author: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-    })),
-  }).isRequired,
   activeFilm: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

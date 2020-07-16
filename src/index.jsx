@@ -19,12 +19,11 @@ const store = createStore(
 );
 
 store.dispatch(DataOperation.loadFilms());
+store.dispatch(DataOperation.loadFilmPromo());
 
 ReactDOM.render(
     <Provider store = {store}>
-      <App
-        filmPromo = {filmPromo}
-      />
+      <App/>
     </Provider>,
     document.querySelector(`#root`)
 );
