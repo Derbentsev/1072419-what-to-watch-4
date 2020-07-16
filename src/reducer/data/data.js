@@ -1,4 +1,5 @@
 import {extend} from '@utils/';
+import {createFilms} from '@adapters/films'
 
 
 const initialState = {
@@ -22,7 +23,10 @@ const Operation = {
   loadFilms: () => (dispatch, getState, api) => {
     return api.get(`/films`)
       .then((response) => {
-        dispatch(ActionCreator.loadFilms(response.data));
+        dispatch(ActionCreator.loadFilms(createFilms(response.data)));
+      })
+      .catch((err) => {
+        throw err;
       });
   },
 };

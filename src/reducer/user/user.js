@@ -10,7 +10,7 @@ const ActionType = {
 };
 
 const ActionCreator = {
-  requiredAuthorization: (status) => {
+  requireAuthorization: (status) => {
     return {
       type: ActionType.REQUIRED_AUTHORIZATION,
       payload: status,
@@ -22,7 +22,7 @@ const Operation = {
   checkAuth: () => (dispatch, getState, api) => {
     return api.get(`/login`)
       .then(() => {
-        dispatch(ActionCreator.requiredAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
       })
       .catch((err) => {
         throw err;
@@ -35,7 +35,7 @@ const Operation = {
       password: authData.password,
     })
       .then(() => {
-        dispatch(ActionCreator.requiredAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
       });
   },
 };
