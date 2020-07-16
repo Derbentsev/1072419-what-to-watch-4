@@ -58,7 +58,7 @@ const withVideoPlayer = (Component) => {
           handleMouseEnter = {this._handleMouseEnter}
           handleMouseLeave = {this._handleMouseLeave}
         >
-          <video src={film.src} width="280" height="175" poster={film.poster} muted={true} ref={this._videoRef} />
+          <video src={film.previewVideoSrc} width="280" height="175" poster={film.poster} muted={true} ref={this._videoRef} />
         </Component>
       );
     }
