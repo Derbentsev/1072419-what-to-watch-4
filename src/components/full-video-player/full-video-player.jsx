@@ -25,14 +25,13 @@ export default class FullVideoPlayer extends React.PureComponent {
   render() {
     const {
       handleOnExitClick,
+      activeFullVideoPlayer,
     } = this.props;
-
-    const activeFilm = this.props.activeFullVideoPlayer();
 
     return (
       <div className="player">
         <video
-          src={activeFilm.videoSrc}
+          src={activeFullVideoPlayer.videoSrc}
           muted={true}
           className="player__video"
           poster="img/player-poster.jpg"
@@ -74,6 +73,5 @@ FullVideoPlayer.propTypes = {
       date: PropTypes.string.isRequired,
     })),
   }).isRequired,
-  activeFullVideoPlayer: PropTypes.func.isRequired,
   handleOnExitClick: PropTypes.func.isRequired,
 };

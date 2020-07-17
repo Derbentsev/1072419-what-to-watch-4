@@ -46,7 +46,7 @@ const Main = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={filmPromo.cover} alt={filmPromo.title + ` poster`} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
