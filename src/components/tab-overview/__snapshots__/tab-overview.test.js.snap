@@ -16,12 +16,12 @@ Array [
       <span
         className="movie-rating__level"
       >
-        very good
+        Bad
       </span>
       <span
         className="movie-rating__count"
       >
-        240
+        24
       </span>
     </p>
   </div>,

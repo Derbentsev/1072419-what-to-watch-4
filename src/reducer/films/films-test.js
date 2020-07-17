@@ -1,4 +1,4 @@
-import FiltersByGenre from './filters-by-genre';
+import {reducer, ActionType, ActionCreator} from './films';
 
 
 const films = [
@@ -76,27 +76,22 @@ const films = [
   },
 ];
 
-it(`Should Filter be pressed`, () => {
-  const onFilterClick = jest.fn();
 
-  const mockEvent = {
-    preventDefault: () => {},
-    target: {
-      textContent: `All`,
-    },
-  };
+it(`Reducer without additional parameters should return initial state`, () => {
+  expect(reducer(undefined, {type: `brr`})).toEqual({
+    films: [],
+    filmPromo: {},
+    activeFilm: null,
+  });
+});
 
-  const filters = shallow(
-      <FiltersByGenre
-        films = {films}
-        onFilterClick = {onFilterClick}
-        currentFilter = 'All'
-        setShowedFilmsCount = {() => {}}
-      />);
-
-  const filterElement = filters.find(`.catalog__genres-item`).at(0);
-
-  filterElement.props().onClick(mockEvent);
-
-  expect(onFilterClick.mock.calls.length).toBe(1);
+describe(`Action creators work correctly`, () => {
+  it(`Action creator for set active films returns correct action`, () => {
+    expect(ActionCreator
+      .setActiveFilm(films[0]))
+      .toEqual({
+        type: ActionType.SET_ACTIVE_FILM,
+        payload: films[0],
+      });
+  });
 });

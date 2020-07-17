@@ -1,5 +1,5 @@
 export const createFilm = (film) => {
-  return(
+  return (
     {
       id: film.id,
       title: film.name,
@@ -42,7 +42,7 @@ export const createFilm = (film) => {
           date: `December 20, 2016`,
         },
       ],
-  });
+    });
 };
 
 export const createFilms = (data) => {

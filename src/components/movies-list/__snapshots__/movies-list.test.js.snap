@@ -17,8 +17,8 @@ exports[`Render Movies List 1`] = `
       <video
         height="175"
         muted={true}
-        poster="img/image1"
-        src="src1"
+        poster="fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
         width="280"
       />
     </div>
@@ -46,8 +46,8 @@ exports[`Render Movies List 1`] = `
       <video
         height="175"
         muted={true}
-        poster="img/image2"
-        src="src2"
+        poster="fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
         width="280"
       />
     </div>
@@ -58,7 +58,7 @@ exports[`Render Movies List 1`] = `
         className="small-movie-card__link"
         href="movie-page.html"
       >
-        title2
+        title1
       </a>
     </h3>
   </article>
@@ -75,8 +75,8 @@ exports[`Render Movies List 1`] = `
       <video
         height="175"
         muted={true}
-        poster="img/image3"
-        src="src3"
+        poster="fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
         width="280"
       />
     </div>
@@ -87,7 +87,7 @@ exports[`Render Movies List 1`] = `
         className="small-movie-card__link"
         href="movie-page.html"
       >
-        title3
+        title1
       </a>
     </h3>
   </article>

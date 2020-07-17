@@ -1,12 +1,17 @@
+import {getTextRating} from '@utils/';
+
+
 const TabOverview = (props) => {
   const {film} = props;
+
+  const textRating = getTextRating(film.ratingScore);
 
   return (
     <>
       <div className="movie-rating">
         <div className="movie-rating__score">{film.ratingScore}</div>
         <p className="movie-rating__meta">
-          <span className="movie-rating__level">{film.ratingLevel}</span>
+          <span className="movie-rating__level">{textRating}</span>
           <span className="movie-rating__count">{film.ratingCount}</span>
         </p>
       </div>
