@@ -1,5 +1,5 @@
 import {FILTER_ALL_GENRES_NAME} from '@consts/';
-import {getUniqueGenres} from '@utils/';
+import {getUniqueGenres} from '@reducer/films/selectors';
 
 
 const FiltersByGenre = (props) => {
