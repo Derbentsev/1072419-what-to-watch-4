@@ -1,6 +1,6 @@
 import Main from './main';
 import {connect} from 'react-redux';
-import {getFilmsByGenre} from './selectors/index';
+import {getFilmsByGenre} from '@reducer/films/selectors';
 import {ActionCreator} from '@reducer/player/player';
 import withMain from '@hocs/with-main/with-main';
 import NameSpace from '@reducer/name-space';
@@ -8,7 +8,7 @@ import NameSpace from '@reducer/name-space';
 
 const mapStateToProps = (state) => ({
   films: getFilmsByGenre(state),
-  filmPromo: state[NameSpace.DATA].filmPromo,
+  filmPromo: state[NameSpace.FILMS].filmPromo,
 });
 
 const mapDispatchToProps = (dispatch) => ({

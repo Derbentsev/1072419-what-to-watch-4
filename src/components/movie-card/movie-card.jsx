@@ -16,7 +16,7 @@ const MovieCard = (props) => {
       }}
     >
 
-      {renderPlayer(film.src, film.poster)}
+      {renderPlayer(film.previewVideoSrc, film.poster)}
 
       <h3 className="small-movie-card__title">
         <a className="small-movie-card__link" href="movie-page.html">

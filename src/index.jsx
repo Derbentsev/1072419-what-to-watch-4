@@ -3,10 +3,9 @@ import App from '@components/app/app.connect';
 import {createStore, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
 import reducer from '@reducer/reducer';
-import {filmPromo} from '@adapters/films';
 import thunk from 'redux-thunk';
 import {createAPI} from '@api/api';
-import {Operation as DataOperation} from '@reducer/data/data';
+import {Operation as DataOperation} from '@reducer/films/films';
 
 const api = createAPI();
 

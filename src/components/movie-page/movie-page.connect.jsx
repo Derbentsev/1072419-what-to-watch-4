@@ -5,8 +5,8 @@ import NameSpace from '@reducer/name-space';
 
 
 const mapStateToProps = (state) => ({
-  films: state[NameSpace.DATA].films,
-  activeFilm: state[NameSpace.FILM].activeFilm,
+  films: state[NameSpace.FILMS].films,
+  activeFilm: state[NameSpace.FILMS].activeFilm,
 });
 
 const mapDispatchToProps = (dispatch) => ({

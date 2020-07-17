@@ -4,7 +4,7 @@ import NameSpace from '@reducer/name-space';
 
 
 const mapStateToProps = (state) => ({
-  activeFilm: state[NameSpace.FILM].activeFilm,
+  activeFilm: state[NameSpace.FILMS].activeFilm,
   activeFullVideoPlayer: state[NameSpace.PLAYER].activeFullVideoPlayer,
 });
 

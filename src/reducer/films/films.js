@@ -2,17 +2,19 @@ import {extend} from '@utils/';
 import {
   createFilms,
   createFilm,
-} from '@adapters/films'
+} from '@adapters/films';
 
 
 const initialState = {
   films: [],
   filmPromo: {},
+  activeFilm: null,
 };
 
 const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_FILM_PROMO: `LOAD_FILM_PROMO`,
+  SET_ACTIVE_FILM: `SET_ACTIVE_FILM`,
 };
 
 const ActionCreator = {
@@ -22,13 +24,16 @@ const ActionCreator = {
       payload: films,
     };
   },
-
   loadFilmPromo: (film) => {
     return {
       type: ActionType.LOAD_FILM_PROMO,
       payload: film,
     };
   },
+  setActiveFilm: (film) => ({
+    type: ActionType.SET_ACTIVE_FILM,
+    payload: film,
+  }),
 };
 
 const Operation = {
@@ -62,6 +67,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_FILM_PROMO:
       return extend(state, {
         filmPromo: action.payload,
+      });
+    case ActionType.SET_ACTIVE_FILM:
+      return extend(state, {
+        activeFilm: action.payload,
       });
   }
 

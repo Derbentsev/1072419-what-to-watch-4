@@ -1,12 +1,11 @@
 import FullVideoPlayer from './full-video-player';
 import {connect} from 'react-redux';
 import {ActionCreator} from '@reducer/player/player';
-import withFullVideoPlayer from '@hocs/with-full-video-player/with-full-video-player';
-import NameSpace from '@reducer/name-space';
+import {getFilmById} from '@reducer/films/selectors';
 
 
 const mapStateToProps = (state) => ({
-  activeFullVideoPlayer: state[NameSpace.DATA].filmPromo,
+  activeFullVideoPlayer: (filmId) => getFilmById(state, filmId),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -15,4 +14,5 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withFullVideoPlayer(FullVideoPlayer));
+
+export default connect(mapStateToProps, mapDispatchToProps)(FullVideoPlayer);
