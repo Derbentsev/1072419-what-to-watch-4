@@ -1,11 +1,12 @@
 import MoviePage from './movie-page';
 import {connect} from 'react-redux';
-import {ActionCreator} from '@reducer/reducer';
+import {ActionCreator} from '@reducer/player/player';
+import NameSpace from '@reducer/name-space';
 
 
 const mapStateToProps = (state) => ({
-  films: state.films,
-  activeFilm: state.activeFilm,
+  films: state[NameSpace.FILMS].films,
+  activeFilm: state[NameSpace.FILMS].activeFilm,
 });
 
 const mapDispatchToProps = (dispatch) => ({

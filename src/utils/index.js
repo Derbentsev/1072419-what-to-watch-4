@@ -1,26 +1,26 @@
-import {FILTER_ALL_GENRES_NAME} from '@consts/';
+import {FilmRating} from '@consts/';
 
 
 const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
-const getUniqueGenres = (films) => {
-  return films.map((film) => film.genre)
-    .filter((value, index, self) => self.indexOf(value) === index);
-};
-
-const getFilmsByGenre = (films, genre) => {
-  if (genre === FILTER_ALL_GENRES_NAME) {
-    return films;
+const getTextRating = (ratingCount) => {
+  if (ratingCount <= 3) {
+    return FilmRating.BAD;
+  } else if (ratingCount <= 5) {
+    return FilmRating.NORMAL;
+  } else if (ratingCount <= 8) {
+    return FilmRating.GOOD;
+  } else if (ratingCount <= 10) {
+    return FilmRating.VERY_GOOD;
   }
 
-  return films.filter((film) => film.genre === genre);
+  return FilmRating.AWESOME;
 };
 
 
 export {
   extend,
-  getUniqueGenres,
-  getFilmsByGenre,
+  getTextRating,
 };

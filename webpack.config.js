@@ -34,11 +34,12 @@ module.exports = (env) => {
       alias: {
         '@components': path.resolve(__dirname, `./src/components/`),
         '@consts': path.resolve(__dirname, `./src/consts/`),
-        '@mocks': path.resolve(__dirname, `./src/mocks/`),
+        '@adapters': path.resolve(__dirname, `./src/adapters/`),
         '@hocs': path.resolve(__dirname, `./src/hocs/`),
         '@utils': path.resolve(__dirname, `./src/utils/`),
         '@src': path.resolve(__dirname, `./src/`),
         '@reducer': path.resolve(__dirname, `./src/reducer/`),
+        '@api': path.resolve(__dirname, `./src/api/`),
       }
     },
     plugins: [

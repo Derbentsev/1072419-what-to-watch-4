@@ -58,7 +58,7 @@ const withVideoPlayer = (Component) => {
           handleMouseEnter = {this._handleMouseEnter}
           handleMouseLeave = {this._handleMouseLeave}
         >
-          <video src={film.src} width="280" height="175" poster={`img/${film.poster}`} muted={true} ref={this._videoRef} />
+          <video src={film.previewVideoSrc} width="280" height="175" poster={film.poster} muted={true} ref={this._videoRef} />
         </Component>
       );
     }
@@ -66,9 +66,26 @@ const withVideoPlayer = (Component) => {
 
   WithVideoPlayer.propTypes = {
     film: PropTypes.shape({
+      id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       poster: PropTypes.string.isRequired,
-      src: PropTypes.string.isRequired,
+      genre: PropTypes.string.isRequired,
+      dateRelease: PropTypes.number.isRequired,
+      cover: PropTypes.string.isRequired,
+      videoSrc: PropTypes.string.isRequired,
+      previewVideoSrc: PropTypes.string.isRequired,
+      director: PropTypes.string.isRequired,
+      actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+      ratingScore: PropTypes.number.isRequired,
+      ratingCount: PropTypes.number.isRequired,
+      description: PropTypes.string.isRequired,
+      runTime: PropTypes.number.isRequired,
+      reviews: PropTypes.arrayOf(PropTypes.shape({
+        comment: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        author: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+      })),
     }).isRequired,
   };
 

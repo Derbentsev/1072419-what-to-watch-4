@@ -7,11 +7,12 @@ module.exports = {
   "moduleNameMapper": {
     "^@components(.*)$": `<rootDir>/src/components/$1`,
     "^@consts(.*)$": `<rootDir>/src/consts/$1`,
-    "^@mocks(.*)$": `<rootDir>/src/mocks/$1`,
+    "^@adapters(.*)$": `<rootDir>/src/adapters/$1`,
     "^@hocs(.*)$": `<rootDir>/src/hocs/$1`,
     "^@utils(.*)$": `<rootDir>/src/utils/$1`,
     "^@src(.*)$": `<rootDir>/src/$1`,
     "^@reducer(.*)$": `<rootDir>/src/reducer/$1`,
+    "^@api(.*)$": `<rootDir>/src/api/$1`,
   },
   "coveragePathIgnorePatterns": [`/test-setup.js`]
 };

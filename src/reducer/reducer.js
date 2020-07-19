@@ -1,57 +1,14 @@
-import {extend} from '@utils/';
-import {films as filmsAll} from '@mocks/films';
-import {
-  FilterNames,
-} from '@consts/';
+import {combineReducers} from 'redux';
+import {reducer as films} from './films/films';
+import {reducer as player} from './player/player';
+import {reducer as filter} from './filter/filter';
+import {reducer as user} from './user/user';
+import NameSpace from './name-space';
 
 
-const initialState = {
-  activeFilm: null,
-  films: filmsAll,
-  currentFilter: FilterNames.ALL,
-  activeFullVideoPlayer: null,
-};
-
-const ActionType = {
-  SET_ACTIVE_FILM: `SET_ACTIVE_FILM`,
-  CHANGE_FILTER: `CHANGE_FILTER`,
-  SET_ACTIVE_FULL_VIDEO_PLAYER: `SET_ACTIVE_FULL_VIDEO_PLAYER`,
-};
-
-const ActionCreator = {
-  setActiveFilm: (film) => ({
-    type: ActionType.SET_ACTIVE_FILM,
-    payload: film,
-  }),
-  changeFilter: (currentFilter) => ({
-    type: ActionType.CHANGE_FILTER,
-    payload: currentFilter,
-  }),
-  setActiveFullVideoPlayer: (film) => ({
-    type: ActionType.SET_ACTIVE_FULL_VIDEO_PLAYER,
-    payload: film,
-  }),
-};
-
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ActionType.SET_ACTIVE_FILM:
-      return extend(state, {
-        activeFilm: action.payload,
-      });
-    case ActionType.CHANGE_FILTER:
-      return extend(state, {
-        currentFilter: action.payload,
-      });
-    case ActionType.SET_ACTIVE_FULL_VIDEO_PLAYER:
-      return extend(state, {
-        activeFullVideoPlayer: action.payload,
-      });
-  }
-
-  return state;
-};
-
-
-export default reducer;
-export {ActionType, ActionCreator};
+export default combineReducers({
+  [NameSpace.FILMS]: films,
+  [NameSpace.PLAYER]: player,
+  [NameSpace.FILTER]: filter,
+  [NameSpace.USER]: user,
+});
