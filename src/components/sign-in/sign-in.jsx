@@ -19,6 +19,8 @@ export default class SignIn extends React.PureComponent {
   }
 
   render() {
+    const {authorizationError} = this.props;
+
     return (
       <>
         <div className="user-page">
@@ -39,7 +41,11 @@ export default class SignIn extends React.PureComponent {
               action=""
               className="sign-in__form"
               onSubmit={this._handleSubmit}
+              noValidate={true}
             >
+              <div className="sign-in__message">
+                <p>{authorizationError}</p>
+              </div>
               <div className="sign-in__fields">
                 <div className="sign-in__field">
                   <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" ref={this.loginRef} />
@@ -77,4 +83,5 @@ export default class SignIn extends React.PureComponent {
 
 SignIn.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  authorizationError: PropTypes.string.isRequired,
 };
