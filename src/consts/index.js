@@ -10,11 +10,6 @@ const FilterNames = {
   ALL: `All genres`,
 };
 
-const AuthorizationStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`,
-};
-
 const KeyName = {
   ESC: `Escape`,
 };
@@ -36,7 +31,6 @@ export {
   DELAY_ON_MOUSE_ENTER,
   TabNames,
   FilterNames,
-  AuthorizationStatus,
   KeyName,
   FilmRating,
   FILTER_ALL_GENRES_NAME,

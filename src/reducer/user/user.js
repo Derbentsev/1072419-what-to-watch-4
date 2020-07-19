@@ -1,5 +1,7 @@
-import {AuthorizationStatus} from '@consts/';
-
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
@@ -53,6 +55,7 @@ const reducer = (state = initialState, action) => {
 
 
 export {
+  AuthorizationStatus,
   ActionCreator,
   ActionType,
   Operation,

@@ -2,6 +2,7 @@ import FiltersByGenre from '@components/filters-by-genre/filters-by-genre.connec
 import MoviesList from '@components/movies-list/movies-list.connect';
 import withMoviesList from '@hocs/with-movies-list/with-movies-list';
 import {SHOW_FILM_CARD_BY_BUTTON} from '@consts/';
+import {AuthorizationStatus} from '@reducer/user/user';
 
 
 const MoviesListWrapped = withMoviesList(MoviesList);
@@ -37,9 +38,12 @@ const Main = (props) => {
           </div>
 
           <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
+            {AuthorizationStatus.NO_AUTH ?
+              <a href="sign-in.html" className="user-block__link">Sign in</a> :
+              <div className="user-block__avatar">
+                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+              </div>
+            }
           </div>
         </header>
 
