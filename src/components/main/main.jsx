@@ -15,6 +15,7 @@ const Main = (props) => {
     handleOnPlayClick,
     setShowedFilmsCount,
     showedFilmsCount,
+    authorizationStatus,
   } = props;
 
   const slicedFilms = films.slice(0, showedFilmsCount);
@@ -23,7 +24,7 @@ const Main = (props) => {
     <>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={filmPromo.backgroundImage} alt={filmPromo.title + ` background`} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -38,7 +39,7 @@ const Main = (props) => {
           </div>
 
           <div className="user-block">
-            {AuthorizationStatus.NO_AUTH ?
+            {authorizationStatus === AuthorizationStatus.NO_AUTH ?
               <a href="sign-in.html" className="user-block__link">Sign in</a> :
               <div className="user-block__avatar">
                 <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
@@ -136,6 +137,7 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
   setShowedFilmsCount: PropTypes.func.isRequired,
   handleOnPlayClick: PropTypes.func.isRequired,
   showedFilmsCount: PropTypes.number.isRequired,
@@ -154,6 +156,7 @@ Main.propTypes = {
     ratingCount: PropTypes.number,
     description: PropTypes.string,
     runTime: PropTypes.number,
+    backgroundImage: PropTypes.string,
     reviews: PropTypes.arrayOf(PropTypes.shape({
       comment: PropTypes.string,
       rating: PropTypes.number,
