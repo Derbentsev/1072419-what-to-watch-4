@@ -30,6 +30,8 @@ const withActiveTab = (Component) => {
     }
   }
 
+  WithActiveTab.propTypes = {};
+
   return WithActiveTab;
 };
 

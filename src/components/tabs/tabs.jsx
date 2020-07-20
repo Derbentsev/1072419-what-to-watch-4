@@ -1,6 +1,6 @@
 import TabOverview from '@components/tab-overview/tab-overview';
 import TabDetails from '@components/tab-details/tab-details';
-import TabReviews from '@components/tab-reviews/tab-reviews';
+import TabReviews from '@components/tab-reviews/tab-reviews.connect';
 import {TabNames} from '@consts/';
 
 
@@ -26,7 +26,7 @@ const Tabs = (props) => {
 
         {activeTab === TabNames.OVERVIEW && <TabOverview film = {film}/>}
         {activeTab === TabNames.DETAILS && <TabDetails film = {film}/>}
-        {activeTab === TabNames.REVIEWS && <TabReviews reviews = {film.reviews}/>}
+        {activeTab === TabNames.REVIEWS && <TabReviews/>}
       </div>
     </>
   );

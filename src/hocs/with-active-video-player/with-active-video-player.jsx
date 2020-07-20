@@ -31,6 +31,8 @@ const withActiveVideoPlayer = (Component) => {
     }
   }
 
+  WithActivePlayer.propTypes = {};
+
   return WithActivePlayer;
 };
 

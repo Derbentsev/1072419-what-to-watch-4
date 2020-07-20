@@ -21,7 +21,7 @@ const ActionCreator = {
 
 const Operation = {
   loadReviews: () => (dispatch, getState, api) => {
-    return api.get(`/comments/filmId`)
+    return api.get(`/comments/${getState().FILMS.activeFilm.id}`)
       .then((response) => {
         dispatch(ActionCreator.loadReviews(createReviews(response.data)));
       })

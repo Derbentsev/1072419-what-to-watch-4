@@ -23,7 +23,7 @@ const Main = (props) => {
     <>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src={filmPromo.backgroundImage} alt={filmPromo.title + ` background`} />
+          <img src={filmPromo.backgroundImage} alt={filmPromo.title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>

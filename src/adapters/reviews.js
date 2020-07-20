@@ -17,6 +17,8 @@ const createReviews = (data) => {
   data.forEach((review) => {
     reviews.push(createReview(review));
   });
+
+  return reviews;
 };
 
 

@@ -3,6 +3,7 @@ const NameSpace = {
   PLAYER: `PLAYER`,
   FILTER: `FILTER`,
   USER: `USER`,
+  REVIEWS: `REVIEWS`,
 };
 
 
