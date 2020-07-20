@@ -32,9 +32,7 @@ export default class App extends React.PureComponent {
       return <MoviePage/>;
     }
 
-    return <Main
-      authorizationStatus = {authorizationStatus}
-    />;
+    return <Main/>;
   }
 
   render() {

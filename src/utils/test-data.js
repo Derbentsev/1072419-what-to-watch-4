@@ -140,8 +140,14 @@ const mockFilterStore = {
   currentFilter: FilterNames.ALL,
 };
 
+const mockUserStore = {
+  authorizationStatus: `NO_AUTH`,
+  authorizationError: ``,
+};
+
 export {
   mockFilmsStore,
   mockPlayerStore,
   mockFilterStore,
+  mockUserStore,
 };

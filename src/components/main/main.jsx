@@ -119,7 +119,6 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
   setShowedFilmsCount: PropTypes.func.isRequired,
   handleOnPlayClick: PropTypes.func.isRequired,
   showedFilmsCount: PropTypes.number.isRequired,
