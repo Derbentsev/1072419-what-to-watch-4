@@ -16,6 +16,8 @@ export const createFilm = (film) => {
       description: film.description,
       runTime: film.run_time,
       isFavorite: film.is_favorite,
+      backgroundImage: film.background_image,
+      backgroundColor: film.background_color,
       reviews: [
         {
           comment: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,

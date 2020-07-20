@@ -10,11 +10,6 @@ const FilterNames = {
   ALL: `All genres`,
 };
 
-const AuthorizationStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`,
-};
-
 const KeyName = {
   ESC: `Escape`,
 };
@@ -27,6 +22,11 @@ const FilmRating = {
   AWESOME: `Awesome`,
 };
 
+const ErrorMessage = {
+  LOGIN: `Введите корректный email`,
+  PASSWORD: `Введите корректный пароль`,
+};
+
 const FILTER_ALL_GENRES_NAME = `All genres`;
 const SHOW_FILM_CARD_BY_START = 8;
 const SHOW_FILM_CARD_BY_BUTTON = 8;
@@ -36,9 +36,9 @@ export {
   DELAY_ON_MOUSE_ENTER,
   TabNames,
   FilterNames,
-  AuthorizationStatus,
   KeyName,
   FilmRating,
+  ErrorMessage,
   FILTER_ALL_GENRES_NAME,
   SHOW_FILM_CARD_BY_START,
   SHOW_FILM_CARD_BY_BUTTON,

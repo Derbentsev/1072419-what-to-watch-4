@@ -6,6 +6,7 @@ import {
   mockFilmsStore,
   mockPlayerStore,
   mockFilterStore,
+  mockUserStore,
 } from '@utils/test-data';
 
 
@@ -16,6 +17,7 @@ it(`Render App`, () => {
     [NameSpace.FILMS]: mockFilmsStore,
     [NameSpace.PLAYER]: mockPlayerStore,
     [NameSpace.FILTER]: mockFilterStore,
+    [NameSpace.USER]: mockUserStore,
   });
 
   const tree = renderer

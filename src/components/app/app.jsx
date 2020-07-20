@@ -1,5 +1,7 @@
 import Main from '@components/main/main.connect';
 import MoviePage from '@components/movie-page/movie-page.connect';
+import SignIn from '@components/sign-in/sign-in.connect';
+import {AuthorizationStatus} from '@reducer/user/user';
 import FullVideoPlayer from '@components/full-video-player/full-video-player.connect';
 
 
@@ -14,21 +16,23 @@ export default class App extends React.PureComponent {
     const {
       activeFilm,
       activeFullVideoPlayer,
+      authorizationStatus,
+      login,
     } = this.props;
 
-    if (activeFullVideoPlayer) {
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
       return (
-        <FullVideoPlayer/>
+        <SignIn
+          onSubmit = {login}
+        />
       );
+    } else if (activeFullVideoPlayer) {
+      return <FullVideoPlayer/>;
     } else if (activeFilm) {
-      return (
-        <MoviePage/>
-      );
+      return <MoviePage/>;
     }
 
-    return (
-      <Main/>
-    );
+    return <Main/>;
   }
 
   render() {
@@ -51,6 +55,8 @@ export default class App extends React.PureComponent {
 }
 
 App.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
+  login: PropTypes.func.isRequired,
   activeFullVideoPlayer: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

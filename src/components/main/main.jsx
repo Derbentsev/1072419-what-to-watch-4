@@ -2,6 +2,7 @@ import FiltersByGenre from '@components/filters-by-genre/filters-by-genre.connec
 import MoviesList from '@components/movies-list/movies-list.connect';
 import withMoviesList from '@hocs/with-movies-list/with-movies-list';
 import {SHOW_FILM_CARD_BY_BUTTON} from '@consts/';
+import UserLogo from '@components/user-logo/user-logo.connect';
 
 
 const MoviesListWrapped = withMoviesList(MoviesList);
@@ -22,26 +23,12 @@ const Main = (props) => {
     <>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={filmPromo.backgroundImage} alt={filmPromo.title + ` background`} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head">
-          <div className="logo">
-            <a className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
-        </header>
+        <UserLogo/>
 
         <div className="movie-card__wrap">
           <div className="movie-card__info">
@@ -150,6 +137,7 @@ Main.propTypes = {
     ratingCount: PropTypes.number,
     description: PropTypes.string,
     runTime: PropTypes.number,
+    backgroundImage: PropTypes.string,
     reviews: PropTypes.arrayOf(PropTypes.shape({
       comment: PropTypes.string,
       rating: PropTypes.number,
