@@ -1,5 +1,5 @@
 import {extend} from '@utils/';
-import {createReviews} from '@adapters/reviews';
+import {createReviews, createPushReview} from '@adapters/reviews';
 
 
 const initialState = {
@@ -37,8 +37,8 @@ const Operation = {
         throw err;
       });
   },
-  pushReview: () => (dispatch, getState, api) => {
-    return api.post(`/comments/${getState().FILMS.activeFilm.id}`)
+  pushReview: (review) => (dispatch, getState, api) => {
+    return api.post(`/comments/1`, review)
       .then((response) => {
         dispatch(ActionCreator.pushReview(response.status));
       })

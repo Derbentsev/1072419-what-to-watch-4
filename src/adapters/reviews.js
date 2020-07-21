@@ -21,5 +21,14 @@ const createReviews = (data) => {
   return reviews;
 };
 
+const createPushReview = (review) => {
+  return (
+    {
+      rating: review[`rating`],
+      comment: review[`review-text`],
+    }
+  );
+};
 
-export {createReviews};
+
+export {createReviews, createPushReview};
