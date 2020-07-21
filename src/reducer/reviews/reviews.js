@@ -4,10 +4,12 @@ import {createReviews} from '@adapters/reviews';
 
 const initialState = {
   reviews: [],
+  pushReviewStatus: ``,
 };
 
 const ActionType = {
   LOAD_REVIEWS: `LOAD_REVIEWS`,
+  PUSH_REVIEW: `PUSH_REVIEW`,
 };
 
 const ActionCreator = {
@@ -15,6 +17,12 @@ const ActionCreator = {
     return {
       type: ActionType.LOAD_REVIEWS,
       payload: reviews,
+    };
+  },
+  pushReview: (pushReviewStatus) => {
+    return {
+      type: ActionType.PUSH_REVIEW,
+      payload: pushReviewStatus,
     };
   },
 };
@@ -29,6 +37,15 @@ const Operation = {
         throw err;
       });
   },
+  pushReview: () => (dispatch, getState, api) => {
+    return api.post(`/comments/${getState().FILMS.activeFilm.id}`)
+      .then((response) => {
+        dispatch(ActionCreator.pushReview(response.status));
+      })
+      .catch((err) => {
+        dispatch(ActionCreator.pushReview(err));
+      });
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -36,6 +53,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_REVIEWS:
       return extend(state, {
         reviews: action.payload,
+      });
+    case ActionType.PUSH_REVIEW:
+      return extend(state, {
+        pushReviewStatus: action.payload,
       });
   }
 
