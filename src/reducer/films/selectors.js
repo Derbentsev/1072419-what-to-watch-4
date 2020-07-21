@@ -1,5 +1,5 @@
 import NameSpace from '@reducer/name-space';
-import {FILTER_ALL_GENRES_NAME} from '@consts/';
+import {FilterName} from '@consts/';
 import {createSelector} from 'reselect';
 
 
@@ -35,7 +35,7 @@ const getFilmsByGenre = createSelector(
     getFilms,
     getCurrentFilter,
     (films, currentFilter) => {
-      if (currentFilter === FILTER_ALL_GENRES_NAME) {
+      if (currentFilter === FilterName.ALL) {
         return films;
       }
 

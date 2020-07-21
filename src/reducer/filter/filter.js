@@ -1,9 +1,9 @@
 import {extend} from '@utils/';
-import {FilterNames} from '@consts/';
+import {FilterName} from '@consts/';
 
 
 const initialState = {
-  currentFilter: FilterNames.ALL,
+  currentFilter: FilterName.ALL,
 };
 
 const ActionType = {
@@ -32,6 +32,6 @@ const reducer = (state = initialState, action) => {
 export {
   reducer,
   ActionType,
-  ActionCreator
+  ActionCreator,
 };
 

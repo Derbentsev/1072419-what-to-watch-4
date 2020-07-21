@@ -1,4 +1,4 @@
-import {FilterNames} from '@consts/';
+import {FilterNames} from '@components/filter/filter/';
 
 
 const films = [

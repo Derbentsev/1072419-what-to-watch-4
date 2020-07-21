@@ -1,4 +1,4 @@
-import {TabNames} from '@consts/';
+import {TabNames} from '@components/tabs/tabs';
 
 
 const withActiveTab = (Component) => {

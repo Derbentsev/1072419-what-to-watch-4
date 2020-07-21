@@ -1,6 +1,10 @@
 import {extend, isValidEmail, isValidPassword} from '@utils/';
-import {ErrorMessage} from '@consts/';
 
+
+const ErrorMessage = {
+  LOGIN: `Введите корректный email`,
+  PASSWORD: `Введите корректный пароль`,
+};
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,

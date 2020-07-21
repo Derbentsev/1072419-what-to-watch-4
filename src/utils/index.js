@@ -1,4 +1,10 @@
-import {FilmRating} from '@consts/';
+const FilmRating = {
+  BAD: `Bad`,
+  NORMAL: `Normal`,
+  GOOD: `Good`,
+  VERY_GOOD: `Very good`,
+  AWESOME: `Awesome`,
+};
 
 
 const extend = (a, b) => {

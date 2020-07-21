@@ -1,4 +1,4 @@
-import {SHOW_FILM_CARD_BY_START} from '@consts/';
+const SHOW_FILM_CARD_BY_START = 8;
 
 
 const withMain = (Component) => {

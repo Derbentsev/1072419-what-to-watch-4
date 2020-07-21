@@ -1,9 +1,10 @@
 import FiltersByGenre from '@components/filters-by-genre/filters-by-genre.connect';
 import MoviesList from '@components/movies-list/movies-list.connect';
 import withMoviesList from '@hocs/with-movies-list/with-movies-list';
-import {SHOW_FILM_CARD_BY_BUTTON} from '@consts/';
 import UserLogo from '@components/user-logo/user-logo.connect';
 
+
+const SHOW_FILM_CARD_BY_BUTTON = 8;
 
 const MoviesListWrapped = withMoviesList(MoviesList);
 
