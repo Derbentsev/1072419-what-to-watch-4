@@ -3,6 +3,7 @@ import MoviePage from '@components/movie-page/movie-page.connect';
 import SignIn from '@components/sign-in/sign-in.connect';
 import {AuthorizationStatus} from '@reducer/user/user';
 import FullVideoPlayer from '@components/full-video-player/full-video-player.connect';
+import {AddReview} from '@components/add-comment/add-comment';
 
 
 export default class App extends React.PureComponent {
@@ -47,6 +48,9 @@ export default class App extends React.PureComponent {
           </Route>
           <Route exact path='/dev-player'>
             <FullVideoPlayer/>
+          </Route>
+          <Route exact path='/dev-review'>
+            <AddReview/>
           </Route>
         </Switch>
       </BrowserRouter>
