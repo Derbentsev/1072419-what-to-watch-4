@@ -5,6 +5,7 @@ import {AuthorizationStatus} from '@reducer/user/user';
 import FullVideoPlayer from '@components/full-video-player/full-video-player.connect';
 import AddReview from '@components/add-review/add-review.connect';
 import {PageName} from '@reducer/page/page';
+import Loader from 'react-loader-spinner';
 
 
 export default class App extends React.PureComponent {
@@ -21,9 +22,16 @@ export default class App extends React.PureComponent {
       authorizationStatus,
       login,
       activePage,
+      currentConnectStatus,
     } = this.props;
 
-    if (activePage === PageName.ADD_REVIEW) {
+    if (currentConnectStatus === `Pending`) {
+      return (
+        <div style={{textAlign: `center`}}>
+          <Loader/>
+        </div>
+      );
+    } else if (activePage === PageName.ADD_REVIEW) {
       return <AddReview/>;
     } else if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
       return <SignIn onSubmit = {login}/>;
@@ -59,6 +67,8 @@ export default class App extends React.PureComponent {
 }
 
 App.propTypes = {
+  currentConnectStatus: PropTypes.string.isRequired,
+  activePage: PropTypes.string.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   login: PropTypes.func.isRequired,
   activeFullVideoPlayer: PropTypes.shape({
