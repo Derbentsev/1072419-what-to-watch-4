@@ -3,7 +3,7 @@ import {createPushReview} from '@adapters/reviews';
 
 
 const ReviewParams = {
-  MIN_LENGTH: 1,
+  MIN_LENGTH: 5,
   MAX_LENGTH: 400,
 };
 
@@ -13,43 +13,43 @@ const toggleElementsDisabled = (elements) => {
   });
 };
 
-const handleFormSubmit = (pushReview) => {
-  return (evt) => {
-    evt.preventDefault();
+const handleFormSubmit = (evt, pushReview, setActivePage) => {
+  evt.preventDefault();
 
-    const formData = new FormData(evt.target);
+  const formData = new FormData(evt.target);
+  const reviewText = evt.target.getElementsByClassName(`add-review__textarea`)[0].value;
+  const formElements = evt.target.elements;
 
-    const formElements = evt.target.elements;
+  toggleElementsDisabled(formElements);
+
+  if (reviewText.length < ReviewParams.MIN_LENGTH || reviewText.length > ReviewParams.MAX_LENGTH) {
     toggleElementsDisabled(formElements);
 
-    const reviewText = evt.target.getElementsByClassName(`add-review__textarea`)[0].value;
-    if (reviewText.length < ReviewParams.MIN_LENGTH || reviewText.length > ReviewParams.MAX_LENGTH) {
-      toggleElementsDisabled(formElements);
-      return false;
-    }
+    document.getElementsByClassName(`validate-div`)[0].classList.remove(`visually-hidden`);
+    return false;
+  }
 
-    let pushData = {};
-    formData.forEach((value, key) => {
-      pushData[key] = value;
-    });
+  let pushReviewData = {};
+  formData.forEach((value, key) => {
+    pushReviewData[key] = value;
+  });
 
-    pushReview(createPushReview(pushData));
-
-    toggleElementsDisabled(formElements);
-    return true;
-  };
+  pushReview(createPushReview(pushReviewData));
+  toggleElementsDisabled(formElements);
+  setActivePage(``);
+  return true;
 };
 
 
 const AddReview = (props) => {
-  const {film, pushReview} = props;
+  const {activeFilm, pushReview, setActivePage} = props;
 
   return (
     <>
       <section className="movie-card movie-card--full">
         <div className="movie-card__header">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={activeFilm.backgroundImage} alt={activeFilm.title} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -66,7 +66,7 @@ const AddReview = (props) => {
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <a href="movie-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                  <a href="movie-page.html" className="breadcrumbs__link">{activeFilm.title}</a>
                 </li>
                 <li className="breadcrumbs__item">
                   <a className="breadcrumbs__link">Add review</a>
@@ -78,7 +78,7 @@ const AddReview = (props) => {
           </header>
 
           <div className="movie-card__poster movie-card__poster--small">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+            <img src={activeFilm.cover} alt={activeFilm.title + `poster`} width="218" height="327" />
           </div>
         </div>
 
@@ -86,7 +86,7 @@ const AddReview = (props) => {
           <form
             action="#"
             className="add-review__form"
-            onSubmit={handleFormSubmit(pushReview)}
+            onSubmit={(evt) => handleFormSubmit(evt, pushReview, setActivePage)}
           >
             <div className="rating">
               <div className="rating__stars">
@@ -115,11 +115,42 @@ const AddReview = (props) => {
                 </button>
               </div>
             </div>
+            <div className="validate-div visually-hidden">
+              Введите от {ReviewParams.MIN_LENGTH} до {ReviewParams.MAX_LENGTH} символов.
+            </div>
           </form>
         </div>
       </section>
     </>
   );
+};
+
+AddReview.propTypes = {
+  pushReview: PropTypes.func.isRequired,
+  setActivePage: PropTypes.func.isRequired,
+  activeFilm: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    dateRelease: PropTypes.number.isRequired,
+    cover: PropTypes.string.isRequired,
+    videoSrc: PropTypes.string.isRequired,
+    previewVideoSrc: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    ratingScore: PropTypes.number.isRequired,
+    ratingCount: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    runTime: PropTypes.number.isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      comment: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+    })),
+  }).isRequired,
 };
 
 

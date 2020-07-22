@@ -3,6 +3,7 @@ import withActiveTab from '@hocs/with-active-tab/with-active-tab';
 import MoviesList from '@components/movies-list/movies-list';
 import withMoviesList from '@hocs/with-movies-list/with-movies-list';
 import UserLogo from '@components/user-logo/user-logo.connect';
+import {PageName} from '@reducer/page/page';
 
 
 const SAME_FILMS_COUNT = 4;
@@ -23,13 +24,10 @@ const MoviesListWrapped = withMoviesList(MoviesList);
 const TabsWrapped = withActiveTab(Tabs);
 
 
-class MoviePage extends React.Component {
-  shouldComponentUpdate(nextProps) {
-    if (nextProps.reviews) {
-      return false;
-    }
-
-    return true;
+export default class MoviePage extends React.Component {
+  componentDidMount() {
+    const {loadReviews} = this.props;
+    loadReviews();
   }
 
   render() {
@@ -37,11 +35,10 @@ class MoviePage extends React.Component {
       films,
       activeFilm,
       handleOnPlayClick,
-      loadReviews,
+      authorizationStatus,
+      setActivePage,
     } = this.props;
     const sameFilms = sameGenreFilms(activeFilm, films);
-
-    loadReviews();
 
     return (
       <>
@@ -93,7 +90,19 @@ class MoviePage extends React.Component {
                       </svg>
                       <span>My list</span>
                     </button>
-                    <a href="add-review.html" className="btn movie-card__button">Add review</a>
+
+                    {authorizationStatus &&
+                      <a
+                        href="add-review.html"
+                        className="btn movie-card__button"
+                        onClick={(evt) => {
+                          evt.preventDefault();
+                          setActivePage(PageName.ADD_REVIEW);
+                        }}
+                      >Add review
+                      </a>
+                    }
+
                   </div>
                 </div>
               </div>
@@ -142,7 +151,10 @@ class MoviePage extends React.Component {
 }
 
 MoviePage.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
   handleOnPlayClick: PropTypes.func.isRequired,
+  setActivePage: PropTypes.func.isRequired,
+  loadReviews: PropTypes.func.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
@@ -189,6 +201,3 @@ MoviePage.propTypes = {
     })),
   }).isRequired,
 };
-
-
-export default MoviePage;

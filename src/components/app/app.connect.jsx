@@ -8,12 +8,13 @@ const mapStateToProps = (state) => ({
   activeFilm: state[NameSpace.FILMS].activeFilm,
   activeFullVideoPlayer: state[NameSpace.PLAYER].activeFullVideoPlayer,
   authorizationStatus: state[NameSpace.USER].authorizationStatus,
+  activePage: state[NameSpace.PAGE].activePage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   login(authData) {
     dispatch(UserOperation.login(authData));
-  }
+  },
 });
 
 

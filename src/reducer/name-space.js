@@ -4,6 +4,7 @@ const NameSpace = {
   FILTER: `FILTER`,
   USER: `USER`,
   REVIEWS: `REVIEWS`,
+  PAGE: `PAGE`,
 };
 
 

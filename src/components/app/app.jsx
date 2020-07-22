@@ -4,6 +4,7 @@ import SignIn from '@components/sign-in/sign-in.connect';
 import {AuthorizationStatus} from '@reducer/user/user';
 import FullVideoPlayer from '@components/full-video-player/full-video-player.connect';
 import AddReview from '@components/add-review/add-review.connect';
+import {PageName} from '@reducer/page/page';
 
 
 export default class App extends React.PureComponent {
@@ -19,14 +20,13 @@ export default class App extends React.PureComponent {
       activeFullVideoPlayer,
       authorizationStatus,
       login,
+      activePage,
     } = this.props;
 
-    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-      return (
-        <SignIn
-          onSubmit = {login}
-        />
-      );
+    if (activePage === PageName.ADD_REVIEW) {
+      return <AddReview/>;
+    } else if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      return <SignIn onSubmit = {login}/>;
     } else if (activeFullVideoPlayer) {
       return <FullVideoPlayer/>;
     } else if (activeFilm) {
