@@ -7,10 +7,11 @@ import {
   mockPlayerStore,
   mockFilterStore,
   mockUserStore,
+  mockReviewsStore,
 } from '@utils/test-data';
 
 
-const mockStore = configureStore();
+const mockStore = configureStore([]);
 
 it(`Render Movie Page`, () => {
   const store = mockStore({
@@ -18,13 +19,17 @@ it(`Render Movie Page`, () => {
     [NameSpace.PLAYER]: mockPlayerStore,
     [NameSpace.FILTER]: mockFilterStore,
     [NameSpace.USER]: mockUserStore,
-    handleOnPlayClick: () => {}
+    [NameSpace.REVIEWS]: mockReviewsStore,
   });
 
   const tree = renderer
     .create(
         <Provider store = {store}>
-          <MoviePage/>
+          <MoviePage
+            loadReviews={()=>{}}
+            setActivePage={()=>{}}
+            handleOnPlayClick={()=>{}}
+          />
         </Provider>
     ).toJSON();
 

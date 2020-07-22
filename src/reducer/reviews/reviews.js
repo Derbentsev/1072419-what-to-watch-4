@@ -1,5 +1,5 @@
 import {extend} from '@utils/';
-import {createReviews, createPushReview} from '@adapters/reviews';
+import {createReviews} from '@adapters/reviews';
 
 
 const initialState = {

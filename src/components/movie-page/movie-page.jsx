@@ -38,6 +38,7 @@ export default class MoviePage extends React.Component {
       authorizationStatus,
       setActivePage,
     } = this.props;
+
     const sameFilms = sameGenreFilms(activeFilm, films);
 
     return (

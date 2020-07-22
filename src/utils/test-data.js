@@ -1,5 +1,6 @@
-import {FilterNames} from '@components/filter/filter/';
-
+const FilterName = {
+  ALL: `All genres`,
+};
 
 const films = [
   {
@@ -137,17 +138,30 @@ const mockPlayerStore = {
 };
 
 const mockFilterStore = {
-  currentFilter: FilterNames.ALL,
+  currentFilter: FilterName.ALL,
 };
 
 const mockUserStore = {
   authorizationStatus: `NO_AUTH`,
   authorizationError: ``,
+  currentConnectStatus: `OK`
 };
+
+const mockPageStore = {
+  activePage: `Page1`,
+};
+
+const mockReviewsStore = {
+  reviews: [],
+  pushReviewStatus: ``,
+};
+
 
 export {
   mockFilmsStore,
   mockPlayerStore,
   mockFilterStore,
   mockUserStore,
+  mockPageStore,
+  mockReviewsStore,
 };

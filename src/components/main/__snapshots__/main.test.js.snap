@@ -9,7 +9,7 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt="title1 background"
+        alt="title1"
       />
     </div>
     <h1
