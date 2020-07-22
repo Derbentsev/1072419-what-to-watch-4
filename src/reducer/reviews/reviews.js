@@ -38,7 +38,7 @@ const Operation = {
       });
   },
   pushReview: (review) => (dispatch, getState, api) => {
-    return api.post(`/comments/1`, review)
+    return api.post(`/comments/${getState().FILMS.activeFilm.id}`, review)
       .then((response) => {
         dispatch(ActionCreator.pushReview(response.status));
       })
