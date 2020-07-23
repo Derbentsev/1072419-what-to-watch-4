@@ -13,11 +13,11 @@ const toggleElementsDisabled = (elements) => {
   });
 };
 
-const handleFormSubmit = (evt, pushReview, setActivePage) => {
+const handleFormSubmit = (evt, pushReview) => {
   evt.preventDefault();
 
   const formData = new FormData(evt.target);
-  const reviewText = evt.target.getElementsByClassName(`add-review__textarea`)[0].value;
+  const reviewText = evt.target.querySelector(`.add-review__textarea`).value;
   const formElements = evt.target.elements;
 
   toggleElementsDisabled(formElements);
@@ -25,7 +25,7 @@ const handleFormSubmit = (evt, pushReview, setActivePage) => {
   if (reviewText.length < ReviewParams.MIN_LENGTH || reviewText.length > ReviewParams.MAX_LENGTH) {
     toggleElementsDisabled(formElements);
 
-    document.getElementsByClassName(`validate-div`)[0].classList.remove(`visually-hidden`);
+    document.querySelector(`.validate-div`).classList.remove(`visually-hidden`);
     return false;
   }
 
@@ -35,14 +35,12 @@ const handleFormSubmit = (evt, pushReview, setActivePage) => {
   });
 
   pushReview(createPushReview(pushReviewData));
-  toggleElementsDisabled(formElements);
-  setActivePage(``);
   return true;
 };
 
 
 const AddReview = (props) => {
-  const {activeFilm, pushReview, setActivePage} = props;
+  const {activeFilm, pushReview} = props;
 
   return (
     <>
@@ -86,7 +84,7 @@ const AddReview = (props) => {
           <form
             action="#"
             className="add-review__form"
-            onSubmit={(evt) => handleFormSubmit(evt, pushReview, setActivePage)}
+            onSubmit={(evt) => handleFormSubmit(evt, pushReview)}
           >
             <div className="rating">
               <div className="rating__stars">
@@ -127,7 +125,6 @@ const AddReview = (props) => {
 
 AddReview.propTypes = {
   pushReview: PropTypes.func.isRequired,
-  setActivePage: PropTypes.func.isRequired,
   activeFilm: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

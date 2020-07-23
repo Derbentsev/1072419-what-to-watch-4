@@ -1,5 +1,6 @@
 import {extend} from '@utils/';
 import {createReviews} from '@adapters/reviews';
+import {ActionCreator as PageActionCreator} from '@reducer/page/page';
 
 
 const initialState = {
@@ -41,6 +42,7 @@ const Operation = {
     return api.post(`/comments/${getState().FILMS.activeFilm.id}`, review)
       .then((response) => {
         dispatch(ActionCreator.pushReview(response.status));
+        dispatch(PageActionCreator.setActivePage(``));
       })
       .catch((err) => {
         dispatch(ActionCreator.pushReview(err));

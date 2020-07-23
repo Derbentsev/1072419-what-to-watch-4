@@ -2,7 +2,6 @@ import {connect} from 'react-redux';
 import AddReview from './add-review';
 import NameSpace from '@reducer/name-space';
 import {Operation as ReviewsOperation} from '@reducer/reviews/reviews';
-import {ActionCreator as PageActionCreator} from '@reducer/page/page';
 
 
 const mapStateToProps = (state) => ({
@@ -12,9 +11,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   pushReview(review) {
     dispatch(ReviewsOperation.pushReview(review));
-  },
-  setActivePage(pageName) {
-    dispatch(PageActionCreator.setActivePage(pageName));
   },
 });
 
