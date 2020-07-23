@@ -1,5 +1,4 @@
-import {DELAY_ON_MOUSE_ENTER} from '@consts/index';
-
+const DELAY_ON_MOUSE_ENTER = 2000;
 
 const withVideoPlayer = (Component) => {
   class WithVideoPlayer extends React.PureComponent {

@@ -1,9 +1,10 @@
 import FiltersByGenre from '@components/filters-by-genre/filters-by-genre.connect';
 import MoviesList from '@components/movies-list/movies-list.connect';
 import withMoviesList from '@hocs/with-movies-list/with-movies-list';
-import {SHOW_FILM_CARD_BY_BUTTON} from '@consts/';
 import UserLogo from '@components/user-logo/user-logo.connect';
 
+
+const SHOW_FILM_CARD_BY_BUTTON = 8;
 
 const MoviesListWrapped = withMoviesList(MoviesList);
 
@@ -23,12 +24,22 @@ const Main = (props) => {
     <>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src={filmPromo.backgroundImage} alt={filmPromo.title + ` background`} />
+          <img src={filmPromo.backgroundImage} alt={filmPromo.title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <UserLogo/>
+        <header className="page-header movie-card__head">
+          <div className="logo">
+            <a className="logo__link">
+              <span className="logo__letter logo__letter--1">W</span>
+              <span className="logo__letter logo__letter--2">T</span>
+              <span className="logo__letter logo__letter--3">W</span>
+            </a>
+          </div>
+
+          <UserLogo/>
+        </header>
 
         <div className="movie-card__wrap">
           <div className="movie-card__info">

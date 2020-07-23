@@ -3,6 +3,9 @@ import MoviePage from '@components/movie-page/movie-page.connect';
 import SignIn from '@components/sign-in/sign-in.connect';
 import {AuthorizationStatus} from '@reducer/user/user';
 import FullVideoPlayer from '@components/full-video-player/full-video-player.connect';
+import AddReview from '@components/add-review/add-review.connect';
+import {PageName} from '@reducer/page/page';
+import Loader from 'react-loader-spinner';
 
 
 export default class App extends React.PureComponent {
@@ -18,14 +21,20 @@ export default class App extends React.PureComponent {
       activeFullVideoPlayer,
       authorizationStatus,
       login,
+      activePage,
+      currentConnectStatus,
     } = this.props;
 
-    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+    if (currentConnectStatus === `Pending`) {
       return (
-        <SignIn
-          onSubmit = {login}
-        />
+        <div style={{textAlign: `center`}}>
+          <Loader/>
+        </div>
       );
+    } else if (activePage === PageName.ADD_REVIEW) {
+      return <AddReview/>;
+    } else if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      return <SignIn onSubmit = {login}/>;
     } else if (activeFullVideoPlayer) {
       return <FullVideoPlayer/>;
     } else if (activeFilm) {
@@ -48,6 +57,9 @@ export default class App extends React.PureComponent {
           <Route exact path='/dev-player'>
             <FullVideoPlayer/>
           </Route>
+          <Route exact path='/dev-review'>
+            <AddReview/>
+          </Route>
         </Switch>
       </BrowserRouter>
     );
@@ -55,6 +67,8 @@ export default class App extends React.PureComponent {
 }
 
 App.propTypes = {
+  currentConnectStatus: PropTypes.string.isRequired,
+  activePage: PropTypes.string.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   login: PropTypes.func.isRequired,
   activeFullVideoPlayer: PropTypes.shape({

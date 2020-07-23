@@ -1,5 +1,6 @@
-import {FilterNames} from '@consts/';
-
+const FilterName = {
+  ALL: `All genres`,
+};
 
 const films = [
   {
@@ -11,6 +12,7 @@ const films = [
     cover: `the-grand-budapest-hotel-poster.jpg`,
     videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    backgroundImage: ``,
     director: `director1`,
     actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
     ratingScore: 1,
@@ -35,6 +37,7 @@ const films = [
     cover: `the-grand-budapest-hotel-poster.jpg`,
     videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    backgroundImage: ``,
     director: `director1`,
     actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
     ratingScore: 1,
@@ -59,6 +62,7 @@ const films = [
     cover: `the-grand-budapest-hotel-poster.jpg`,
     videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    backgroundImage: ``,
     director: `director1`,
     actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
     ratingScore: 1,
@@ -85,6 +89,7 @@ const filmPromo = {
   cover: `the-grand-budapest-hotel-poster.jpg`,
   videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  backgroundImage: ``,
   director: `director1`,
   actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
   ratingScore: 1,
@@ -110,6 +115,7 @@ const activeFilm = {
   cover: `the-grand-budapest-hotel-poster.jpg`,
   videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  backgroundImage: ``,
   director: `director1`,
   actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
   ratingScore: 1,
@@ -137,17 +143,30 @@ const mockPlayerStore = {
 };
 
 const mockFilterStore = {
-  currentFilter: FilterNames.ALL,
+  currentFilter: FilterName.ALL,
 };
 
 const mockUserStore = {
   authorizationStatus: `NO_AUTH`,
   authorizationError: ``,
+  currentConnectStatus: `OK`
 };
+
+const mockPageStore = {
+  activePage: `Page1`,
+};
+
+const mockReviewsStore = {
+  reviews: [],
+  pushReviewStatus: ``,
+};
+
 
 export {
   mockFilmsStore,
   mockPlayerStore,
   mockFilterStore,
   mockUserStore,
+  mockPageStore,
+  mockReviewsStore,
 };

@@ -1,8 +1,13 @@
 import TabOverview from '@components/tab-overview/tab-overview';
 import TabDetails from '@components/tab-details/tab-details';
-import TabReviews from '@components/tab-reviews/tab-reviews';
-import {TabNames} from '@consts/';
+import TabReviews from '@components/tab-reviews/tab-reviews.connect';
 
+
+const TabNames = {
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`,
+};
 
 const Tabs = (props) => {
   const {film, handleOnTab, activeTab} = props;
@@ -26,7 +31,7 @@ const Tabs = (props) => {
 
         {activeTab === TabNames.OVERVIEW && <TabOverview film = {film}/>}
         {activeTab === TabNames.DETAILS && <TabDetails film = {film}/>}
-        {activeTab === TabNames.REVIEWS && <TabReviews reviews = {film.reviews}/>}
+        {activeTab === TabNames.REVIEWS && <TabReviews/>}
       </div>
     </>
   );
@@ -61,3 +66,4 @@ Tabs.propTypes = {
 
 
 export default Tabs;
+export {TabNames};

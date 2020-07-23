@@ -7,6 +7,7 @@ import {
   mockPlayerStore,
   mockFilterStore,
   mockUserStore,
+  mockPageStore,
 } from '@utils/test-data';
 
 
@@ -18,6 +19,7 @@ it(`Render App`, () => {
     [NameSpace.PLAYER]: mockPlayerStore,
     [NameSpace.FILTER]: mockFilterStore,
     [NameSpace.USER]: mockUserStore,
+    [NameSpace.PAGE]: mockPageStore,
   });
 
   const tree = renderer

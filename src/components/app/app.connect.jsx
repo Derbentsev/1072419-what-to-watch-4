@@ -8,12 +8,14 @@ const mapStateToProps = (state) => ({
   activeFilm: state[NameSpace.FILMS].activeFilm,
   activeFullVideoPlayer: state[NameSpace.PLAYER].activeFullVideoPlayer,
   authorizationStatus: state[NameSpace.USER].authorizationStatus,
+  currentConnectStatus: state[NameSpace.USER].currentConnectStatus,
+  activePage: state[NameSpace.PAGE].activePage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   login(authData) {
     dispatch(UserOperation.login(authData));
-  }
+  },
 });
 
 
