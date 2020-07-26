@@ -1,3 +1,6 @@
+import {AppRoute} from '@consts/';
+
+
 export default class SignIn extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -26,11 +29,11 @@ export default class SignIn extends React.PureComponent {
         <div className="user-page">
           <header className="page-header user-page__head">
             <div className="logo">
-              <a href="main.html" className="logo__link">
+              <Link to={AppRoute.ROOT} className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
-              </a>
+              </Link>
             </div>
 
             <h1 className="page-title user-page__title">Sign in</h1>

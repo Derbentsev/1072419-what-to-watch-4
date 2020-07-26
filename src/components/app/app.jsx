@@ -6,13 +6,15 @@ import FullVideoPlayer from '@components/full-video-player/full-video-player.con
 import AddReview from '@components/add-review/add-review.connect';
 import {PageName} from '@reducer/page/page';
 import Loader from 'react-loader-spinner';
+import history from '@src/history';
+import {AppRoute} from '@consts/';
 
 
 export default class App extends React.PureComponent {
   constructor(props) {
     super(props);
-
     this._renderWelcomeScreen = this._renderWelcomeScreen.bind(this);
+    this._renderLoginScreen = this._renderLoginScreen.bind(this);
   }
 
   _renderWelcomeScreen() {
@@ -20,12 +22,10 @@ export default class App extends React.PureComponent {
       activeFilm,
       activeFullVideoPlayer,
       authorizationStatus,
-      login,
       activePage,
-      currentConnectStatus,
     } = this.props;
 
-    if (currentConnectStatus === `Pending`) {
+    if (authorizationStatus === AuthorizationStatus.PENDING) {
       return (
         <div style={{textAlign: `center`}}>
           <Loader/>
@@ -33,8 +33,6 @@ export default class App extends React.PureComponent {
       );
     } else if (activePage === PageName.ADD_REVIEW) {
       return <AddReview/>;
-    } else if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-      return <SignIn onSubmit = {login}/>;
     } else if (activeFullVideoPlayer) {
       return <FullVideoPlayer/>;
     } else if (activeFilm) {
@@ -44,30 +42,36 @@ export default class App extends React.PureComponent {
     return <Main/>;
   }
 
+  _renderLoginScreen() {
+    const {
+      authorizationStatus,
+      login,
+    } = this.props;
+
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      return <SignIn onSubmit = {login}/>;
+    }
+
+    return <Main/>;
+  }
+
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
-          <Route exact path='/'>
+          <Route exact path={AppRoute.ROOT}>
             {this._renderWelcomeScreen()}
           </Route>
-          <Route exact path='/dev-film'>
-            <MoviePage/>
-          </Route>
-          <Route exact path='/dev-player'>
-            <FullVideoPlayer/>
-          </Route>
-          <Route exact path='/dev-review'>
-            <AddReview/>
+          <Route exact path={AppRoute.LOGIN}>
+            {this._renderLoginScreen()}
           </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
 
 App.propTypes = {
-  currentConnectStatus: PropTypes.string.isRequired,
   activePage: PropTypes.string.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   login: PropTypes.func.isRequired,

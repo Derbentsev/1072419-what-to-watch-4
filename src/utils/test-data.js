@@ -149,7 +149,6 @@ const mockFilterStore = {
 const mockUserStore = {
   authorizationStatus: `NO_AUTH`,
   authorizationError: ``,
-  currentConnectStatus: `OK`
 };
 
 const mockPageStore = {

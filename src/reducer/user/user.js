@@ -9,18 +9,18 @@ const ErrorMessage = {
 const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
+  PENDING: `PENDING`,
 };
 
 const initialState = {
-  authorizationStatus: AuthorizationStatus.NO_AUTH,
+  authorizationStatus: AuthorizationStatus.PENDING,
   authorizationError: ``,
-  currentConnectStatus: `Pending`,
 };
 
 const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   SET_AUTHORIZATION_ERROR: `SET_AUTHORIZATION_ERROR`,
-  SET_CURRENT_CONNECT_STATUS: `SET_CURRENT_CONNECT_STATUS`,
+  SET_AUTHORIZATION_STATUS: `SET_CURRENT_CONNECT_STATUS`,
 };
 
 const ActionCreator = {
@@ -36,10 +36,9 @@ const ActionCreator = {
       payload: errorMessage,
     };
   },
-
-  setCurrentConnectStatus: (status) => {
+  setAuthorizationStatus: (status) => {
     return {
-      type: ActionType.SET_CURRENT_CONNECT_STATUS,
+      type: ActionType.SET_AUTHORIZATION_STATUS,
       payload: status,
     };
   },
@@ -50,7 +49,10 @@ const Operation = {
     return api.get(`/login`)
       .then(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
-        dispatch(ActionCreator.setCurrentConnectStatus(`OK`));
+        dispatch(ActionCreator.setAuthorizationStatus(AuthorizationStatus.AUTH));
+      })
+      .catch(() => {
+        dispatch(ActionCreator.setAuthorizationStatus(AuthorizationStatus.NO_AUTH));
       });
   },
 
@@ -88,9 +90,9 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         authorizationError: action.payload,
       });
-    case ActionType.SET_CURRENT_CONNECT_STATUS:
+    case ActionType.SET_AUTHORIZATION_STATUS:
       return extend(state, {
-        currentConnectStatus: action.payload,
+        authorizationStatus: action.payload,
       });
   }
 
