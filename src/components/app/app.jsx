@@ -8,6 +8,7 @@ import {PageName} from '@reducer/page/page';
 import Loader from 'react-loader-spinner';
 import history from '@src/history';
 import {AppRoute} from '@consts/';
+import MyList from '@components/my-list/my-list.connect';
 
 
 export default class App extends React.PureComponent {
@@ -64,6 +65,9 @@ export default class App extends React.PureComponent {
           </Route>
           <Route exact path={AppRoute.LOGIN}>
             {this._renderLoginScreen()}
+          </Route>
+          <Route exact path={AppRoute.MY_LIST}>
+            <MyList/>
           </Route>
         </Switch>
       </Router>

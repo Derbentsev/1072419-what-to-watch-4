@@ -17,7 +17,12 @@ const UserLogo = (props) => {
         </Link>
         :
         <div className="user-block__avatar">
-          <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+          <Link
+            to = {AppRoute.MY_LIST}
+            className="user-block__avatar"
+          >
+            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+          </Link>
         </div>
       }
     </div>

@@ -1,5 +1,4 @@
 import {extend} from '@utils/';
-import NameSpace from '@reducer/name-space';
 import {
   createFilms,
   createFilm,
@@ -11,6 +10,7 @@ const initialState = {
   filmPromo: {},
   activeFilm: null,
   isFavoriteFilm: false,
+  favoriteFilms: [],
 };
 
 const ActionType = {
@@ -18,6 +18,7 @@ const ActionType = {
   LOAD_FILM_PROMO: `LOAD_FILM_PROMO`,
   SET_ACTIVE_FILM: `SET_ACTIVE_FILM`,
   SET_FAVORITE_FILM: `SET_FAVORITE_FILM`,
+  LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
 };
 
 const ActionCreator = {
@@ -36,6 +37,10 @@ const ActionCreator = {
   setFavoriteFilm: (status) => ({
     type: ActionType.SET_FAVORITE_FILM,
     payload: status,
+  }),
+  loadFavoriteFilms: (films) => ({
+    type: ActionType.LOAD_FAVORITE_FILMS,
+    payload: films,
   }),
 };
 
@@ -69,6 +74,16 @@ const Operation = {
         throw err;
       });
   },
+
+  loadFavoriteFilms: () => (dispatch, getState, api) => {
+    return api.get(`/favorite`)
+      .then((response) => {
+        dispatch(ActionCreator.loadFavoriteFilms(createFilms(response.data)));
+      })
+      .catch((err) => {
+        throw err;
+      });
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -88,6 +103,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_FAVORITE_FILM:
       return extend(state, {
         isFavoriteFilm: action.payload,
+      });
+    case ActionType.LOAD_FAVORITE_FILMS:
+      return extend(state, {
+        favoriteFilms: action.payload,
       });
   }
 
