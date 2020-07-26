@@ -12,10 +12,10 @@ export default class SignIn extends React.PureComponent {
   }
 
   _handleSubmit(evt) {
-    const {onSubmit} = this.props;
+    const {login} = this.props;
 
     evt.preventDefault();
-    onSubmit({
+    login({
       login: this.loginRef.current.value,
       password: this.passwordRef.current.value,
     });
@@ -87,6 +87,6 @@ export default class SignIn extends React.PureComponent {
 }
 
 SignIn.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
   authorizationError: PropTypes.string.isRequired,
 };

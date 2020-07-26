@@ -5,129 +5,163 @@ import UserLogo from '@components/user-logo/user-logo.connect';
 
 
 const SHOW_FILM_CARD_BY_BUTTON = 8;
-
 const MoviesListWrapped = withMoviesList(MoviesList);
 
+const MyListSettings = {
+  FAVORITE: `1`,
+  NOT_FAVORITE: `0`,
+};
 
-const Main = (props) => {
-  const {
-    filmPromo,
-    films,
-    handleOnPlayClick,
-    setShowedFilmsCount,
-    showedFilmsCount,
-  } = props;
 
-  const slicedFilms = films.slice(0, showedFilmsCount);
+class Main extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this._handleClickAddToMyList = this._handleClickAddToMyList.bind(this);
+  }
 
-  return (
-    <>
-      <section className="movie-card">
-        <div className="movie-card__bg">
-          <img src={filmPromo.backgroundImage} alt={filmPromo.title} />
-        </div>
+  _handleClickAddToMyList() {
+    const {filmPromo, setFavoriteFilm} = this.props;
 
-        <h1 className="visually-hidden">WTW</h1>
+    if (filmPromo.isFavorite) {
+      setFavoriteFilm(MyListSettings.NOT_FAVORITE, filmPromo.id);
+      return;
+    }
 
-        <header className="page-header movie-card__head">
-          <div className="logo">
-            <a className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
+    setFavoriteFilm(MyListSettings.FAVORITE, filmPromo.id);
+  }
+
+  render() {
+    const {
+      filmPromo,
+      films,
+      handleOnPlayClick,
+      setShowedFilmsCount,
+      showedFilmsCount,
+    } = this.props;
+
+    const slicedFilms = films.slice(0, showedFilmsCount);
+
+    return (
+      <>
+        <section className="movie-card">
+          <div className="movie-card__bg">
+            <img src={filmPromo.backgroundImage} alt={filmPromo.title} />
           </div>
 
-          <UserLogo/>
-        </header>
+          <h1 className="visually-hidden">WTW</h1>
 
-        <div className="movie-card__wrap">
-          <div className="movie-card__info">
-            <div className="movie-card__poster">
-              <img src={filmPromo.cover} alt={filmPromo.title + ` poster`} width="218" height="327" />
+          <header className="page-header movie-card__head">
+            <div className="logo">
+              <a className="logo__link">
+                <span className="logo__letter logo__letter--1">W</span>
+                <span className="logo__letter logo__letter--2">T</span>
+                <span className="logo__letter logo__letter--3">W</span>
+              </a>
             </div>
 
-            <div className="movie-card__desc">
-              <h2
-                className="movie-card__title">
-                {filmPromo.title}
-              </h2>
-              <p className="movie-card__meta">
-                <span className="movie-card__genre">{filmPromo.genre}</span>
-                <span className="movie-card__year">{filmPromo.dateRelease}</span>
-              </p>
+            <UserLogo/>
+          </header>
 
-              <div className="movie-card__buttons">
-                <button
-                  className="btn btn--play movie-card__button"
-                  type="button"
-                  onClick={(evt) => {
-                    evt.preventDefault();
-                    handleOnPlayClick(filmPromo);
-                  }}
-                >
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use href="#play-s"></use>
-                  </svg>
-                  <span>Play</span>
-                </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use href="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                </button>
+          <div className="movie-card__wrap">
+            <div className="movie-card__info">
+              <div className="movie-card__poster">
+                <img src={filmPromo.cover} alt={filmPromo.title + ` poster`} width="218" height="327" />
+              </div>
+
+              <div className="movie-card__desc">
+                <h2
+                  className="movie-card__title">
+                  {filmPromo.title}
+                </h2>
+                <p className="movie-card__meta">
+                  <span className="movie-card__genre">{filmPromo.genre}</span>
+                  <span className="movie-card__year">{filmPromo.dateRelease}</span>
+                </p>
+
+                <div className="movie-card__buttons">
+                  <button
+                    className="btn btn--play movie-card__button"
+                    type="button"
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      handleOnPlayClick(filmPromo);
+                    }}
+                  >
+                    <svg viewBox="0 0 19 19" width="19" height="19">
+                      <use href="#play-s"></use>
+                    </svg>
+                    <span>Play</span>
+                  </button>
+                  <button
+                    className="btn btn--list movie-card__button"
+                    type="button"
+                    onClick = {this._handleClickAddToMyList}
+                  >
+                    {filmPromo.isFavorite &&
+                      <svg viewBox="0 0 18 14" width="18" height="14">
+                        <use href="#in-list"></use>
+                      </svg>
+                    }
+                    {!filmPromo.isFavorite &&
+                      <svg viewBox="0 0 19 20" width="19" height="20">
+                        <use href="#add"></use>
+                      </svg>
+                    }
+
+                    <span>My list</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <div className="page-content">
-        <section className="catalog">
-          <h2 className="catalog__title visually-hidden">Catalog</h2>
-
-          <ul className="catalog__genres-list">
-            <FiltersByGenre
-              setShowedFilmsCount = {setShowedFilmsCount}
-            />
-          </ul>
-
-          <MoviesListWrapped
-            films = {slicedFilms}
-          />
-
-          {slicedFilms.length !== films.length &&
-            <div className="catalog__more">
-              <button onClick={() => {
-                setShowedFilmsCount(SHOW_FILM_CARD_BY_BUTTON);
-              }}
-              className="catalog__button"
-              type="button"
-              >
-                Show more
-              </button>
-            </div>
-          }
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+        <div className="page-content">
+          <section className="catalog">
+            <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
-      </div>
-    </>
-  );
-};
+            <ul className="catalog__genres-list">
+              <FiltersByGenre
+                setShowedFilmsCount = {setShowedFilmsCount}
+              />
+            </ul>
+
+            <MoviesListWrapped
+              films = {slicedFilms}
+            />
+
+            {slicedFilms.length !== films.length &&
+              <div className="catalog__more">
+                <button onClick={() => {
+                  setShowedFilmsCount(SHOW_FILM_CARD_BY_BUTTON);
+                }}
+                className="catalog__button"
+                type="button"
+                >
+                  Show more
+                </button>
+              </div>
+            }
+          </section>
+
+          <footer className="page-footer">
+            <div className="logo">
+              <a className="logo__link logo__link--light">
+                <span className="logo__letter logo__letter--1">W</span>
+                <span className="logo__letter logo__letter--2">T</span>
+                <span className="logo__letter logo__letter--3">W</span>
+              </a>
+            </div>
+
+            <div className="copyright">
+              <p>© 2019 What to watch Ltd.</p>
+            </div>
+          </footer>
+        </div>
+      </>
+    );
+  }
+}
 
 Main.propTypes = {
   setShowedFilmsCount: PropTypes.func.isRequired,

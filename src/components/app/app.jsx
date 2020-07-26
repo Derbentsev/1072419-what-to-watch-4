@@ -49,7 +49,7 @@ export default class App extends React.PureComponent {
     } = this.props;
 
     if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-      return <SignIn onSubmit = {login}/>;
+      return <SignIn login = {login}/>;
     }
 
     return <Main/>;

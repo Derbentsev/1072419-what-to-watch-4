@@ -1,9 +1,10 @@
 import Main from './main';
 import {connect} from 'react-redux';
 import {getFilmsByGenre} from '@reducer/films/selectors';
-import {ActionCreator} from '@reducer/player/player';
+import {ActionCreator as ActionCreatorPlayer} from '@reducer/player/player';
 import withMain from '@hocs/with-main/with-main';
 import NameSpace from '@reducer/name-space';
+import {Operation as FilmsOperation, ActionCreator as ActionCreatorFilms} from '@reducer/films/films';
 
 
 const mapStateToProps = (state) => ({
@@ -13,7 +14,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   handleOnPlayClick(film) {
-    dispatch(ActionCreator.setActiveFullVideoPlayer(film));
+    dispatch(ActionCreatorPlayer.setActiveFullVideoPlayer(film));
+  },
+  setFavoriteFilm(isFavorite, filmId) {
+    dispatch(FilmsOperation.setFavoriteFilm(isFavorite, filmId));
   },
 });
 
