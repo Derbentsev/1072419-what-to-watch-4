@@ -10,21 +10,18 @@ const MyListSettings = {
 export default class FilmPromo extends React.PureComponent {
   constructor(props) {
     super(props);
-
     this._handleClickAddToMyList = this._handleClickAddToMyList.bind(this);
   }
 
   _handleClickAddToMyList() {
-    const {filmPromo} = this.props;
-
-    const {setFavoriteFilm} = this.props;
+    const {filmPromo, setFavoriteFilm} = this.props;
 
     if (filmPromo.isFavorite) {
       setFavoriteFilm(MyListSettings.NOT_FAVORITE, filmPromo.id);
       return;
     }
 
-    setFavoriteFilm(MyListSettings.FAVORITE, filmPromo.id);
+    setFavoriteFilm(MyListSettings.FAVORITE, filmPromo.id, this);
   }
 
   render() {
@@ -57,9 +54,7 @@ export default class FilmPromo extends React.PureComponent {
             </div>
 
             <div className="movie-card__desc">
-              <h2
-                className="movie-card__title"
-              >
+              <h2 className="movie-card__title">
                 {filmPromo.title}
               </h2>
               <p className="movie-card__meta">
@@ -96,7 +91,6 @@ export default class FilmPromo extends React.PureComponent {
                       <use href="#add"></use>
                     </svg>
                   }
-
                   <span>My list</span>
                 </button>
               </div>
@@ -110,12 +104,14 @@ export default class FilmPromo extends React.PureComponent {
 
 FilmPromo.propTypes = {
   handleOnPlayClick: PropTypes.func.isRequired,
+  setFavoriteFilm: PropTypes.func.isRequired,
   filmPromo: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,
     poster: PropTypes.string,
     genre: PropTypes.string,
     dateRelease: PropTypes.number,
+    isFavorite: PropTypes.bool,
     cover: PropTypes.string,
     videoSrc: PropTypes.string,
     previewVideoSrc: PropTypes.string,

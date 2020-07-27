@@ -1,9 +1,12 @@
+import history from '@history/history';
+
+
 const MovieCard = (props) => {
   const {
     film,
     handleMovieCardMouseEnter,
     handleMovieCardClick,
-    renderPlayer
+    renderPlayer,
   } = props;
 
   return (
@@ -12,7 +15,8 @@ const MovieCard = (props) => {
       onMouseEnter={handleMovieCardMouseEnter}
       onClick={(evt) => {
         evt.preventDefault();
-        handleMovieCardClick(film);
+        // handleMovieCardClick(film);
+        history.push(`/films/${film.id}`);
       }}
     >
 

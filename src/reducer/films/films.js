@@ -3,6 +3,7 @@ import {
   createFilms,
   createFilm,
 } from '@adapters/films';
+import NameSpace from '@reducer/name-space';
 
 
 const initialState = {
@@ -19,6 +20,8 @@ const ActionType = {
   SET_ACTIVE_FILM: `SET_ACTIVE_FILM`,
   SET_FAVORITE_FILM: `SET_FAVORITE_FILM`,
   LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
+  UPDATE_FILM: `UPADTE_FILM`,
+  UPDATE_FILM_PROMO: `UPADTE_FILM_PROMO`,
 };
 
 const ActionCreator = {
@@ -41,6 +44,14 @@ const ActionCreator = {
   loadFavoriteFilms: (films) => ({
     type: ActionType.LOAD_FAVORITE_FILMS,
     payload: films,
+  }),
+  updateFilm: (film) => ({
+    type: ActionType.UPDATE_FILM,
+    payload: film,
+  }),
+  updateFilmPromo: (film) => ({
+    type: ActionType.UPDATE_FILM_PROMO,
+    payload: film,
   }),
 };
 
@@ -65,20 +76,28 @@ const Operation = {
       });
   },
 
-  setFavoriteFilm: (isFavorite, filmId) => (dispatch, getState, api) => {
-    return api.post(`/favorite/${filmId}/${isFavorite}`)
+  loadFavoriteFilms: () => (dispatch, getState, api) => {
+    return api.get(`/favorite`)
       .then((response) => {
-        throw response;
+        dispatch(ActionCreator.loadFavoriteFilms(createFilms(response.data)));
       })
       .catch((err) => {
         throw err;
       });
   },
 
-  loadFavoriteFilms: () => (dispatch, getState, api) => {
-    return api.get(`/favorite`)
+  updateFilm: (isFavorite, filmId) => (dispatch, getState, api) => {
+    return api.post(`/favorite/${filmId}/${isFavorite}`)
       .then((response) => {
-        dispatch(ActionCreator.loadFavoriteFilms(createFilms(response.data)));
+        if (response.data.id === getState()[NameSpace.FILMS].filmPromo.id) {
+          dispatch(ActionCreator.updateFilmPromo(createFilm(response.data)));
+        }
+
+        const films = getState()[NameSpace.FILMS].films.slice();
+        const elementIndex = films.findIndex((x) => x.id === response.data.id);
+
+        films[elementIndex] = createFilm(response.data);
+        dispatch(ActionCreator.updateFilm(films));
       })
       .catch((err) => {
         throw err;
@@ -107,6 +126,14 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_FAVORITE_FILMS:
       return extend(state, {
         favoriteFilms: action.payload,
+      });
+    case ActionType.UPDATE_FILM:
+      return extend(state, {
+        films: action.payload,
+      });
+    case ActionType.UPDATE_FILM_PROMO:
+      return extend(state, {
+        filmPromo: action.payload,
       });
   }
 

@@ -1,4 +1,5 @@
 import {AppRoute} from '@consts/';
+import {AuthorizationStatus} from '@reducer/user/user';
 
 
 export default class SignIn extends React.PureComponent {
@@ -12,9 +13,10 @@ export default class SignIn extends React.PureComponent {
   }
 
   _handleSubmit(evt) {
+    evt.preventDefault();
+
     const {login} = this.props;
 
-    evt.preventDefault();
     login({
       login: this.loginRef.current.value,
       password: this.passwordRef.current.value,
@@ -22,7 +24,11 @@ export default class SignIn extends React.PureComponent {
   }
 
   render() {
-    const {authorizationError} = this.props;
+    const {authorizationError, authorizationStatus} = this.props;
+
+    if (authorizationStatus === AuthorizationStatus.AUTH) {
+      return <Redirect to={AppRoute.ROOT}/>;
+    }
 
     return (
       <>
@@ -89,4 +95,5 @@ export default class SignIn extends React.PureComponent {
 SignIn.propTypes = {
   login: PropTypes.func.isRequired,
   authorizationError: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
 };

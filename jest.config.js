@@ -13,6 +13,7 @@ module.exports = {
     "^@src(.*)$": `<rootDir>/src/$1`,
     "^@reducer(.*)$": `<rootDir>/src/reducer/$1`,
     "^@api(.*)$": `<rootDir>/src/api/$1`,
+    "^@history(.*)$": `<rootDir>/src/history/$1`,
   },
   "coveragePathIgnorePatterns": [`/test-setup.js`]
 };

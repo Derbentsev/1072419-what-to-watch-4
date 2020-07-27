@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreatorPlayer.setActiveFullVideoPlayer(film));
   },
   setFavoriteFilm(isFavorite, filmId) {
-    dispatch(FilmsOperation.setFavoriteFilm(isFavorite, filmId));
+    dispatch(FilmsOperation.updateFilm(isFavorite, filmId));
   },
 });
 

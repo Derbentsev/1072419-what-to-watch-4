@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {ActionCreator as PlayerActionCreator} from '@reducer/player/player';
 import {ActionCreator as PageActionCreator} from '@reducer/page/page';
 import {Operation as ReviewsOperation} from '@reducer/reviews/reviews';
+import {Operation as FilmsOperation} from '@reducer/films/films';
 import NameSpace from '@reducer/name-space';
 
 
@@ -17,11 +18,14 @@ const mapDispatchToProps = (dispatch) => ({
   handleOnPlayClick(film) {
     dispatch(PlayerActionCreator.setActiveFullVideoPlayer(film));
   },
-  loadReviews() {
-    dispatch(ReviewsOperation.loadReviews());
+  loadReviews(filmId) {
+    dispatch(ReviewsOperation.loadReviews(filmId));
   },
   setActivePage(pageName) {
     dispatch(PageActionCreator.setActivePage(pageName));
+  },
+  setFavoriteFilm(isFavorite, filmId) {
+    dispatch(FilmsOperation.updateFilm(isFavorite, filmId));
   },
 });
 
