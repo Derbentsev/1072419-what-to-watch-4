@@ -1,0 +1,136 @@
+import UserLogo from '@components/user-logo/user-logo.connect';
+
+
+const MyListSettings = {
+  FAVORITE: `1`,
+  NOT_FAVORITE: `0`,
+};
+
+
+export default class FilmPromo extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this._handleClickAddToMyList = this._handleClickAddToMyList.bind(this);
+  }
+
+  _handleClickAddToMyList() {
+    const {filmPromo} = this.props;
+
+    const {setFavoriteFilm} = this.props;
+
+    if (filmPromo.isFavorite) {
+      setFavoriteFilm(MyListSettings.NOT_FAVORITE, filmPromo.id);
+      return;
+    }
+
+    setFavoriteFilm(MyListSettings.FAVORITE, filmPromo.id);
+  }
+
+  render() {
+    const {filmPromo, handleOnPlayClick} = this.props;
+
+    return (
+      <section className="movie-card">
+        <div className="movie-card__bg">
+          <img src={filmPromo.backgroundImage} alt={filmPromo.title} />
+        </div>
+
+        <h1 className="visually-hidden">WTW</h1>
+
+        <header className="page-header movie-card__head">
+          <div className="logo">
+            <a className="logo__link">
+              <span className="logo__letter logo__letter--1">W</span>
+              <span className="logo__letter logo__letter--2">T</span>
+              <span className="logo__letter logo__letter--3">W</span>
+            </a>
+          </div>
+
+          <UserLogo/>
+        </header>
+
+        <div className="movie-card__wrap">
+          <div className="movie-card__info">
+            <div className="movie-card__poster">
+              <img src={filmPromo.cover} alt={filmPromo.title + ` poster`} width="218" height="327" />
+            </div>
+
+            <div className="movie-card__desc">
+              <h2
+                className="movie-card__title"
+              >
+                {filmPromo.title}
+              </h2>
+              <p className="movie-card__meta">
+                <span className="movie-card__genre">{filmPromo.genre}</span>
+                <span className="movie-card__year">{filmPromo.dateRelease}</span>
+              </p>
+
+              <div className="movie-card__buttons">
+                <button
+                  className="btn btn--play movie-card__button"
+                  type="button"
+                  onClick={(evt) => {
+                    evt.preventDefault();
+                    handleOnPlayClick(filmPromo);
+                  }}
+                >
+                  <svg viewBox="0 0 19 19" width="19" height="19">
+                    <use href="#play-s"></use>
+                  </svg>
+                  <span>Play</span>
+                </button>
+                <button
+                  className="btn btn--list movie-card__button"
+                  type="button"
+                  onClick = {this._handleClickAddToMyList}
+                >
+                  {filmPromo.isFavorite &&
+                    <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use href="#in-list"></use>
+                    </svg>
+                  }
+                  {!filmPromo.isFavorite &&
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use href="#add"></use>
+                    </svg>
+                  }
+
+                  <span>My list</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+}
+
+FilmPromo.propTypes = {
+  handleOnPlayClick: PropTypes.func.isRequired,
+  filmPromo: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    poster: PropTypes.string,
+    genre: PropTypes.string,
+    dateRelease: PropTypes.number,
+    cover: PropTypes.string,
+    videoSrc: PropTypes.string,
+    previewVideoSrc: PropTypes.string,
+    director: PropTypes.string,
+    actors: PropTypes.arrayOf(PropTypes.string),
+    ratingScore: PropTypes.number,
+    ratingCount: PropTypes.number,
+    description: PropTypes.string,
+    runTime: PropTypes.number,
+    backgroundImage: PropTypes.string,
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      comment: PropTypes.string,
+      rating: PropTypes.number,
+      author: PropTypes.string,
+      date: PropTypes.string,
+    })),
+  }),
+};
