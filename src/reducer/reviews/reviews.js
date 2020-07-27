@@ -1,5 +1,5 @@
 import {extend} from '@utils/';
-import {createReviews} from '@adapters/reviews';
+import {createReviews, createPushReview} from '@adapters/reviews';
 import {ActionCreator as PageActionCreator} from '@reducer/page/page';
 
 
@@ -38,8 +38,8 @@ const Operation = {
         throw err;
       });
   },
-  pushReview: (review) => (dispatch, getState, api) => {
-    return api.post(`/comments/${getState().FILMS.activeFilm.id}`, review)
+  pushReview: (form) => (dispatch, getState, api) => {
+    return api.post(`/comments/${getState().FILMS.activeFilm.id}`, createPushReview(form))
       .then((response) => {
         dispatch(ActionCreator.pushReview(response.status));
         dispatch(PageActionCreator.setActivePage(``));

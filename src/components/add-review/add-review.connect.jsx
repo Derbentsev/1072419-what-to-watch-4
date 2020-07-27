@@ -9,8 +9,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  pushReview(review) {
-    dispatch(ReviewsOperation.pushReview(review));
+  pushReview(form) {
+    dispatch(ReviewsOperation.pushReview(form));
   },
 });
 

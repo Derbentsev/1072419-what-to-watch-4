@@ -1,14 +1,12 @@
 const createReview = (review) => {
-  return (
-    {
-      filmId: review.id,
-      userId: review.user.id,
-      author: review.user.name,
-      comment: review.comment,
-      rating: review.rating,
-      date: review.author,
-    }
-  );
+  return ({
+    filmId: review.id,
+    userId: review.user.id,
+    author: review.user.name,
+    comment: review.comment,
+    rating: review.rating,
+    date: review.author,
+  });
 };
 
 const createReviews = (data) => {
@@ -21,13 +19,13 @@ const createReviews = (data) => {
   return reviews;
 };
 
-const createPushReview = (review) => {
-  return (
-    {
-      rating: review[`rating`],
-      comment: review[`review-text`],
-    }
-  );
+const createPushReview = (form) => {
+  const formData = new FormData(form.target);
+
+  return ({
+    rating: formData.get(`rating`),
+    comment: formData.get(`review-text`),
+  });
 };
 
 
