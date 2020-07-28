@@ -1,9 +1,6 @@
 import UserLogo from '@components/user-logo/user-logo.connect';
-import {createPushReview} from '@adapters/reviews';
 import {extend} from '@utils/';
 import history from '@history/history';
-import {PushStatus} from '@reducer/reviews/reviews';
-import {AppRoute} from '@consts/';
 
 
 const ReviewParams = {
@@ -147,6 +144,12 @@ class AddReview extends React.PureComponent {
 AddReview.propTypes = {
   pushReview: PropTypes.func.isRequired,
   getFilmById: PropTypes.func.isRequired,
+  pushReviewStatus: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired
+  }).isRequired,
 };
 
 

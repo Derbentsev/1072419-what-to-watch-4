@@ -193,9 +193,13 @@ export default class MoviePage extends React.Component {
 MoviePage.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   getFilmById: PropTypes.func.isRequired,
-  setActivePage: PropTypes.func.isRequired,
   loadReviews: PropTypes.func.isRequired,
   setFavoriteFilm: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired
+  }).isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
