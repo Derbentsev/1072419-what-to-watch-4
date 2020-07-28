@@ -1,4 +1,7 @@
 import UserLogo from '@components/user-logo/user-logo.connect';
+import {AuthorizationStatus} from '@reducer/user/user';
+import history from '@history/history';
+import {AppRoute} from '@consts/';
 
 
 const MyListSettings = {
@@ -14,7 +17,12 @@ export default class FilmPromo extends React.PureComponent {
   }
 
   _handleClickAddToMyList() {
-    const {filmPromo, setFavoriteFilm} = this.props;
+    const {filmPromo, setFavoriteFilm, authorizationStatus} = this.props;
+
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      history.push(AppRoute.LOGIN);
+      return;
+    }
 
     if (filmPromo.isFavorite) {
       setFavoriteFilm(MyListSettings.NOT_FAVORITE, filmPromo.id);
@@ -25,7 +33,7 @@ export default class FilmPromo extends React.PureComponent {
   }
 
   render() {
-    const {filmPromo, handleOnPlayClick} = this.props;
+    const {filmPromo} = this.props;
 
     return (
       <section className="movie-card">
@@ -68,7 +76,7 @@ export default class FilmPromo extends React.PureComponent {
                   type="button"
                   onClick={(evt) => {
                     evt.preventDefault();
-                    handleOnPlayClick(filmPromo);
+                    history.push(`/player/${filmPromo.id}`);
                   }}
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
@@ -103,7 +111,7 @@ export default class FilmPromo extends React.PureComponent {
 }
 
 FilmPromo.propTypes = {
-  handleOnPlayClick: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   setFavoriteFilm: PropTypes.func.isRequired,
   filmPromo: PropTypes.shape({
     id: PropTypes.number,

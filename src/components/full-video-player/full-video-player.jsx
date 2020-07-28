@@ -1,10 +1,10 @@
 import {KeyName} from '@consts/';
+import history from '@history/history';
 
 
 export default class FullVideoPlayer extends React.PureComponent {
   constructor(props) {
     super(props);
-
     this._handleEscClick = this._handleEscClick.bind(this);
   }
 
@@ -18,20 +18,19 @@ export default class FullVideoPlayer extends React.PureComponent {
 
   _handleEscClick(evt) {
     if (evt.key === KeyName.ESC) {
-      this.props.handleOnExitClick();
+      history.goBack();
     }
   }
 
   render() {
-    const {
-      handleOnExitClick,
-      activeFullVideoPlayer,
-    } = this.props;
+    const {getFilmById} = this.props;
+    const filmId = this.props.match.params.id;
+    const film = getFilmById(filmId);
 
     return (
       <div className="player">
         <video
-          src={activeFullVideoPlayer.videoSrc}
+          src={film.videoSrc}
           muted={true}
           className="player__video"
           poster="img/player-poster.jpg"
@@ -41,7 +40,7 @@ export default class FullVideoPlayer extends React.PureComponent {
         <button
           type="button"
           className="player__exit"
-          onClick={handleOnExitClick}
+          onClick={() => history.goBack()}
         >
           Exit
         </button>
@@ -51,27 +50,5 @@ export default class FullVideoPlayer extends React.PureComponent {
 }
 
 FullVideoPlayer.propTypes = {
-  activeFullVideoPlayer: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    dateRelease: PropTypes.number.isRequired,
-    cover: PropTypes.string.isRequired,
-    videoSrc: PropTypes.string.isRequired,
-    previewVideoSrc: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    ratingScore: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    runTime: PropTypes.number.isRequired,
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      comment: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-      author: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-    })),
-  }).isRequired,
-  handleOnExitClick: PropTypes.func.isRequired,
+  getFilmById: PropTypes.func.isRequired,
 };

@@ -1,18 +1,10 @@
 import FullVideoPlayer from './full-video-player';
 import {connect} from 'react-redux';
-import {ActionCreator} from '@reducer/player/player';
-import NameSpace from '@reducer/name-space';
+import {getFilmById} from '@reducer/films/selectors';
 
 
 const mapStateToProps = (state) => ({
-  activeFullVideoPlayer: state[NameSpace.PLAYER].activeFullVideoPlayer,
+  getFilmById: (filmId) => getFilmById(state, filmId),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  handleOnExitClick() {
-    dispatch(ActionCreator.setActiveFullVideoPlayer(null));
-  },
-});
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(FullVideoPlayer);
+export default connect(mapStateToProps)(FullVideoPlayer);

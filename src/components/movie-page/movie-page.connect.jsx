@@ -1,6 +1,5 @@
 import MoviePage from './movie-page';
 import {connect} from 'react-redux';
-import {ActionCreator as PlayerActionCreator} from '@reducer/player/player';
 import {ActionCreator as PageActionCreator} from '@reducer/page/page';
 import {Operation as ReviewsOperation} from '@reducer/reviews/reviews';
 import {Operation as FilmsOperation} from '@reducer/films/films';
@@ -16,9 +15,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  handleOnPlayClick(film) {
-    dispatch(PlayerActionCreator.setActiveFullVideoPlayer(film));
-  },
   loadReviews(filmId) {
     dispatch(ReviewsOperation.loadReviews(filmId));
   },

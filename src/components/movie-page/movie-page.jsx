@@ -5,6 +5,7 @@ import withMoviesList from '@hocs/with-movies-list/with-movies-list';
 import UserLogo from '@components/user-logo/user-logo.connect';
 import {AppRoute} from '@consts/';
 import history from '@history/history';
+import {AuthorizationStatus} from '@reducer/user/user';
 
 
 const SAME_FILMS_COUNT = 4;
@@ -35,7 +36,12 @@ export default class MoviePage extends React.Component {
   }
 
   _handleClickAddToMyList(filmId, currentFilm) {
-    const {setFavoriteFilm} = this.props;
+    const {setFavoriteFilm, authorizationStatus} = this.props;
+
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      history.push(AppRoute.LOGIN);
+      return;
+    }
 
     if (currentFilm.isFavorite) {
       setFavoriteFilm(MyListSettings.NOT_FAVORITE, filmId);
@@ -54,7 +60,6 @@ export default class MoviePage extends React.Component {
   render() {
     const {
       films,
-      handleOnPlayClick,
       authorizationStatus,
       getFilmById,
     } = this.props;
@@ -99,7 +104,7 @@ export default class MoviePage extends React.Component {
                     type="button"
                     onClick={(evt) => {
                       evt.preventDefault();
-                      handleOnPlayClick(currentFilm);
+                      history.push(`/player/${filmId}`);
                     }}
                   >
                     <svg viewBox="0 0 19 19" width="19" height="19">
@@ -187,7 +192,7 @@ export default class MoviePage extends React.Component {
 
 MoviePage.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
-  handleOnPlayClick: PropTypes.func.isRequired,
+  getFilmById: PropTypes.func.isRequired,
   setActivePage: PropTypes.func.isRequired,
   loadReviews: PropTypes.func.isRequired,
   setFavoriteFilm: PropTypes.func.isRequired,
