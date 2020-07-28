@@ -82,7 +82,6 @@ const mockStore = configureStore([]);
 
 it(`Render Movies List`, () => {
   const store = mockStore({
-    activeFilm: null,
     films,
     showedFilmsCount: 8,
     currentFilter: `filter1`,

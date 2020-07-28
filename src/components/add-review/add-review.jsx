@@ -1,6 +1,9 @@
 import UserLogo from '@components/user-logo/user-logo.connect';
 import {createPushReview} from '@adapters/reviews';
 import {extend} from '@utils/';
+import history from '@history/history';
+import {PushStatus} from '@reducer/reviews/reviews';
+import {AppRoute} from '@consts/';
 
 
 const ReviewParams = {
@@ -11,45 +14,13 @@ const ReviewParams = {
   DEFAULT_RATING: 3,
 };
 
-const toggleElementsDisabled = (elements) => {
-  [...elements].forEach((element) => {
-    element.disabled = element.disabled ? false : true;
-  });
-};
-
-const handleFormSubmit = (evt, pushReview) => {
-  evt.preventDefault();
-
-  const formData = new FormData(evt.target);
-  const reviewText = evt.target.querySelector(`.add-review__textarea`).value;
-  const formElements = evt.target.elements;
-
-  toggleElementsDisabled(formElements);
-
-  if (reviewText.length < ReviewParams.MIN_COMMENT_LENGTH || reviewText.length > ReviewParams.MAX_COMMENT_LENGTH) {
-    toggleElementsDisabled(formElements);
-
-    document.querySelector(`.validate-div`).classList.remove(`visually-hidden`);
-    return false;
-  }
-
-  let pushReviewData = {};
-  formData.forEach((value, key) => {
-    pushReviewData[key] = value;
-  });
-
-  pushReview(createPushReview(pushReviewData));
-  return true;
-};
-
-
 class AddReview extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      rating: 3,
-      comment: ReviewParams.DEFAULT_RATING,
+      rating: ReviewParams.DEFAULT_RATING,
+      comment: 0,
     };
 
     this.buttonRef = React.createRef();
@@ -62,7 +33,7 @@ class AddReview extends React.PureComponent {
         case `radio`:
           return {rating: element.value};
         case `textarea`:
-          return {comment: element.value.length};
+          return {comment: element.value};
       }
       return {};
     })(evt.target));
@@ -70,22 +41,29 @@ class AddReview extends React.PureComponent {
     this.setState(newState);
 
     this.buttonRef.current.disabled = (
-      newState.comment < ReviewParams.MIN_COMMENT_LENGTH ||
-      newState.comment > ReviewParams.MAX_COMMENT_LENGTH ||
+      newState.comment.length < ReviewParams.MIN_COMMENT_LENGTH ||
+      newState.comment.length > ReviewParams.MAX_COMMENT_LENGTH ||
       newState.rating < ReviewParams.MIN_RATING ||
       newState.rating > ReviewParams.MAX_RATING
     );
   }
 
   render() {
-    const {activeFilm, pushReview} = this.props;
+    const {pushReview, getFilmById, pushReviewStatus} = this.props;
+
+    if (pushReviewStatus) {
+      history.goBack();
+    }
+
+    const filmId = this.props.match.params.id;
+    const currentFilm = getFilmById(filmId);
 
     return (
       <>
         <section className="movie-card movie-card--full">
           <div className="movie-card__header">
             <div className="movie-card__bg">
-              <img src={activeFilm.backgroundImage} alt={activeFilm.title} />
+              <img src={currentFilm.backgroundImage} alt={currentFilm.title} />
             </div>
 
             <h1 className="visually-hidden">WTW</h1>
@@ -102,7 +80,7 @@ class AddReview extends React.PureComponent {
               <nav className="breadcrumbs">
                 <ul className="breadcrumbs__list">
                   <li className="breadcrumbs__item">
-                    <a href="movie-page.html" className="breadcrumbs__link">{activeFilm.title}</a>
+                    <a href="movie-page.html" className="breadcrumbs__link">{currentFilm.title}</a>
                   </li>
                   <li className="breadcrumbs__item">
                     <a className="breadcrumbs__link">Add review</a>
@@ -114,7 +92,7 @@ class AddReview extends React.PureComponent {
             </header>
 
             <div className="movie-card__poster movie-card__poster--small">
-              <img src={activeFilm.cover} alt={activeFilm.title + `poster`} width="218" height="327" />
+              <img src={currentFilm.cover} alt={currentFilm.title + `poster`} width="218" height="327" />
             </div>
           </div>
 
@@ -124,7 +102,7 @@ class AddReview extends React.PureComponent {
               className="add-review__form"
               onSubmit={(evt) => {
                 evt.preventDefault();
-                pushReview(evt);
+                pushReview(this.state.rating, this.state.comment, filmId);
               }}
               onInput={this._onInput}
             >
@@ -168,29 +146,7 @@ class AddReview extends React.PureComponent {
 
 AddReview.propTypes = {
   pushReview: PropTypes.func.isRequired,
-  activeFilm: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    dateRelease: PropTypes.number.isRequired,
-    cover: PropTypes.string.isRequired,
-    videoSrc: PropTypes.string.isRequired,
-    previewVideoSrc: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    ratingScore: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    runTime: PropTypes.number.isRequired,
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      comment: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-      author: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-    })),
-  }).isRequired,
+  getFilmById: PropTypes.func.isRequired,
 };
 
 

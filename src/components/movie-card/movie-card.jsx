@@ -5,7 +5,6 @@ const MovieCard = (props) => {
   const {
     film,
     handleMovieCardMouseEnter,
-    handleMovieCardClick,
     renderPlayer,
   } = props;
 
@@ -13,11 +12,7 @@ const MovieCard = (props) => {
     <article
       className="small-movie-card catalog__movies-card"
       onMouseEnter={handleMovieCardMouseEnter}
-      onClick={(evt) => {
-        evt.preventDefault();
-        // handleMovieCardClick(film);
-        history.push(`/films/${film.id}`);
-      }}
+      onClick={() => history.push(`/films/${film.id}`)}
     >
 
       {renderPlayer(film.previewVideoSrc, film.poster)}
@@ -55,7 +50,6 @@ MovieCard.propTypes = {
     })),
   }).isRequired,
   handleMovieCardMouseEnter: PropTypes.func.isRequired,
-  handleMovieCardClick: PropTypes.func.isRequired,
   renderPlayer: PropTypes.func.isRequired,
 };
 

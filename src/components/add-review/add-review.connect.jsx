@@ -1,16 +1,18 @@
 import {connect} from 'react-redux';
 import AddReview from './add-review';
-import NameSpace from '@reducer/name-space';
 import {Operation as ReviewsOperation} from '@reducer/reviews/reviews';
+import {getFilmById} from '@reducer/films/selectors';
+import NameSpace from '@reducer/name-space';
 
 
 const mapStateToProps = (state) => ({
-  activeFilm: state[NameSpace.FILMS].activeFilm,
+  getFilmById: (filmId) => getFilmById(state, filmId),
+  pushReviewStatus: state[NameSpace.REVIEWS].pushReviewStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  pushReview(form) {
-    dispatch(ReviewsOperation.pushReview(form));
+  pushReview(rating, comment, filmId) {
+    dispatch(ReviewsOperation.pushReview(rating, comment, filmId));
   },
 });
 

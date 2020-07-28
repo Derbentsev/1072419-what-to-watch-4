@@ -1,11 +1,15 @@
 import {extend} from '@utils/';
 import {createReviews, createPushReview} from '@adapters/reviews';
-import {ActionCreator as PageActionCreator} from '@reducer/page/page';
 
+
+const PushStatus = {
+  SUCCESS: true,
+  UNSUCCESS: false,
+};
 
 const initialState = {
   reviews: [],
-  pushReviewStatus: ``,
+  pushReviewStatus: null,
 };
 
 const ActionType = {
@@ -20,7 +24,7 @@ const ActionCreator = {
       payload: reviews,
     };
   },
-  pushReview: (pushReviewStatus) => {
+  setReviewStatus: (pushReviewStatus) => {
     return {
       type: ActionType.PUSH_REVIEW,
       payload: pushReviewStatus,
@@ -38,14 +42,13 @@ const Operation = {
         throw err;
       });
   },
-  pushReview: (form) => (dispatch, getState, api) => {
-    return api.post(`/comments/${getState().FILMS.activeFilm.id}`, createPushReview(form))
-      .then((response) => {
-        dispatch(ActionCreator.pushReview(response.status));
-        dispatch(PageActionCreator.setActivePage(``));
+  pushReview: (rating, comment, filmId) => (dispatch, getState, api) => {
+    return api.post(`/comments/${filmId}`, createPushReview(rating, comment))
+      .then(() => {
+        dispatch(ActionCreator.setReviewStatus(PushStatus.SUCCESS));
       })
-      .catch((err) => {
-        dispatch(ActionCreator.pushReview(err));
+      .catch(() => {
+        dispatch(ActionCreator.setReviewStatus(PushStatus.UNSUCCESS));
       });
   },
 };

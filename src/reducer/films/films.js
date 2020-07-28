@@ -9,8 +9,6 @@ import NameSpace from '@reducer/name-space';
 const initialState = {
   films: [],
   filmPromo: {},
-  activeFilm: null,
-  isFavoriteFilm: false,
   favoriteFilms: [],
 };
 
@@ -18,7 +16,6 @@ const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_FILM_PROMO: `LOAD_FILM_PROMO`,
   SET_ACTIVE_FILM: `SET_ACTIVE_FILM`,
-  SET_FAVORITE_FILM: `SET_FAVORITE_FILM`,
   LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
   UPDATE_FILM: `UPADTE_FILM`,
   UPDATE_FILM_PROMO: `UPADTE_FILM_PROMO`,
@@ -32,14 +29,6 @@ const ActionCreator = {
   loadFilmPromo: (film) => ({
     type: ActionType.LOAD_FILM_PROMO,
     payload: film,
-  }),
-  setActiveFilm: (film) => ({
-    type: ActionType.SET_ACTIVE_FILM,
-    payload: film,
-  }),
-  setFavoriteFilm: (status) => ({
-    type: ActionType.SET_FAVORITE_FILM,
-    payload: status,
   }),
   loadFavoriteFilms: (films) => ({
     type: ActionType.LOAD_FAVORITE_FILMS,
@@ -114,14 +103,6 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_FILM_PROMO:
       return extend(state, {
         filmPromo: action.payload,
-      });
-    case ActionType.SET_ACTIVE_FILM:
-      return extend(state, {
-        activeFilm: action.payload,
-      });
-    case ActionType.SET_FAVORITE_FILM:
-      return extend(state, {
-        isFavoriteFilm: action.payload,
       });
     case ActionType.LOAD_FAVORITE_FILMS:
       return extend(state, {

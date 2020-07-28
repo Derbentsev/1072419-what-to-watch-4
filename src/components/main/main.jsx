@@ -2,7 +2,6 @@ import FiltersByGenre from '@components/filters-by-genre/filters-by-genre.connec
 import MoviesList from '@components/movies-list/movies-list.connect';
 import withMoviesList from '@hocs/with-movies-list/with-movies-list';
 import FilmPromo from '@components/film-promo/film-promo.connect';
-import Loader from 'react-loader-spinner';
 
 
 const SHOW_FILM_CARD_BY_BUTTON = 8;

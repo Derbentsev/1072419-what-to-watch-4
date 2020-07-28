@@ -3,8 +3,8 @@ import withActiveTab from '@hocs/with-active-tab/with-active-tab';
 import MoviesList from '@components/movies-list/movies-list';
 import withMoviesList from '@hocs/with-movies-list/with-movies-list';
 import UserLogo from '@components/user-logo/user-logo.connect';
-import {PageName} from '@reducer/page/page';
 import {AppRoute} from '@consts/';
+import history from '@history/history';
 
 
 const SAME_FILMS_COUNT = 4;
@@ -56,12 +56,11 @@ export default class MoviePage extends React.Component {
       films,
       handleOnPlayClick,
       authorizationStatus,
-      setActivePage,
+      getFilmById,
     } = this.props;
 
-    const filmId = parseInt(this.props.match.params.id, 10);
-    const currentFilmIndex = films.findIndex((film) => film.id === filmId);
-    const currentFilm = films[currentFilmIndex];
+    const filmId = this.props.match.params.id;
+    const currentFilm = getFilmById(filmId);
     const sameFilms = sameGenreFilms(currentFilm, films.slice());
 
     return (
@@ -133,7 +132,7 @@ export default class MoviePage extends React.Component {
                       className="btn movie-card__button"
                       onClick={(evt) => {
                         evt.preventDefault();
-                        setActivePage(PageName.ADD_REVIEW);
+                        history.push(`/films/${filmId}/review`);
                       }}
                     >Add review
                     </a>

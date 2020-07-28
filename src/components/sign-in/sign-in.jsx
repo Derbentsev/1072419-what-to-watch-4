@@ -1,5 +1,6 @@
 import {AppRoute} from '@consts/';
 import {AuthorizationStatus} from '@reducer/user/user';
+import {Redirect} from 'react-router-dom';
 
 
 export default class SignIn extends React.PureComponent {

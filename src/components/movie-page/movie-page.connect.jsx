@@ -5,13 +5,14 @@ import {ActionCreator as PageActionCreator} from '@reducer/page/page';
 import {Operation as ReviewsOperation} from '@reducer/reviews/reviews';
 import {Operation as FilmsOperation} from '@reducer/films/films';
 import NameSpace from '@reducer/name-space';
+import {getFilmById} from '@reducer/films/selectors';
 
 
 const mapStateToProps = (state) => ({
   films: state[NameSpace.FILMS].films,
-  activeFilm: state[NameSpace.FILMS].activeFilm,
   reviews: state[NameSpace.REVIEWS].reviews,
   authorizationStatus: state[NameSpace.USER].authorizationStatus,
+  getFilmById: (filmId) => getFilmById(state, filmId),
 });
 
 const mapDispatchToProps = (dispatch) => ({

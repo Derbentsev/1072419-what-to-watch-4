@@ -19,12 +19,10 @@ const createReviews = (data) => {
   return reviews;
 };
 
-const createPushReview = (form) => {
-  const formData = new FormData(form.target);
-
+const createPushReview = (rating, comment) => {
   return ({
-    rating: formData.get(`rating`),
-    comment: formData.get(`review-text`),
+    rating,
+    comment,
   });
 };
 

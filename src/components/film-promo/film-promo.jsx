@@ -21,7 +21,7 @@ export default class FilmPromo extends React.PureComponent {
       return;
     }
 
-    setFavoriteFilm(MyListSettings.FAVORITE, filmPromo.id, this);
+    setFavoriteFilm(MyListSettings.FAVORITE, filmPromo.id);
   }
 
   render() {

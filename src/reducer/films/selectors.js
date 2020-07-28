@@ -8,10 +8,6 @@ const getUniqueGenres = (films) => {
     .filter((value, index, self) => self.indexOf(value) === index);
 };
 
-const getFilmId = (state, filmId) => {
-  return filmId;
-};
-
 const getFilms = (state) => {
   return state[NameSpace.FILMS].films;
 };
@@ -20,16 +16,9 @@ const getCurrentFilter = (state) => {
   return state[NameSpace.FILTER].currentFilter;
 };
 
-const getFilmById = createSelector(
-    getFilmId,
-    getFilms,
-    (filmId, films) => {
-      if (filmId) {
-        return films.find((film) => film.id === filmId);
-      }
-      return null;
-    }
-);
+const getFilmId = (state, filmId) => {
+  return parseInt(filmId, 10);
+};
 
 const getFilmsByGenre = createSelector(
     getFilms,
@@ -40,6 +29,14 @@ const getFilmsByGenre = createSelector(
       }
 
       return films.filter((film) => film.genre === currentFilter);
+    }
+);
+
+const getFilmById = createSelector(
+    getFilmId,
+    getFilms,
+    (filmId, films) => {
+      return films.find((film) => film.id === filmId);
     }
 );
 
