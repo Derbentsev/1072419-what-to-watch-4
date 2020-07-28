@@ -109,10 +109,7 @@ const filmPromo = {
 const mockFilmsStore = {
   films,
   filmPromo,
-};
-
-const mockPlayerStore = {
-  activeFullVideoPlayer: null,
+  favoriteFilms: [],
 };
 
 const mockFilterStore = {
@@ -124,10 +121,6 @@ const mockUserStore = {
   authorizationError: ``,
 };
 
-const mockPageStore = {
-  activePage: `Page1`,
-};
-
 const mockReviewsStore = {
   reviews: [],
   pushReviewStatus: ``,
@@ -136,9 +129,7 @@ const mockReviewsStore = {
 
 export {
   mockFilmsStore,
-  mockPlayerStore,
   mockFilterStore,
   mockUserStore,
-  mockPageStore,
   mockReviewsStore,
 };

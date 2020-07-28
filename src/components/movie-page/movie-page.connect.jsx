@@ -1,6 +1,5 @@
 import MoviePage from './movie-page';
 import {connect} from 'react-redux';
-import {ActionCreator as PageActionCreator} from '@reducer/page/page';
 import {Operation as ReviewsOperation} from '@reducer/reviews/reviews';
 import {Operation as FilmsOperation} from '@reducer/films/films';
 import NameSpace from '@reducer/name-space';
@@ -17,9 +16,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   loadReviews(filmId) {
     dispatch(ReviewsOperation.loadReviews(filmId));
-  },
-  setActivePage(pageName) {
-    dispatch(PageActionCreator.setActivePage(pageName));
   },
   setFavoriteFilm(isFavorite, filmId) {
     dispatch(FilmsOperation.updateFilm(isFavorite, filmId));

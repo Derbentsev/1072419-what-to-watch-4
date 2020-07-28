@@ -2,9 +2,9 @@ import MoviePage from './movie-page.connect';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import NameSpace from '@reducer/name-space';
+import {MemoryRouter} from 'react-router-dom';
 import {
   mockFilmsStore,
-  mockPlayerStore,
   mockFilterStore,
   mockUserStore,
   mockReviewsStore,
@@ -16,7 +16,6 @@ const mockStore = configureStore([]);
 it(`Render Movie Page`, () => {
   const store = mockStore({
     [NameSpace.FILMS]: mockFilmsStore,
-    [NameSpace.PLAYER]: mockPlayerStore,
     [NameSpace.FILTER]: mockFilterStore,
     [NameSpace.USER]: mockUserStore,
     [NameSpace.REVIEWS]: mockReviewsStore,
@@ -24,13 +23,14 @@ it(`Render Movie Page`, () => {
 
   const tree = renderer
     .create(
-        <Provider store = {store}>
-          <MoviePage
-            loadReviews={()=>{}}
-            setActivePage={()=>{}}
-            handleOnPlayClick={()=>{}}
-          />
-        </Provider>
+        <MemoryRouter>
+          <Provider store = {store}>
+            <MoviePage
+              loadReviews={()=>{}}
+              match={{params: {id: `3`}}}
+            />
+          </Provider>
+        </MemoryRouter>
     ).toJSON();
 
   expect(tree).toMatchSnapshot();

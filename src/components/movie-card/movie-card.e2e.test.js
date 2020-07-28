@@ -32,7 +32,6 @@ it(`When cursor on the movie card, has movie info`, () => {
   const movieCard = shallow(<MovieCard
     film = {mocks}
     handleMovieCardMouseEnter = {handleMovieCardMouseEnterSpy}
-    handleMovieCardClick = {() => {}}
     renderPlayer = {() => {}}
   />);
 
@@ -40,20 +39,4 @@ it(`When cursor on the movie card, has movie info`, () => {
   card.props().onMouseEnter();
 
   expect(handleMovieCardMouseEnterSpy.mock.calls.length).toBe(1);
-});
-
-it(`When mouse click on movie card`, () => {
-  const handleMovieCardClickSpy = jest.fn();
-
-  const movieCard = shallow(<MovieCard
-    film = {mocks}
-    handleMovieCardMouseEnter = {() => {}}
-    handleMovieCardClick = {handleMovieCardClickSpy}
-    renderPlayer = {() => {}}
-  />);
-
-  const movieCardElement = movieCard.find(`.small-movie-card`);
-  movieCardElement.props().onClick({preventDefault() {}});
-
-  expect(handleMovieCardClickSpy.mock.calls.length).toBe(1);
 });
