@@ -17,7 +17,7 @@ const ActionType = {
   LOAD_FILM_PROMO: `LOAD_FILM_PROMO`,
   SET_ACTIVE_FILM: `SET_ACTIVE_FILM`,
   LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
-  UPDATE_FILM: `UPADTE_FILM`,
+  UPDATE_FILMS: `UPADTE_FILMS`,
   UPDATE_FILM_PROMO: `UPADTE_FILM_PROMO`,
 };
 
@@ -34,8 +34,8 @@ const ActionCreator = {
     type: ActionType.LOAD_FAVORITE_FILMS,
     payload: films,
   }),
-  updateFilm: (film) => ({
-    type: ActionType.UPDATE_FILM,
+  updateFilms: (film) => ({
+    type: ActionType.UPDATE_FILMS,
     payload: film,
   }),
   updateFilmPromo: (film) => ({
@@ -86,7 +86,7 @@ const Operation = {
         const elementIndex = films.findIndex((x) => x.id === response.data.id);
 
         films[elementIndex] = createFilm(response.data);
-        dispatch(ActionCreator.updateFilm(films));
+        dispatch(ActionCreator.updateFilms(films));
       })
       .catch((err) => {
         throw err;
@@ -108,7 +108,7 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         favoriteFilms: action.payload,
       });
-    case ActionType.UPDATE_FILM:
+    case ActionType.UPDATE_FILMS:
       return extend(state, {
         films: action.payload,
       });

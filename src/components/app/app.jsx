@@ -6,6 +6,7 @@ import AddReview from '@components/add-review/add-review.connect';
 import history from '@history/history';
 import {AppRoute} from '@consts/';
 import MyList from '@components/my-list/my-list.connect';
+import PrivateRoute from '@components/private-route/private-route.connect';
 
 
 export default class App extends React.PureComponent {
@@ -23,10 +24,16 @@ export default class App extends React.PureComponent {
         <Switch>
           <Route exact path={AppRoute.ROOT} component={Main} />
           <Route exact path={AppRoute.LOGIN} component={SignIn} />
-          <Route exact path={AppRoute.MY_LIST} component={MyList} />
           <Route exact path={AppRoute.FILM} component={MoviePage} />
-          <Route exact path={AppRoute.REVIEW} component={AddReview} />
           <Route exact path={AppRoute.PLAYER} component={FullVideoPlayer} />
+          <PrivateRoute exact path={AppRoute.MY_LIST} render={() => {
+            return <MyList/>;
+          }}
+          />
+          <PrivateRoute exact path={AppRoute.REVIEW} render={() => {
+            return <AddReview/>;
+          }}
+          />
         </Switch>
       </Router>
     );

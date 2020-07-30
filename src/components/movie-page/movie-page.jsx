@@ -39,10 +39,8 @@ export default class MoviePage extends React.Component {
     }
 
     setFavoriteFilm(currentFilm.isFavorite
-      ?
-      MyListButtonSettings.NOT_FAVORITE
-      :
-      MyListButtonSettings.FAVORITE, filmId);
+      ? MyListButtonSettings.NOT_FAVORITE
+      : MyListButtonSettings.FAVORITE, filmId);
   }
 
   componentDidMount() {

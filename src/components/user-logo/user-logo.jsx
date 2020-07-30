@@ -7,7 +7,7 @@ const UserLogo = (props) => {
 
   return (
     <div className="user-block">
-      {authorizationStatus === AuthorizationStatus.NO_AUTH
+      {authorizationStatus !== AuthorizationStatus.AUTH
         ?
         <Link
           to={AppRoute.LOGIN}
