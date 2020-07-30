@@ -15,9 +15,15 @@ const AppRoute = {
   PLAYER: `/player/:id`,
 };
 
+const MyListButtonSettings = {
+  FAVORITE: `1`,
+  NOT_FAVORITE: `0`,
+};
+
 
 export {
   KeyName,
   FilterName,
   AppRoute,
+  MyListButtonSettings,
 };

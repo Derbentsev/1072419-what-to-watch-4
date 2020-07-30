@@ -3,17 +3,12 @@ import withActiveTab from '@hocs/with-active-tab/with-active-tab';
 import MoviesList from '@components/movies-list/movies-list';
 import withMoviesList from '@hocs/with-movies-list/with-movies-list';
 import UserLogo from '@components/user-logo/user-logo.connect';
-import {AppRoute} from '@consts/';
+import {AppRoute, MyListButtonSettings} from '@consts/';
 import history from '@history/history';
 import {AuthorizationStatus} from '@reducer/user/user';
 
 
 const SAME_FILMS_COUNT = 4;
-
-const MyListSettings = {
-  FAVORITE: `1`,
-  NOT_FAVORITE: `0`,
-};
 
 const sameGenreFilms = (currentFilm, films) => {
   const index = films.indexOf(currentFilm);
@@ -43,12 +38,11 @@ export default class MoviePage extends React.Component {
       return;
     }
 
-    if (currentFilm.isFavorite) {
-      setFavoriteFilm(MyListSettings.NOT_FAVORITE, filmId);
-      return;
-    }
-
-    setFavoriteFilm(MyListSettings.FAVORITE, filmId);
+    setFavoriteFilm(currentFilm.isFavorite
+      ?
+      MyListButtonSettings.NOT_FAVORITE
+      :
+      MyListButtonSettings.FAVORITE, filmId);
   }
 
   componentDidMount() {
@@ -65,8 +59,12 @@ export default class MoviePage extends React.Component {
     } = this.props;
 
     const filmId = this.props.match.params.id;
-    const currentFilm = getFilmById(filmId);
-    const sameFilms = sameGenreFilms(currentFilm, films.slice());
+    const currentFilm = getFilmById(filmId) || null;
+    const sameFilms = sameGenreFilms(currentFilm, films.slice()) || null;
+
+    if (!currentFilm) {
+      return <h2>Loading...</h2>;
+    }
 
     return (
       <>
@@ -157,7 +155,6 @@ export default class MoviePage extends React.Component {
               <TabsWrapped
                 film = {currentFilm}
               />
-
             </div>
           </div>
         </section>
@@ -166,9 +163,14 @@ export default class MoviePage extends React.Component {
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
 
-            <MoviesListWrapped
-              films = {sameFilms}
-            />
+            {sameFilms
+              ?
+              <MoviesListWrapped
+                films = {sameFilms}
+              />
+              :
+              <h2>Loading...</h2>
+            }
           </section>
 
           <footer className="page-footer">

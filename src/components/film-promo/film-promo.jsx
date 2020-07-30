@@ -1,13 +1,7 @@
 import UserLogo from '@components/user-logo/user-logo.connect';
 import {AuthorizationStatus} from '@reducer/user/user';
 import history from '@history/history';
-import {AppRoute} from '@consts/';
-
-
-const MyListSettings = {
-  FAVORITE: `1`,
-  NOT_FAVORITE: `0`,
-};
+import {AppRoute, MyListButtonSettings} from '@consts/';
 
 
 export default class FilmPromo extends React.PureComponent {
@@ -24,12 +18,11 @@ export default class FilmPromo extends React.PureComponent {
       return;
     }
 
-    if (filmPromo.isFavorite) {
-      setFavoriteFilm(MyListSettings.NOT_FAVORITE, filmPromo.id);
-      return;
-    }
-
-    setFavoriteFilm(MyListSettings.FAVORITE, filmPromo.id);
+    setFavoriteFilm(filmPromo.isFavorite
+      ?
+      MyListButtonSettings.NOT_FAVORITE
+      :
+      MyListButtonSettings.FAVORITE, filmPromo.id);
   }
 
   render() {

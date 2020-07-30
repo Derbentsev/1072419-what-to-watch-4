@@ -5,9 +5,7 @@ const withActiveTab = (Component) => {
   class WithActiveTab extends React.PureComponent {
     constructor(props) {
       super(props);
-
       this.state = {activeTab: TabNames.OVERVIEW};
-
       this._handleOnTab = this._handleOnTab.bind(this);
     }
 
@@ -52,7 +50,7 @@ const withActiveTab = (Component) => {
         author: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
       })),
-    }).isRequired,
+    }),
   };
 
   return WithActiveTab;
