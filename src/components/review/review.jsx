@@ -1,3 +1,6 @@
+import moment from 'moment';
+
+
 const Review = (props) => {
   const {review} = props;
 
@@ -8,7 +11,7 @@ const Review = (props) => {
 
         <footer className="review__details">
           <cite className="review__author">{review.author}</cite>
-          <time className="review__date" dateTime="2016-12-24">{review.date}</time>
+          <time className="review__date" dateTime="2016-12-24">{moment(review.date).format(`MMMM DD, yyyy`)}</time>
         </footer>
       </blockquote>
 

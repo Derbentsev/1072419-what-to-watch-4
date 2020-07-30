@@ -1,5 +1,6 @@
 const path = require(`path`);
 const webpack = require(`webpack`);
+const MomentLocalesPlugin = require(`moment-locales-webpack-plugin`);
 
 module.exports = (env) => {
   return {
@@ -44,6 +45,7 @@ module.exports = (env) => {
       }
     },
     plugins: [
+      new MomentLocalesPlugin(),
       new webpack.ProvidePlugin({
         React: `react`,
         PropTypes: `prop-types`,

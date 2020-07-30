@@ -5,7 +5,7 @@ const createReview = (review) => {
     author: review.user.name,
     comment: review.comment,
     rating: review.rating,
-    date: review.author,
+    date: review.date,
   });
 };
 

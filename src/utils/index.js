@@ -33,10 +33,16 @@ const isValidPassword = (password) => {
   return password !== ``;
 };
 
+const getRunTimeFromMinutes = (minutes) => {
+  const hours = minutes / 60;
+  return Math.floor(hours) + `h` + ` ` + Math.floor((hours - Math.floor(hours)) * 60) + `m`;
+};
+
 
 export {
   extend,
   getTextRating,
   isValidEmail,
   isValidPassword,
+  getRunTimeFromMinutes,
 };

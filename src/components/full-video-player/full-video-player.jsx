@@ -33,7 +33,7 @@ export default class FullVideoPlayer extends React.PureComponent {
           src={film.videoSrc}
           muted={true}
           className="player__video"
-          poster="img/player-poster.jpg"
+          poster="/img/player-poster.jpg"
           controls={true}
         />
 
