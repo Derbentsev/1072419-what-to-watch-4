@@ -27,6 +27,10 @@ export default class FullVideoPlayer extends React.PureComponent {
     const filmId = this.props.match.params.id;
     const film = getFilmById(filmId);
 
+    if (!film) {
+      return <h2>Loading...</h2>;
+    }
+
     return (
       <div className="player">
         <video

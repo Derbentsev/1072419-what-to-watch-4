@@ -4,16 +4,20 @@ import {Redirect} from 'react-router-dom';
 
 
 const PrivateRoute = (props) => {
-  const {render, authorizationStatus} = props;
+  const {render, authorizationStatus, path, exact, computedMatch} = props;
 
   return (
     <Route
+      exact={exact}
+      path={path}
       render={() => {
-        return (
-          authorizationStatus === AuthorizationStatus.AUTH
-            ? render()
-            : <Redirect to={AppRoute.LOGIN} />
-        );
+        if (authorizationStatus === AuthorizationStatus.AUTH) {
+          return render(computedMatch);
+        } else if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+          return <Redirect to={AppRoute.LOGIN} />;
+        }
+
+        return <h2>Loading...</h2>;
       }}
     />
   );
@@ -22,6 +26,13 @@ const PrivateRoute = (props) => {
 PrivateRoute.propTypes = {
   render: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+  exact: PropTypes.bool.isRequired,
+  computedMatch: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }).isRequired
+  }).isRequired,
 };
 
 

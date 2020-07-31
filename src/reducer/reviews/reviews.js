@@ -2,14 +2,14 @@ import {extend} from '@utils/';
 import {createReviews, createPushReview} from '@adapters/reviews';
 
 
-const PushStatus = {
+const PushReviewStatus = {
   SUCCESS: true,
   UNSUCCESS: false,
 };
 
 const initialState = {
   reviews: [],
-  pushReviewStatus: null,
+  pushReviewStatus: PushReviewStatus.UNSUCCESS,
 };
 
 const ActionType = {
@@ -24,7 +24,7 @@ const ActionCreator = {
       payload: reviews,
     };
   },
-  setReviewStatus: (pushReviewStatus) => {
+  setReviewPushStatus: (pushReviewStatus) => {
     return {
       type: ActionType.PUSH_REVIEW,
       payload: pushReviewStatus,
@@ -45,10 +45,10 @@ const Operation = {
   pushReview: (rating, comment, filmId) => (dispatch, getState, api) => {
     return api.post(`/comments/${filmId}`, createPushReview(rating, comment))
       .then(() => {
-        dispatch(ActionCreator.setReviewStatus(PushStatus.SUCCESS));
+        dispatch(ActionCreator.setReviewPushStatus(PushReviewStatus.SUCCESS));
       })
       .catch(() => {
-        dispatch(ActionCreator.setReviewStatus(PushStatus.UNSUCCESS));
+        dispatch(ActionCreator.setReviewPushStatus(PushReviewStatus.UNSUCCESS));
       });
   },
 };
@@ -74,4 +74,5 @@ export {
   ActionCreator,
   Operation,
   reducer,
+  PushReviewStatus,
 };

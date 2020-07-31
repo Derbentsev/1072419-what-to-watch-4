@@ -1,6 +1,7 @@
 import UserLogo from '@components/user-logo/user-logo.connect';
 import {extend} from '@utils/';
 import history from '@history/history';
+import {AppRoute} from '@consts/';
 
 
 const ReviewParams = {
@@ -46,9 +47,10 @@ class AddReview extends React.PureComponent {
   }
 
   render() {
-    const {pushReview, getFilmById, pushReviewStatus} = this.props;
+    const {pushReview, getFilmById, pushReviewStatus, setFalseReviewPushStatus} = this.props;
 
     if (pushReviewStatus) {
+      setFalseReviewPushStatus();
       history.goBack();
     }
 
@@ -67,11 +69,11 @@ class AddReview extends React.PureComponent {
 
             <header className="page-header">
               <div className="logo">
-                <a href="main.html" className="logo__link">
+                <Link href="main.html" className="logo__link" to={AppRoute.ROUTE}>
                   <span className="logo__letter logo__letter--1">W</span>
                   <span className="logo__letter logo__letter--2">T</span>
                   <span className="logo__letter logo__letter--3">W</span>
-                </a>
+                </Link>
               </div>
 
               <nav className="breadcrumbs">
@@ -142,9 +144,10 @@ class AddReview extends React.PureComponent {
 }
 
 AddReview.propTypes = {
+  setFalseReviewPushStatus: PropTypes.func.isRequired,
   pushReview: PropTypes.func.isRequired,
   getFilmById: PropTypes.func.isRequired,
-  pushReviewStatus: PropTypes.func.isRequired,
+  pushReviewStatus: PropTypes.bool.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,

@@ -28,12 +28,10 @@ export default class App extends React.PureComponent {
           <Route exact path={AppRoute.PLAYER} component={FullVideoPlayer} />
           <PrivateRoute exact path={AppRoute.MY_LIST} render={() => {
             return <MyList/>;
-          }}
-          />
-          <PrivateRoute exact path={AppRoute.REVIEW} render={() => {
-            return <AddReview/>;
-          }}
-          />
+          }}/>
+          <PrivateRoute exact path={AppRoute.REVIEW} render={(match) => {
+            return <AddReview match={match}/>;
+          }}/>
         </Switch>
       </Router>
     );
