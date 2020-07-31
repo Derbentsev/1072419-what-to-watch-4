@@ -19,6 +19,7 @@ class AddReview extends React.PureComponent {
     this.state = {
       rating: ReviewParams.DEFAULT_RATING,
       comment: 0,
+      isValid: false,
     };
 
     this.buttonRef = React.createRef();
@@ -38,12 +39,15 @@ class AddReview extends React.PureComponent {
 
     this.setState(newState);
 
-    this.buttonRef.current.disabled = (
-      newState.comment.length < ReviewParams.MIN_COMMENT_LENGTH ||
-      newState.comment.length > ReviewParams.MAX_COMMENT_LENGTH ||
-      newState.rating < ReviewParams.MIN_RATING ||
-      newState.rating > ReviewParams.MAX_RATING
+    const isFormValid = (
+      newState.comment.length >= ReviewParams.MIN_COMMENT_LENGTH &&
+      newState.comment.length <= ReviewParams.MAX_COMMENT_LENGTH &&
+      newState.rating >= ReviewParams.MIN_RATING &&
+      newState.rating <= ReviewParams.MAX_RATING
     );
+
+    this.buttonRef.current.disabled = !isFormValid;
+    this.setState({isValid: isFormValid});
   }
 
   render() {
@@ -57,6 +61,10 @@ class AddReview extends React.PureComponent {
     const filmId = this.props.match.params.id;
     const currentFilm = getFilmById(filmId);
 
+    if (!currentFilm) {
+      return <h2>Loading...</h2>;
+    }
+
     return (
       <>
         <section className="movie-card movie-card--full">
@@ -69,7 +77,7 @@ class AddReview extends React.PureComponent {
 
             <header className="page-header">
               <div className="logo">
-                <Link href="main.html" className="logo__link" to={AppRoute.ROUTE}>
+                <Link href="main.html" className="logo__link" to={AppRoute.ROOT}>
                   <span className="logo__letter logo__letter--1">W</span>
                   <span className="logo__letter logo__letter--2">T</span>
                   <span className="logo__letter logo__letter--3">W</span>
@@ -79,7 +87,14 @@ class AddReview extends React.PureComponent {
               <nav className="breadcrumbs">
                 <ul className="breadcrumbs__list">
                   <li className="breadcrumbs__item">
-                    <a href="movie-page.html" className="breadcrumbs__link">{currentFilm.title}</a>
+                    <a
+                      href="movie-page.html"
+                      className="breadcrumbs__link"
+                      onClick={(evt) => {
+                        evt.preventDefault();
+                        history.goBack();
+                      }}
+                    >{currentFilm.title}</a>
                   </li>
                   <li className="breadcrumbs__item">
                     <a className="breadcrumbs__link">Add review</a>
@@ -132,9 +147,13 @@ class AddReview extends React.PureComponent {
                   </button>
                 </div>
               </div>
-              <div className="validate-div visually-hidden">
-                Введите от {ReviewParams.MIN_COMMENT_LENGTH} до {ReviewParams.MAX_COMMENT_LENGTH} символов.
-              </div>
+
+              {!this.state.isValid &&
+                <div className="validate-div">
+                  Введите от {ReviewParams.MIN_COMMENT_LENGTH} до {ReviewParams.MAX_COMMENT_LENGTH} символов.
+                </div>
+              }
+
             </form>
           </div>
         </section>

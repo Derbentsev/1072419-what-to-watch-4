@@ -50,7 +50,7 @@ exports[`Render Tab Details 1`] = `
       <span
         className="movie-card__details-value"
       >
-        103
+        1h 42m
       </span>
     </p>
     <p

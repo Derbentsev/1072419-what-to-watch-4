@@ -1,22 +1,31 @@
 import Review from '@components/review/review';
 
 
+const createReviewColumn = (reviews) => {
+  return (
+    <div className="movie-card__reviews-col">
+      {reviews.map((review, i) => (
+        <Review
+          key = {i}
+          review = {review}
+        />
+      ))}
+    </div>
+  );
+};
+
+
 const TabReviews = (props) => {
   const {reviews} = props;
 
+  const halfReviewsLength = Math.ceil(reviews.length / 2);
+  const columnOne = reviews.slice(0, halfReviewsLength);
+  const columnTwo = reviews.slice(halfReviewsLength);
+
   return (
     <div className="movie-card__reviews movie-card__row">
-      <div className="movie-card__reviews-col">
-        {reviews.map((review, i) => (
-          <Review
-            key = {i}
-            review = {review}
-          />
-        ))}
-      </div>
-      <div className="movie-card__reviews-col">
-
-      </div>
+      {createReviewColumn(columnOne)}
+      {createReviewColumn(columnTwo)}
     </div>
   );
 };

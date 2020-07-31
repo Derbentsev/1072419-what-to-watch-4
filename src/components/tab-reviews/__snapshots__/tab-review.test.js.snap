@@ -28,7 +28,7 @@ exports[`Render Tab Review 1`] = `
           </cite>
           <time
             className="review__date"
-            dateTime="2016-12-24"
+            dateTime={2016-12-23T21:00:00.000Z}
           >
             December 24, 2016
           </time>
@@ -61,7 +61,7 @@ exports[`Render Tab Review 1`] = `
           </cite>
           <time
             className="review__date"
-            dateTime="2016-12-24"
+            dateTime={2015-11-17T21:00:00.000Z}
           >
             November 18, 2015
           </time>
@@ -73,6 +73,10 @@ exports[`Render Tab Review 1`] = `
         8
       </div>
     </div>
+  </div>
+  <div
+    className="movie-card__reviews-col"
+  >
     <div
       className="review"
     >
@@ -94,7 +98,7 @@ exports[`Render Tab Review 1`] = `
           </cite>
           <time
             className="review__date"
-            dateTime="2016-12-24"
+            dateTime={2015-11-17T21:00:00.000Z}
           >
             November 18, 2015
           </time>
@@ -127,7 +131,7 @@ exports[`Render Tab Review 1`] = `
           </cite>
           <time
             className="review__date"
-            dateTime="2016-12-24"
+            dateTime={2016-12-19T21:00:00.000Z}
           >
             December 20, 2016
           </time>
@@ -140,8 +144,5 @@ exports[`Render Tab Review 1`] = `
       </div>
     </div>
   </div>
-  <div
-    className="movie-card__reviews-col"
-  />
 </div>
 `;

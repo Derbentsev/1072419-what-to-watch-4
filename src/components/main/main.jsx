@@ -14,6 +14,10 @@ const Main = (props) => {
     showedFilmsCount,
   } = props;
 
+  if (!films) {
+    return <h2>Loading...</h2>;
+  }
+
   const slicedFilms = films.slice(0, showedFilmsCount);
 
   return (
@@ -24,22 +28,19 @@ const Main = (props) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <ul className="catalog__genres-list">
-            <FiltersByGenre
-              setShowedFilmsCount = {setShowedFilmsCount}
-            />
+            <FiltersByGenre setShowedFilmsCount = {setShowedFilmsCount}/>
           </ul>
 
-          <MoviesListWrapped
-            films = {slicedFilms}
-          />
+          <MoviesListWrapped films = {slicedFilms}/>
 
           {slicedFilms.length !== films.length &&
             <div className="catalog__more">
-              <button onClick={() => {
-                setShowedFilmsCount(SHOW_FILM_CARD_BY_BUTTON);
-              }}
-              className="catalog__button"
-              type="button"
+              <button
+                onClick={() => {
+                  setShowedFilmsCount(SHOW_FILM_CARD_BY_BUTTON);
+                }}
+                className="catalog__button"
+                type="button"
               >
                 Show more
               </button>
