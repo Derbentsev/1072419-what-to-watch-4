@@ -5,7 +5,7 @@ const MomentLocalesPlugin = require(`moment-locales-webpack-plugin`);
 module.exports = (env) => {
   return {
     mode: env === `dev` ? `development` : `production`,
-    entry: `./src/index.jsx`,
+    entry: `./src/index.tsx`,
     output: {
       filename: `bundle.js`,
       path: path.join(__dirname, `public`)
@@ -20,10 +20,10 @@ module.exports = (env) => {
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.(tsx|ts)$/,
           exclude: /node_modules/,
           use: {
-            loader: `babel-loader`,
+            loader: `ts-loader`,
           },
         }
       ],
