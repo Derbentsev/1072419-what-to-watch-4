@@ -4,11 +4,14 @@
   "private": true,
   "description": "Личный проект «Что посмотреть» от HTML Academy",
   "scripts": {
-    "eslint": "eslint --ext .jsx --ext .js src/",
-    "test": "npm run eslint && npm run test.jest",
-    "test.eslint": "npm run eslint",
-    "test.jest": "jest",
     "build": "webpack --env=dev -p",
+    "eslint": "npm run eslint.js && npm run eslint.ts",
+    "eslint.js": "eslint --ext .jsx --ext .js src/",
+    "eslint.ts": "eslint --config .eslintrc-ts.yml --ext .tsx src/",
+    "test": "npm run eslint && npm run test.jest",
+    "test.eslint": "npm run eslint.ts",
+    "test.jest": "jest",
+    
     "start": "webpack-dev-server --env=dev --open"
   },
   "devDependencies": {
