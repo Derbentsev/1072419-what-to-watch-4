@@ -3,7 +3,19 @@ import {AppRoute} from '@consts/';
 import {Redirect} from 'react-router-dom';
 
 
-const PrivateRoute = (props) => {
+interface Props {
+  render: () => {},
+  authorizationStatus: string,
+  path: string,
+  exact: boolean,
+  computedMatch: {
+    params: {
+      id: string,
+    }
+  },
+}
+
+const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {
   const {render, authorizationStatus, path, exact, computedMatch} = props;
 
   return (
@@ -21,18 +33,6 @@ const PrivateRoute = (props) => {
       }}
     />
   );
-};
-
-PrivateRoute.propTypes = {
-  render: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired,
-  exact: PropTypes.bool.isRequired,
-  computedMatch: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string,
-    }).isRequired
-  }).isRequired,
 };
 
 

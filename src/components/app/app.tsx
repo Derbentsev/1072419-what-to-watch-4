@@ -9,7 +9,13 @@ import MyList from '@components/my-list/my-list.connect';
 import PrivateRoute from '@components/private-route/private-route.connect';
 
 
-export default class App extends React.PureComponent {
+interface Props {
+  checkAuth: () => string,
+  loadFilms: () => [],
+  loadFilmPromo: () => {},
+}
+
+export default class App extends React.PureComponent<Props, {}> {
   componentDidMount() {
     const {checkAuth, loadFilms, loadFilmPromo} = this.props;
 
@@ -37,9 +43,3 @@ export default class App extends React.PureComponent {
     );
   }
 }
-
-App.propTypes = {
-  checkAuth: PropTypes.func.isRequired,
-  loadFilms: PropTypes.func.isRequired,
-  loadFilmPromo: PropTypes.func.isRequired,
-};

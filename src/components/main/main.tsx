@@ -4,10 +4,38 @@ import withMoviesList from '@hocs/with-movies-list/with-movies-list';
 import FilmPromo from '@components/film-promo/film-promo.connect';
 
 
+interface Props {
+  setShowedFilmsCount: () => {},
+  showedFilmsCount: number,
+  currentFilter: string,
+  films: [{
+    id: number,
+    title: string,
+    poster: string,
+    genre: string,
+    dateRelease: number,
+    cover: string,
+    videoSrc: string,
+    previewVideoSrc: string,
+    director: string,
+    actors: [string],
+    ratingScore: number,
+    ratingCount: number,
+    description: string,
+    runTime: number,
+    reviews: [{
+      comment: string,
+      rating: number,
+      author: string,
+      date: string,
+    }],
+  }],
+}
+
 const SHOW_FILM_CARD_BY_BUTTON = 8;
 const MoviesListWrapped = withMoviesList(MoviesList);
 
-const Main = (props) => {
+const Main: React.FunctionComponent<Props> = (props: Props) => {
   const {
     films,
     setShowedFilmsCount,
@@ -64,33 +92,6 @@ const Main = (props) => {
       </div>
     </>
   );
-};
-
-Main.propTypes = {
-  setShowedFilmsCount: PropTypes.func.isRequired,
-  showedFilmsCount: PropTypes.number.isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    dateRelease: PropTypes.number.isRequired,
-    cover: PropTypes.string.isRequired,
-    videoSrc: PropTypes.string.isRequired,
-    previewVideoSrc: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    ratingScore: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    runTime: PropTypes.number.isRequired,
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      comment: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-      author: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-    })),
-  })).isRequired,
 };
 
 

@@ -1,9 +1,17 @@
 import moment from 'moment';
 
 
-const Review = (props) => {
-  const {review} = props;
+interface Props {
+  review: {
+    comment: string,
+    author: string,
+    date: string,
+    rating: number,
+  },
+}
 
+const Review: React.FunctionComponent<Props> = (props: Props) => {
+  const {review} = props;
   const reviewDate = new Date(review.date);
 
   return (
@@ -20,15 +28,6 @@ const Review = (props) => {
       <div className="review__rating">{review.rating}</div>
     </div>
   );
-};
-
-Review.propTypes = {
-  review: PropTypes.shape({
-    comment: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    date: PropTypes.string.isReqyired,
-    rating: PropTypes.number.isRequired,
-  }).isRequired,
 };
 
 

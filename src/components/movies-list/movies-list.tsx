@@ -2,6 +2,32 @@ import MovieCard from '@components/movie-card/movie-card.connect';
 import withActiveVideoPlayer from '@hocs/with-active-video-player/with-active-video-player';
 
 
+interface Props {
+  handleMovieCardMouseEnter: () => {},
+  films: [{
+    id: number,
+    title: string,
+    poster: string,
+    genre: string,
+    dateRelease: number,
+    cover: string,
+    videoSrc: string,
+    previewVideoSrc: string,
+    director: string,
+    actors: [string],
+    ratingScore: number,
+    ratingCount: number,
+    description: string,
+    runTime: number,
+    reviews: {
+      comment: string,
+      rating: number,
+      author: string,
+      date: string,
+    },
+  }],
+}
+
 const MovieCardWrapped = withActiveVideoPlayer(MovieCard);
 
 const MoviesList = (props) => {
@@ -18,32 +44,6 @@ const MoviesList = (props) => {
       ))}
     </div>
   );
-};
-
-MoviesList.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    dateRelease: PropTypes.number.isRequired,
-    cover: PropTypes.string.isRequired,
-    videoSrc: PropTypes.string.isRequired,
-    previewVideoSrc: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    ratingScore: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    runTime: PropTypes.number.isRequired,
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      comment: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-      author: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-    })),
-  })).isRequired,
-  handleMovieCardMouseEnter: PropTypes.func.isRequired,
 };
 
 

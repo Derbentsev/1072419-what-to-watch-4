@@ -2,7 +2,11 @@ import {AuthorizationStatus} from '@reducer/user/user';
 import {AppRoute} from '@consts/';
 
 
-const UserLogo = (props) => {
+interface Props {
+  authorizationStatus: string,
+};
+
+const UserLogo: React.FunctionComponent<Props> = (props: Props) => {
   const {authorizationStatus} = props;
 
   return (
@@ -27,10 +31,6 @@ const UserLogo = (props) => {
       }
     </div>
   );
-};
-
-UserLogo.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
 };
 
 

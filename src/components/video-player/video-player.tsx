@@ -1,4 +1,13 @@
-const VideoPlayer = (props) => {
+interface Props {
+  handleMouseEnter: () => {},
+  handleMouseLeave: () => {},
+  children: {
+    [node] || node,
+  },
+}
+
+
+const VideoPlayer: React.FunctionComponent<Props> = (props: Props) => {
   const {handleMouseEnter, handleMouseLeave, children} = props;
 
   return (
@@ -12,15 +21,6 @@ const VideoPlayer = (props) => {
       </div>
     </>
   );
-};
-
-VideoPlayer.propTypes = {
-  handleMouseEnter: PropTypes.func.isRequired,
-  handleMouseLeave: PropTypes.func.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
 };
 
 

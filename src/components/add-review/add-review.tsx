@@ -12,7 +12,19 @@ const ReviewParams = {
   DEFAULT_RATING: 3,
 };
 
-class AddReview extends React.PureComponent {
+interface Props {
+  setFalseReviewPushStatus: () => void,
+  pushReview: () => void,
+  getFilmById: () => [],
+  pushReviewStatus: boolean,
+  match: {
+    params: {
+      id: string,
+    }
+  },
+}
+
+export default class AddReview extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
 
@@ -161,18 +173,3 @@ class AddReview extends React.PureComponent {
     );
   }
 }
-
-AddReview.propTypes = {
-  setFalseReviewPushStatus: PropTypes.func.isRequired,
-  pushReview: PropTypes.func.isRequired,
-  getFilmById: PropTypes.func.isRequired,
-  pushReviewStatus: PropTypes.bool.isRequired,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    }).isRequired
-  }).isRequired,
-};
-
-
-export default AddReview;

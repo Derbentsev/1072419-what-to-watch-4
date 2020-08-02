@@ -3,7 +3,13 @@ import {AuthorizationStatus} from '@reducer/user/user';
 import {Redirect} from 'react-router-dom';
 
 
-export default class SignIn extends React.PureComponent {
+interface Props {
+  login: ({}) => {},
+  authorizationError: string,
+  authorizationStatus: string,
+}
+
+export default class SignIn extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
 
@@ -92,9 +98,3 @@ export default class SignIn extends React.PureComponent {
     );
   }
 }
-
-SignIn.propTypes = {
-  login: PropTypes.func.isRequired,
-  authorizationError: PropTypes.string.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-};

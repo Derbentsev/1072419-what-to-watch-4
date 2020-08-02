@@ -4,7 +4,36 @@ import history from '@history/history';
 import {AppRoute, MyListButtonSettings} from '@consts/';
 
 
-export default class FilmPromo extends React.PureComponent {
+interface Props {
+  authorizationStatus: string,
+  setFavoriteFilm: () => {},
+  filmPromo: {
+    id: number,
+    title: string,
+    poster: string,
+    genre: string,
+    dateRelease: number,
+    isFavorite: boolean,
+    cover: string,
+    videoSrc: string,
+    previewVideoSrc: string,
+    director: string,
+    actors: [string],
+    ratingScore: number,
+    ratingCount: number,
+    description: string,
+    runTime: number,
+    backgroundImage: string,
+    reviews: [{
+      comment: string,
+      rating: number,
+      author: string,
+      date: string,
+    }],
+  },
+}
+
+export default class FilmPromo extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
     this._handleClickAddToMyList = this._handleClickAddToMyList.bind(this);
@@ -102,32 +131,3 @@ export default class FilmPromo extends React.PureComponent {
     );
   }
 }
-
-FilmPromo.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
-  setFavoriteFilm: PropTypes.func.isRequired,
-  filmPromo: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    poster: PropTypes.string,
-    genre: PropTypes.string,
-    dateRelease: PropTypes.number,
-    isFavorite: PropTypes.bool,
-    cover: PropTypes.string,
-    videoSrc: PropTypes.string,
-    previewVideoSrc: PropTypes.string,
-    director: PropTypes.string,
-    actors: PropTypes.arrayOf(PropTypes.string),
-    ratingScore: PropTypes.number,
-    ratingCount: PropTypes.number,
-    description: PropTypes.string,
-    runTime: PropTypes.number,
-    backgroundImage: PropTypes.string,
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      comment: PropTypes.string,
-      rating: PropTypes.number,
-      author: PropTypes.string,
-      date: PropTypes.string,
-    })),
-  }),
-};

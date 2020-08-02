@@ -1,7 +1,18 @@
 import Review from '@components/review/review';
 
 
-const createReviewColumn = (reviews) => {
+interface Props {
+  reviews: [{
+    comment: string,
+    author: string,
+    date: string,
+    rating: number,
+  }],
+};
+
+const createReviewColumn: React.FunctionComponent<Props> = (props: Props) => {
+  const {reviews} = props;
+  
   return (
     <div className="movie-card__reviews-col">
       {reviews.map((review, i) => (
@@ -28,15 +39,6 @@ const TabReviews = (props) => {
       {createReviewColumn(columnTwo)}
     </div>
   );
-};
-
-TabReviews.propTypes = {
-  reviews: PropTypes.arrayOf(PropTypes.shape({
-    comment: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    date: PropTypes.string.isReqyired,
-    rating: PropTypes.number.isRequired,
-  })).isRequired,
 };
 
 

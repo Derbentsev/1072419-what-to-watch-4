@@ -2,7 +2,16 @@ import {KeyName} from '@consts/';
 import history from '@history/history';
 
 
-export default class FullVideoPlayer extends React.PureComponent {
+interface Props {
+  getFilmById: () => {},
+  match: [{
+    params: {
+      id: string,
+    }
+  }],
+}
+
+export default class FullVideoPlayer extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
     this._handleEscClick = this._handleEscClick.bind(this);
@@ -52,12 +61,3 @@ export default class FullVideoPlayer extends React.PureComponent {
     );
   }
 }
-
-FullVideoPlayer.propTypes = {
-  getFilmById: PropTypes.func.isRequired,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    }).isRequired
-  }).isRequired,
-};

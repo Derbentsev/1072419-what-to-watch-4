@@ -1,5 +1,30 @@
 const DELAY_ON_MOUSE_ENTER = 2000;
 
+interface Props {
+  film: {
+    id: number,
+    title: string,
+    poster: string,
+    genre: string,
+    dateRelease: number,
+    cover: string,
+    videoSrc: string,
+    previewVideoSrc: string,
+    director: string,
+    actors: [string],
+    ratingScore: number,
+    ratingCount: number,
+    description: string,
+    runTime: number,
+    reviews: [{
+      comment: string,
+      rating: number,
+      author: string,
+      date: string,
+    }],
+  },
+}
+
 const withVideoPlayer = (Component) => {
   class WithVideoPlayer extends React.PureComponent {
     constructor(props) {
@@ -62,31 +87,6 @@ const withVideoPlayer = (Component) => {
       );
     }
   }
-
-  WithVideoPlayer.propTypes = {
-    film: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      poster: PropTypes.string.isRequired,
-      genre: PropTypes.string.isRequired,
-      dateRelease: PropTypes.number.isRequired,
-      cover: PropTypes.string.isRequired,
-      videoSrc: PropTypes.string.isRequired,
-      previewVideoSrc: PropTypes.string.isRequired,
-      director: PropTypes.string.isRequired,
-      actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      ratingScore: PropTypes.number.isRequired,
-      ratingCount: PropTypes.number.isRequired,
-      description: PropTypes.string.isRequired,
-      runTime: PropTypes.number.isRequired,
-      reviews: PropTypes.arrayOf(PropTypes.shape({
-        comment: PropTypes.string.isRequired,
-        rating: PropTypes.number.isRequired,
-        author: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-      })),
-    }).isRequired,
-  };
 
   return WithVideoPlayer;
 };
