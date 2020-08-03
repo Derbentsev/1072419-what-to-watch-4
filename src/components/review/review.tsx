@@ -1,13 +1,9 @@
 import moment from 'moment';
+import {Review} from '@types/review.types';
 
 
 interface Props {
-  review: {
-    comment: string,
-    author: string,
-    date: string,
-    rating: number,
-  },
+  review: Review,
 }
 
 const Review: React.FunctionComponent<Props> = (props: Props) => {

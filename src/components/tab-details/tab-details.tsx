@@ -1,9 +1,9 @@
 import {getRunTimeFromMinutes} from '@utils/';
-import {film} from '@types/';
+import {Film} from '@types/film.types';
 
 
 interface Props {
-  film: film,
+  film: Film,
 }
 
 const TabDetails: React.FunctionComponent<Props> = (props: Props) => {

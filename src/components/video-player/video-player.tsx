@@ -1,6 +1,6 @@
 interface Props {
-  handleMouseEnter: () => {},
-  handleMouseLeave: () => {},
+  handleMouseEnter: () => void,
+  handleMouseLeave: () => void,
   children: React.ReactNode,
 }
 

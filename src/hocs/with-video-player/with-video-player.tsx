@@ -1,14 +1,21 @@
-import {film} from '@types/';
+import {Film} from '@types/film.types';
 
 
 const DELAY_ON_MOUSE_ENTER = 2000;
 
 interface Props {
-  film: film,
+  film: Film,
+}
+
+interface State {
+  isPlaying: boolean,
 }
 
 const withVideoPlayer = (Component) => {
-  class WithVideoPlayer extends React.PureComponent {
+  class WithVideoPlayer extends React.PureComponent<Props, State> {
+    private videoRef: React.RefObject<HTMLVideoElement>;
+    private timeout: ReturnType<typeof setTimeout> | null;
+
     constructor(props) {
       super(props);
 
@@ -16,8 +23,8 @@ const withVideoPlayer = (Component) => {
         isPlaying: false,
       };
 
-      this._videoRef = React.createRef();
-      this._timeout = null;
+      this.videoRef = React.createRef();
+      this.timeout = null;
 
       this._togglePlayingState = this._togglePlayingState.bind(this);
       this._handleMouseEnter = this._handleMouseEnter.bind(this);
@@ -25,11 +32,11 @@ const withVideoPlayer = (Component) => {
     }
 
     componentWillUnmount() {
-      clearTimeout(this._timeout);
+      clearTimeout(this.timeout!);
     }
 
     componentDidUpdate() {
-      const video = this._videoRef.current;
+      const video = this.videoRef.current!;
 
       if (this.state.isPlaying) {
         video.play();
@@ -44,13 +51,13 @@ const withVideoPlayer = (Component) => {
     }
 
     _handleMouseEnter() {
-      this._timeout = setTimeout(this._togglePlayingState, DELAY_ON_MOUSE_ENTER);
+      this.timeout = setTimeout(this._togglePlayingState, DELAY_ON_MOUSE_ENTER);
     }
 
     _handleMouseLeave() {
-      if (this.state.isPlaying || this._timeout) {
-        clearTimeout(this._timeout);
-        this._timeout = null;
+      if (this.state.isPlaying || this.timeout) {
+        clearTimeout(this.timeout!);
+        this.timeout = null;
         this.setState({isPlaying: false});
       }
     }
@@ -63,7 +70,7 @@ const withVideoPlayer = (Component) => {
           handleMouseEnter = {this._handleMouseEnter}
           handleMouseLeave = {this._handleMouseLeave}
         >
-          <video src={film.previewVideoSrc} width="280" height="175" poster={film.poster} muted={true} ref={this._videoRef} />
+          <video src={film.previewVideoSrc} width="280" height="175" poster={film.poster} muted={true} ref={this.videoRef} />
         </Component>
       );
     }

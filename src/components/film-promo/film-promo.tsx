@@ -2,35 +2,13 @@ import UserLogo from '@components/user-logo/user-logo.connect';
 import {AuthorizationStatus} from '@reducer/user/user';
 import history from '@history/history';
 import {AppRoute, MyListButtonSettings} from '@consts/';
+import {Film} from '@types/film.types';
 
 
 interface Props {
   authorizationStatus: string,
   setFavoriteFilm: (boolean, number) => {},
-  filmPromo: {
-    id: number,
-    title: string,
-    poster: string,
-    genre: string,
-    dateRelease: number,
-    isFavorite: boolean,
-    cover: string,
-    videoSrc: string,
-    previewVideoSrc: string,
-    director: string,
-    actors: [string],
-    ratingScore: number,
-    ratingCount: number,
-    description: string,
-    runTime: number,
-    backgroundImage: string,
-    reviews: [{
-      comment: string,
-      rating: number,
-      author: string,
-      date: string,
-    }],
-  },
+  filmPromo: Film,
 }
 
 export default class FilmPromo extends React.PureComponent<Props, {}> {

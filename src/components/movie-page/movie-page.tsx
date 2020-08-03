@@ -6,21 +6,22 @@ import UserLogo from '@components/user-logo/user-logo.connect';
 import {AppRoute, MyListButtonSettings} from '@consts/';
 import history from '@history/history';
 import {AuthorizationStatus} from '@reducer/user/user';
-import {film} from '@types/';
+import {Film} from '@types/film.types';
+import {Review} from '@types/review.types';
 
 
 interface Props {
   authorizationStatus: string,
-  getFilmById: (number) => [],
-  loadReviews: (number) => [],
-  setFavoriteFilm: (boolean, number) => {},
-  match: [{
+  getFilmById: (number) => Film,
+  loadReviews: (number) => void,
+  setFavoriteFilm: (boolean, number) => void,
+  match: {
     params: {
       id: string,
     }
-  }],
+  },
   currentFilter: string,
-  films: [film],
+  films: [Film],
 }
 
 const SAME_FILMS_COUNT = 4;

@@ -7,12 +7,13 @@ import history from '@history/history';
 import {AppRoute} from '@consts/';
 import MyList from '@components/my-list/my-list.connect';
 import PrivateRoute from '@components/private-route/private-route.connect';
+import {Film} from '@types/film.types';
 
 
 interface Props {
   checkAuth: () => string,
-  loadFilms: () => [],
-  loadFilmPromo: () => {},
+  loadFilms: () => [Film],
+  loadFilmPromo: () => {Film},
 }
 
 export default class App extends React.PureComponent<Props, {}> {

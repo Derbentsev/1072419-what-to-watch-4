@@ -1,4 +1,7 @@
-interface film {
+import {Review} from './review.types';
+
+
+export interface Film {
   id: number,
   title: string,
   backgroundImage: string,
@@ -14,11 +17,5 @@ interface film {
   ratingCount: number,
   description: string,
   runTime: number,
-  reviews: [{
-    comment: string,
-    rating: number,
-    author: string,
-    date: string,
+  reviews: [Review]
 }
-
-export {film};

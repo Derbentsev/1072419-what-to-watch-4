@@ -1,7 +1,7 @@
 import TabOverview from '@components/tab-overview/tab-overview';
 import TabDetails from '@components/tab-details/tab-details';
 import TabReviews from '@components/tab-reviews/tab-reviews.connect';
-import {film} from '@types/';
+import {Film} from '@types/film.types';
 
 
 const TabNames = {
@@ -11,10 +11,10 @@ const TabNames = {
 };
 
 interface Props {
-  handleOnTab: () => {},
+  handleOnTab: () => void,
   activeTab: string,
   currentFilter: string,
-  film: film,
+  film: Film,
 }
 
 const Tabs: React.FunctionComponent<Props> = (props: Props) => {

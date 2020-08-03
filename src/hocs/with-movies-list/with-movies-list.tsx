@@ -1,11 +1,3 @@
-import {film} from '@types/';
-
-
-interface Props {
-  handleMovieCardMouseEnter: () => {},
-  films: [film],
-}
-
 const withMoviesList = (Component) => {
   class WithMoviesList extends React.PureComponent {
     constructor(props) {

@@ -1,10 +1,11 @@
 import {AuthorizationStatus} from '@reducer/user/user';
 import {AppRoute} from '@consts/';
 import {Redirect} from 'react-router-dom';
+import { ReactNode } from 'react';
 
 
 interface Props {
-  render: (computedMatch) => {},
+  render: (computedMatch) => ReactNode,
   authorizationStatus: string,
   path: string,
   exact: boolean,

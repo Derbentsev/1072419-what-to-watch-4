@@ -1,13 +1,9 @@
 import Review from '@components/review/review';
+import {Review} from '@types/review.types';
 
 
 interface Props {
-  reviews: [{
-    comment: string,
-    author: string,
-    date: string,
-    rating: number,
-  }],
+  reviews: [Review],
 };
 
 const createReviewColumn: React.FunctionComponent<Props> = (props: Props) => {

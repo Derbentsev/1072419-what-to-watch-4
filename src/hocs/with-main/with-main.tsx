@@ -1,13 +1,7 @@
 import {Subtract} from 'utility-types';
-import {film} from '@types/';
 
 
 const SHOW_FILM_CARD_BY_START = 8;
-
-interface Props {
-  children: [React.ReactNode] | React.ReactNode,
-  films: [film],
-}
 
 interface State {
   showedFilmsCount: number,

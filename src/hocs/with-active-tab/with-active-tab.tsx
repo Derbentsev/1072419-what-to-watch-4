@@ -1,9 +1,10 @@
 import {TabNames} from '@components/tabs/tabs';
-import {film} from '@types/';
+import {Film} from '@types/film.types';
+import {Subtract} from "utility-types";
 
 
-interface Props {
-  film: film,
+interface InjectingProps {
+  film: Film,
 }
 
 interface State {
@@ -11,7 +12,10 @@ interface State {
 }
 
 const withActiveTab = (Component) => {
-  class WithActiveTab extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithActiveTab extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
       this.state = {activeTab: TabNames.OVERVIEW};
@@ -20,7 +24,6 @@ const withActiveTab = (Component) => {
 
     _handleOnTab(evt) {
       evt.preventDefault();
-
       this.setState({
         activeTab: evt.target.textContent
       });

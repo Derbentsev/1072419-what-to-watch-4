@@ -1,12 +1,12 @@
 import history from '@history/history';
-import {film} from '@types/';
+import {Film} from '@types/film.types';
 
 
 interface Props {
-  handleMovieCardMouseEnter: () => {},
-  renderPlayer: (string, string) => {},
+  handleMovieCardMouseEnter: () => void,
+  renderPlayer: (videoSrc: string, poster: string) => {},
   currentFilter: string,
-  film: film,
+  film: Film,
 }
 
 const MovieCard: React.FunctionComponent<Props> = (props: Props) => {

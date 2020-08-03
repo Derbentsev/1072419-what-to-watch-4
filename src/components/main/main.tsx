@@ -2,14 +2,14 @@ import FiltersByGenre from '@components/filters-by-genre/filters-by-genre.connec
 import MoviesList from '@components/movies-list/movies-list.connect';
 import withMoviesList from '@hocs/with-movies-list/with-movies-list';
 import FilmPromo from '@components/film-promo/film-promo.connect';
-import {film} from '@types/';
+import {Film} from '@types/film.types';
 
 
 interface Props {
-  setShowedFilmsCount: (number) => {},
+  setShowedFilmsCount: (number) => void,
   showedFilmsCount: number,
   currentFilter: string,
-  films: [film],
+  films: [Film],
 }
 
 const SHOW_FILM_CARD_BY_BUTTON = 8;

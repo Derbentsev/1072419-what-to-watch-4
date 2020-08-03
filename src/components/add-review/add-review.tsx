@@ -2,7 +2,7 @@ import UserLogo from '@components/user-logo/user-logo.connect';
 import {extend} from '@utils/';
 import history from '@history/history';
 import {AppRoute} from '@consts/';
-import {film} from '@types/';
+import {Film} from '@types/film.types';
 
 
 const ReviewParams = {
@@ -15,7 +15,7 @@ const ReviewParams = {
 
 interface Props {
   setFalseReviewPushStatus: () => void,
-  pushReview: () => void,
+  pushReview: (rating: number, comment: number, id: string) => void,
   getFilmById: (number) => [],
   pushReviewStatus: boolean,
   match: {
@@ -25,8 +25,14 @@ interface Props {
   },
 }
 
-export default class AddReview extends React.PureComponent<Props, {}> {
-  private buttonRef: React.RefObject<HTMLInputElement> | null;
+interface State {
+  rating: number,
+  comment: number,
+  isValid: boolean,
+}
+
+export default class AddReview extends React.PureComponent<Props, State> {
+  private buttonRef: React.RefObject<HTMLButtonElement>;
 
   constructor(props) {
     super(props);
@@ -61,7 +67,7 @@ export default class AddReview extends React.PureComponent<Props, {}> {
       newState.rating <= ReviewParams.MAX_RATING
     );
 
-    this.buttonRef.current.disabled = !isFormValid;
+    this.buttonRef.current!.disabled = !isFormValid;
     this.setState({isValid: isFormValid});
   }
 
@@ -74,7 +80,7 @@ export default class AddReview extends React.PureComponent<Props, {}> {
     }
 
     const filmId = this.props.match.params.id;
-    const currentFilm: film = getFilmById(filmId);
+    const currentFilm: Film = getFilmById(filmId);
 
     if (!currentFilm) {
       return <h2>Loading...</h2>;

@@ -12,6 +12,7 @@
     "lib": ["es2017", "dom"],
     "experimentalDecorators": true,
     "downlevelIteration": true,
+    "allowSyntheticDefaultImports": true,
     "paths": {
       "@components/*": ["src/components/*"],
       "@consts/*": ["src/consts/*"],

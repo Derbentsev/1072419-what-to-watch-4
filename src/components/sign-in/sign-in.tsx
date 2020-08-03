@@ -4,12 +4,15 @@ import {Redirect} from 'react-router-dom';
 
 
 interface Props {
-  login: ({}) => {},
+  login: ({}) => void,
   authorizationError: string,
   authorizationStatus: string,
 }
 
 export default class SignIn extends React.PureComponent<Props, {}> {
+  private loginRef: React.RefObject<HTMLInputElement>;
+  private passwordRef: React.RefObject<HTMLInputElement>;
+
   constructor(props) {
     super(props);
 
@@ -21,12 +24,11 @@ export default class SignIn extends React.PureComponent<Props, {}> {
 
   _handleSubmit(evt) {
     evt.preventDefault();
-
     const {login} = this.props;
 
     login({
-      login: this.loginRef.current.value,
-      password: this.passwordRef.current.value,
+      login: this.loginRef.current!.value,
+      password: this.passwordRef.current!.value,
     });
   }
 

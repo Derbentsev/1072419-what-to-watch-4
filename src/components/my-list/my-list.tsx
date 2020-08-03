@@ -2,12 +2,12 @@ import {AppRoute} from '@consts/';
 import UserLogo from '@components/user-logo/user-logo.connect';
 import MoviesList from '@components/movies-list/movies-list.connect';
 import withMoviesList from '@hocs/with-movies-list/with-movies-list';
-import {film} from '@types/';
+import {Film} from '@types/film.types';
 
 
 interface Props {
-  loadFavoriteFilms: () => {},
-  favoriteFilms: [film],
+  loadFavoriteFilms: () => void,
+  favoriteFilms: [Film],
 }
 
 const MoviesListWrapped = withMoviesList(MoviesList);
