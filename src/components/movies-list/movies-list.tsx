@@ -1,31 +1,11 @@
 import MovieCard from '@components/movie-card/movie-card.connect';
 import withActiveVideoPlayer from '@hocs/with-active-video-player/with-active-video-player';
+import {film} from '@types/';
 
 
 interface Props {
   handleMovieCardMouseEnter: () => {},
-  films: [{
-    id: number,
-    title: string,
-    poster: string,
-    genre: string,
-    dateRelease: number,
-    cover: string,
-    videoSrc: string,
-    previewVideoSrc: string,
-    director: string,
-    actors: [string],
-    ratingScore: number,
-    ratingCount: number,
-    description: string,
-    runTime: number,
-    reviews: {
-      comment: string,
-      rating: number,
-      author: string,
-      date: string,
-    },
-  }],
+  films: [film],
 }
 
 const MovieCardWrapped = withActiveVideoPlayer(MovieCard);

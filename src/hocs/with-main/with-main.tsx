@@ -1,33 +1,29 @@
+import {Subtract} from 'utility-types';
+import {film} from '@types/';
+
+
 const SHOW_FILM_CARD_BY_START = 8;
 
 interface Props {
-  children: [node] | node,
-  films: [{
-    id: number,
-    title: string,
-    poster: string,
-    genre: string,
-    dateRelease: number,
-    cover: string,
-    videoSrc: string,
-    previewVideoSrc: string,
-    director: string,
-    actors: [string],
-    ratingScore: number,
-    ratingCount: number,
-    description: string,
-    runTime: number,
-    reviews: [{
-      comment: string,
-      rating: number,
-      author: string,
-      date: string,
-    }],
-  }],
+  children: [React.ReactNode] | React.ReactNode,
+  films: [film],
 }
 
+interface State {
+  showedFilmsCount: number,
+}
+
+interface InjectingProps {
+  setShowedFilmsCount: () => {},
+  showedFilmsCount: number,
+}
+
+
 const withMain = (Component) => {
-  class WithMain extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithMain extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 

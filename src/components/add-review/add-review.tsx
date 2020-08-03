@@ -2,6 +2,7 @@ import UserLogo from '@components/user-logo/user-logo.connect';
 import {extend} from '@utils/';
 import history from '@history/history';
 import {AppRoute} from '@consts/';
+import {film} from '@types/';
 
 
 const ReviewParams = {
@@ -15,7 +16,7 @@ const ReviewParams = {
 interface Props {
   setFalseReviewPushStatus: () => void,
   pushReview: () => void,
-  getFilmById: () => [],
+  getFilmById: (number) => [],
   pushReviewStatus: boolean,
   match: {
     params: {
@@ -25,6 +26,8 @@ interface Props {
 }
 
 export default class AddReview extends React.PureComponent<Props, {}> {
+  private buttonRef: React.RefObject<HTMLInputElement> | null;
+
   constructor(props) {
     super(props);
 
@@ -71,7 +74,7 @@ export default class AddReview extends React.PureComponent<Props, {}> {
     }
 
     const filmId = this.props.match.params.id;
-    const currentFilm = getFilmById(filmId);
+    const currentFilm: film = getFilmById(filmId);
 
     if (!currentFilm) {
       return <h2>Loading...</h2>;

@@ -4,7 +4,7 @@ import {getUniqueGenres} from '@reducer/films/selectors';
 
 interface Props {
   setShowedFilmsCount: () => {},
-  onFilterClick: () => {},
+  onFilterClick: (string) => {},
   currentFilter: string,
   films: [{
     id: number,
@@ -50,7 +50,8 @@ const FiltersByGenre: React.FunctionComponent<Props> = (props: Props) => {
             key={index}
             onClick={(evt) => {
               evt.preventDefault();
-              onFilterClick(evt.target.textContent);
+              const input = evt.target as HTMLElement;
+              onFilterClick(input.textContent);
               setShowedFilmsCount();
             }}
           >

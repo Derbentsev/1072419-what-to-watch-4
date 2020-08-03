@@ -6,12 +6,13 @@ import UserLogo from '@components/user-logo/user-logo.connect';
 import {AppRoute, MyListButtonSettings} from '@consts/';
 import history from '@history/history';
 import {AuthorizationStatus} from '@reducer/user/user';
+import {film} from '@types/';
 
 
 interface Props {
   authorizationStatus: string,
-  getFilmById: () => [],
-  loadReviews: () => [],
+  getFilmById: (number) => [],
+  loadReviews: (number) => [],
   setFavoriteFilm: (boolean, number) => {},
   match: [{
     params: {
@@ -19,28 +20,7 @@ interface Props {
     }
   }],
   currentFilter: string,
-  films: [{
-    id: number,
-    title: string,
-    poster: string,
-    genre: string,
-    dateRelease: number,
-    cover: string,
-    videoSrc: string,
-    previewVideoSrc: string,
-    director: string,
-    actors: [string],
-    ratingScore: number,
-    ratingCount: number,
-    description: string,
-    runTime: number,
-    reviews: {
-      comment: string,
-      rating: number,
-      author: string,
-      date: string,
-    },
-  }],
+  films: [film],
 }
 
 const SAME_FILMS_COUNT = 4;
@@ -92,7 +72,7 @@ export default class MoviePage extends React.Component<Props, {}> {
     } = this.props;
 
     const filmId = this.props.match.params.id;
-    const currentFilm = getFilmById(filmId) || null;
+    const currentFilm: film = getFilmById(filmId) || null;
     const sameFilms = sameGenreFilms(currentFilm, films.slice()) || null;
 
     if (!currentFilm) {

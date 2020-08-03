@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom';
 
 
 interface Props {
-  render: () => {},
+  render: (computedMatch) => {},
   authorizationStatus: string,
   path: string,
   exact: boolean,

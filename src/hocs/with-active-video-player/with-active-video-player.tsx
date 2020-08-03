@@ -1,31 +1,11 @@
 import Player from '@components/video-player/video-player';
 import withVideoPlayer from '@hocs/with-video-player/with-video-player';
+import {film} from '@types/';
 
 
 interface Props {
   handleMovieCardMouseEnter: () => {},
-  film: {
-    id: number,
-    title: string,
-    poster: string,
-    genre: string,
-    dateRelease: number,
-    cover: string,
-    videoSrc: string,
-    previewVideoSrc: string,
-    director: string,
-    actors: [string],
-    ratingScore: number,
-    ratingCount: number,
-    description: string,
-    runTime: number,
-    reviews: [{
-      comment: string,
-      rating: number,
-      author: string,
-      date: string,
-    }],
-  },
+  film: film,
 }
 
 const VideoPlayer = withVideoPlayer(Player);
@@ -44,7 +24,6 @@ const withActiveVideoPlayer = (Component) => {
       return (
         <Component
           {...this.props}
-
           renderPlayer = {() => {
             return (
               <VideoPlayer

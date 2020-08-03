@@ -2,32 +2,12 @@ import {AppRoute} from '@consts/';
 import UserLogo from '@components/user-logo/user-logo.connect';
 import MoviesList from '@components/movies-list/movies-list.connect';
 import withMoviesList from '@hocs/with-movies-list/with-movies-list';
+import {film} from '@types/';
 
 
 interface Props {
   loadFavoriteFilms: () => {},
-  favoriteFilms: [{
-    id: number,
-    title: string,
-    poster: string,
-    genre: string,
-    dateRelease: number,
-    cover: string,
-    videoSrc: string,
-    previewVideoSrc: string,
-    director: string,
-    actors: [string],
-    ratingScore: number,
-    ratingCount: number,
-    description: string,
-    runTime: number,
-    reviews: {
-      comment: string,
-      rating: number,
-      author: string,
-      date: string,
-    },
-  }],
+  favoriteFilms: [film],
 }
 
 const MoviesListWrapped = withMoviesList(MoviesList);
@@ -63,7 +43,7 @@ export default class MyList extends React.PureComponent<Props, {}> {
 
             <MoviesListWrapped films={favoriteFilms}/>
 
-            {favoriteFilms.length === 0 && <p>СЕЙЧАС ТУТ ПУСТО... ДОБАВЬТЕ ХОТЯ БЫ ОДИН ФИЛЬМ В ИЗБРАННОЕ</p>}
+            {!favoriteFilms.length && <p>СЕЙЧАС ТУТ ПУСТО... ДОБАВЬТЕ ХОТЯ БЫ ОДИН ФИЛЬМ В ИЗБРАННОЕ</p>}
           </section>
 
           <footer className="page-footer">

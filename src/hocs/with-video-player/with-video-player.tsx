@@ -1,28 +1,10 @@
+import {film} from '@types/';
+
+
 const DELAY_ON_MOUSE_ENTER = 2000;
 
 interface Props {
-  film: {
-    id: number,
-    title: string,
-    poster: string,
-    genre: string,
-    dateRelease: number,
-    cover: string,
-    videoSrc: string,
-    previewVideoSrc: string,
-    director: string,
-    actors: [string],
-    ratingScore: number,
-    ratingCount: number,
-    description: string,
-    runTime: number,
-    reviews: [{
-      comment: string,
-      rating: number,
-      author: string,
-      date: string,
-    }],
-  },
+  film: film,
 }
 
 const withVideoPlayer = (Component) => {
@@ -35,7 +17,6 @@ const withVideoPlayer = (Component) => {
       };
 
       this._videoRef = React.createRef();
-
       this._timeout = null;
 
       this._togglePlayingState = this._togglePlayingState.bind(this);

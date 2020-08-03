@@ -1,9 +1,10 @@
 import {KeyName} from '@consts/';
 import history from '@history/history';
+import {film} from '@types/';
 
 
 interface Props {
-  getFilmById: () => {},
+  getFilmById: (number) => {},
   match: [{
     params: {
       id: string,
@@ -34,7 +35,7 @@ export default class FullVideoPlayer extends React.PureComponent<Props, {}> {
   render() {
     const {getFilmById} = this.props;
     const filmId = this.props.match.params.id;
-    const film = getFilmById(filmId);
+    const film: film = getFilmById(filmId);
 
     if (!film) {
       return <h2>Loading...</h2>;

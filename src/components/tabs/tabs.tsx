@@ -1,6 +1,7 @@
 import TabOverview from '@components/tab-overview/tab-overview';
 import TabDetails from '@components/tab-details/tab-details';
 import TabReviews from '@components/tab-reviews/tab-reviews.connect';
+import {film} from '@types/';
 
 
 const TabNames = {
@@ -13,28 +14,7 @@ interface Props {
   handleOnTab: () => {},
   activeTab: string,
   currentFilter: string,
-  film: {
-    id: number,
-    title: string,
-    poster: string,
-    genre: string,
-    dateRelease: number,
-    cover: string,
-    videoSrc: string,
-    previewVideoSrc: string,
-    director: string,
-    actors: [string],
-    ratingScore: number,
-    ratingCount: number,
-    description: string,
-    runTime: number,
-    reviews: {
-      comment: string,
-      rating: number,
-      author: string,
-      date: string,
-    },
-  },
+  film: film,
 }
 
 const Tabs: React.FunctionComponent<Props> = (props: Props) => {

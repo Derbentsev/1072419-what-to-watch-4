@@ -42,6 +42,7 @@ module.exports = (env) => {
         '@reducer': path.resolve(__dirname, `./src/reducer/`),
         '@api': path.resolve(__dirname, `./src/api/`),
         '@history': path.resolve(__dirname, `./src/history/`),
+        '@types': path.resolve(__dirname, `./src/types/`),
       }
     },
     plugins: [

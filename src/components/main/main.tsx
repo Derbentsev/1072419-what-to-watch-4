@@ -2,34 +2,14 @@ import FiltersByGenre from '@components/filters-by-genre/filters-by-genre.connec
 import MoviesList from '@components/movies-list/movies-list.connect';
 import withMoviesList from '@hocs/with-movies-list/with-movies-list';
 import FilmPromo from '@components/film-promo/film-promo.connect';
+import {film} from '@types/';
 
 
 interface Props {
-  setShowedFilmsCount: () => {},
+  setShowedFilmsCount: (number) => {},
   showedFilmsCount: number,
   currentFilter: string,
-  films: [{
-    id: number,
-    title: string,
-    poster: string,
-    genre: string,
-    dateRelease: number,
-    cover: string,
-    videoSrc: string,
-    previewVideoSrc: string,
-    director: string,
-    actors: [string],
-    ratingScore: number,
-    ratingCount: number,
-    description: string,
-    runTime: number,
-    reviews: [{
-      comment: string,
-      rating: number,
-      author: string,
-      date: string,
-    }],
-  }],
+  films: [film],
 }
 
 const SHOW_FILM_CARD_BY_BUTTON = 8;

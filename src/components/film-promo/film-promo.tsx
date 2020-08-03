@@ -6,7 +6,7 @@ import {AppRoute, MyListButtonSettings} from '@consts/';
 
 interface Props {
   authorizationStatus: string,
-  setFavoriteFilm: () => {},
+  setFavoriteFilm: (boolean, number) => {},
   filmPromo: {
     id: number,
     title: string,
@@ -48,10 +48,8 @@ export default class FilmPromo extends React.PureComponent<Props, {}> {
     }
 
     setFavoriteFilm(filmPromo.isFavorite
-      ?
-      MyListButtonSettings.NOT_FAVORITE
-      :
-      MyListButtonSettings.FAVORITE, filmPromo.id);
+      ? MyListButtonSettings.NOT_FAVORITE
+      : MyListButtonSettings.FAVORITE, filmPromo.id);
   }
 
   render() {
