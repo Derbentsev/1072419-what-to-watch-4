@@ -1,14 +1,12 @@
 import Review from '@components/review/review';
-import {Review} from '@types/review.types';
+import {Review as ReviewType} from '@types/review.types';
 
 
 interface Props {
-  reviews: [Review],
+  reviews: [ReviewType],
 };
 
-const createReviewColumn: React.FunctionComponent<Props> = (props: Props) => {
-  const {reviews} = props;
-  
+const createReviewColumn = (reviews) => {  
   return (
     <div className="movie-card__reviews-col">
       {reviews.map((review, i) => (
@@ -22,7 +20,7 @@ const createReviewColumn: React.FunctionComponent<Props> = (props: Props) => {
 };
 
 
-const TabReviews = (props) => {
+const TabReviews: React.FunctionComponent<Props> = (props: Props) => {
   const {reviews} = props;
 
   const halfReviewsLength = Math.ceil(reviews.length / 2);
