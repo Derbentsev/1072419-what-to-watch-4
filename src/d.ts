@@ -2,6 +2,7 @@
 import * as _reactDOM from 'react-dom';
 import {Link as _link, Route as _route, Router as _router, Switch as _switch} from 'react-router-dom';
 import * as _renderer from 'react-test-renderer';
+import Enzyme from 'enzyme';
 
 declare global {
     const React: typeof _react;
@@ -11,6 +12,8 @@ declare global {
     const Router: typeof _router;
     const Switch: typeof _switch;
     const renderer: typeof _renderer;
+    const shallow: typeof Enzyme.shallow;
+    const mount: typeof Enzyme.mount;
     const JSX: any;
     const cx: any;
     const connect: any;

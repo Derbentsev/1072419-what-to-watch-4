@@ -26,7 +26,6 @@ it(`Render Movie Page`, () => {
         <MemoryRouter>
           <Provider store = {store}>
             <MoviePage
-              loadReviews={()=>{}}
               match={{params: {id: `3`}}}
             />
           </Provider>

@@ -1,10 +1,10 @@
 import {KeyName} from '@consts/';
 import history from '@history/history';
-import {Film} from '@types/film.types';
+import {Film} from '@src/types/film.types';
 
 
 interface Props {
-  getFilmById: (number) => {Film},
+  getFilmById: (number) => Film,
   match: {
     params: {
       id: string,

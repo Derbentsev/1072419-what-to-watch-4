@@ -1,5 +1,5 @@
 import {getRunTimeFromMinutes} from '@utils/';
-import {Film} from '@types/film.types';
+import {Film} from '@src/typiies/film.types';
 
 
 interface Props {

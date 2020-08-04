@@ -6,8 +6,7 @@ import UserLogo from '@components/user-logo/user-logo.connect';
 import {AppRoute, MyListButtonSettings} from '@consts/';
 import history from '@history/history';
 import {AuthorizationStatus} from '@reducer/user/user';
-import {Film} from '@types/film.types';
-import {Review} from '@types/review.types';
+import {Film} from '@src/types/film.types';
 
 
 interface Props {
@@ -20,8 +19,7 @@ interface Props {
       id: string,
     }
   },
-  currentFilter: string,
-  films: [Film],
+  films: Film[],
 }
 
 const SAME_FILMS_COUNT = 4;
@@ -73,8 +71,8 @@ export default class MoviePage extends React.Component<Props, {}> {
     } = this.props;
 
     const filmId = this.props.match.params.id;
-    const currentFilm: film = getFilmById(filmId) || null;
-    const sameFilms = sameGenreFilms(currentFilm, films.slice()) || null;
+    const currentFilm: Film = getFilmById(filmId) || null;
+    const sameFilms: [Film] = sameGenreFilms(currentFilm, films.slice()) || null;
 
     if (!currentFilm) {
       return <h2>Loading...</h2>;

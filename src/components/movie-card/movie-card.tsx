@@ -1,10 +1,10 @@
 import history from '@history/history';
-import {Film} from '@types/film.types';
+import {Film} from '@src/types/film.types';
 
 
 interface Props {
   handleMovieCardMouseEnter: () => void,
-  renderPlayer: (videoSrc: string, poster: string) => {},
+  renderPlayer: (videoSrc: string, poster: string) => void,
   currentFilter: string,
   film: Film,
 }

@@ -1,9 +1,9 @@
 import Review from '@components/review/review';
-import {Review as ReviewType} from '@types/review.types';
+import {Review as ReviewType} from '@src/types/review.types';
 
 
 interface Props {
-  reviews: [ReviewType],
+  reviews: ReviewType[],
 };
 
 const createReviewColumn = (reviews) => {  

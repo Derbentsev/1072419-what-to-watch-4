@@ -1,5 +1,18 @@
+import {Film} from '@src/types/film.types';
+import {Subtract} from "utility-types";
+
+
+interface InjectingProps {
+  film: Film,
+}
+
+
 const withMoviesList = (Component) => {
-  class WithMoviesList extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+
+  class WithMoviesList extends React.PureComponent<T, {}> {
     constructor(props) {
       super(props);
 

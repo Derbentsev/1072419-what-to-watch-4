@@ -2,7 +2,7 @@ import UserLogo from '@components/user-logo/user-logo.connect';
 import {AuthorizationStatus} from '@reducer/user/user';
 import history from '@history/history';
 import {AppRoute, MyListButtonSettings} from '@consts/';
-import {Film} from '@types/film.types';
+import {Film} from '@src/types/film.types';
 
 
 interface Props {

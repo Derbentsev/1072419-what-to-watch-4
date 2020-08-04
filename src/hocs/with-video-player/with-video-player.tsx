@@ -1,4 +1,4 @@
-import {Film} from '@types/film.types';
+import {Film} from '@src/types/film.types';
 
 
 const DELAY_ON_MOUSE_ENTER = 2000;

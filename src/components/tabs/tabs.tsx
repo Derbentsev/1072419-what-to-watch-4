@@ -1,7 +1,7 @@
 import TabOverview from '@components/tab-overview/tab-overview';
 import TabDetails from '@components/tab-details/tab-details';
 import TabReviews from '@components/tab-reviews/tab-reviews.connect';
-import {Film} from '@types/film.types';
+import {Film} from '@src/types/film.types';
 
 
 const TabNames = {

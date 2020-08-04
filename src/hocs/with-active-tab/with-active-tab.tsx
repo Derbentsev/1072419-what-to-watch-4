@@ -1,5 +1,5 @@
 import {TabNames} from '@components/tabs/tabs';
-import {Film} from '@types/film.types';
+import {Film} from '@src/types/film.types';
 import {Subtract} from "utility-types";
 
 

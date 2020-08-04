@@ -16,9 +16,9 @@ it(`play and pause video`, () => {
 
   const playerElement = videoPlayer.find(`.small-movie-card__poster`);
 
-  playerElement.props().onMouseEnter();
+  playerElement.simulate(`mouseenter`);
   expect(mockFunctionMouseEnter).toHaveBeenCalledTimes(1);
 
-  playerElement.props().onMouseLeave();
+  playerElement.simulate(`mouseleave`);
   expect(mockFunctionMouseLeave).toHaveBeenCalledTimes(1);
 });

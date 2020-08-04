@@ -1,13 +1,13 @@
 import {FilterName} from '@consts/';
 import {getUniqueGenres} from '@reducer/films/selectors';
-import {Film} from '@types/film.types';
+import {Film} from '@src/types/film.types';
 
 
 interface Props {
-  setShowedFilmsCount: () => {},
-  onFilterClick: (string) => {},
+  setShowedFilmsCount: () => void,
+  onFilterClick: (string) => void,
   currentFilter: string,
-  films: [Film],
+  films: Film[],
 }
 
 const FiltersByGenre: React.FunctionComponent<Props> = (props: Props) => {

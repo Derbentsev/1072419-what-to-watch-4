@@ -8,7 +8,6 @@ it(`Render Video Player`, () => {
           handleMouseEnter = {() => {}}
           handleMouseLeave = {() => {}}
         >
-
           <video />
         </VideoPlayer>, {
           createNodeMock: () => {

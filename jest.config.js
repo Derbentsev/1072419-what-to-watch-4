@@ -1,13 +1,9 @@
 module.exports = {
-  "rootDir": `./src`,
-  "transform": {
-    "^.+\\.tsx?$": `ts-jest`,
-    "^.+\\.js?$": `babel-jest`,
-  },
-  "testRegex": `.test.(js?|jsx?|tsx?)$`,
-  "transformIgnorePatterns": [`/node_modules/`],
-  "moduleFileExtensions": [`ts`, `tsx`, `js`, `jsx`, `json`, `node`],
+  "setupFiles": [`<rootDir>/jest.setup.js`],
+  "testURL": `http://localhost/`,
   "verbose": true,
+  "testRegex": `(/tests/.|(\.|/)(test|spec))\.(jsx?|tsx?)$`,
+  "moduleFileExtensions": [`ts`, `tsx`, `js`, `jsx`, `json`, `node`],
   "moduleNameMapper": {
     "^@components(.*)$": `<rootDir>/src/components/$1`,
     "^@consts(.*)$": `<rootDir>/src/consts/$1`,
@@ -19,4 +15,5 @@ module.exports = {
     "^@api(.*)$": `<rootDir>/src/api/$1`,
     "^@history(.*)$": `<rootDir>/src/history/$1`,
   },
+  "coveragePathIgnorePatterns": [`/test-setup.js`]
 };

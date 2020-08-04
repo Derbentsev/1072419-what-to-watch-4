@@ -2,7 +2,7 @@ import {AppRoute} from '@consts/';
 import UserLogo from '@components/user-logo/user-logo.connect';
 import MoviesList from '@components/movies-list/movies-list.connect';
 import withMoviesList from '@hocs/with-movies-list/with-movies-list';
-import {Film} from '@types/film.types';
+import {Film} from '@src/types/film.types';
 
 
 interface Props {

@@ -28,8 +28,9 @@ module.exports = (env) => {
         },
         {
           test: /\.(tsx|ts)?$/,
+          exclude: /node_modules/,
           loader: `ts-loader`
-        }
+        },
       ],
     },
     devtool: `source-map`,

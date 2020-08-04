@@ -2,7 +2,7 @@ import UserLogo from '@components/user-logo/user-logo.connect';
 import {extend} from '@utils/';
 import history from '@history/history';
 import {AppRoute} from '@consts/';
-import {Film} from '@types/film.types';
+import {Film} from '@src/types/film.types';
 
 
 const ReviewParams = {
@@ -16,7 +16,7 @@ const ReviewParams = {
 interface Props {
   setFalseReviewPushStatus: () => void,
   pushReview: (rating: number, comment: number, id: string) => void,
-  getFilmById: (number) => [],
+  getFilmById: (number) => Film,
   pushReviewStatus: boolean,
   match: {
     params: {

@@ -1,39 +1,23 @@
 import {AuthorizationStatus} from '@reducer/user/user';
 import {AppRoute} from '@consts/';
 import {Redirect} from 'react-router-dom';
-import { ReactNode } from 'react';
+import {RouteProps} from "react-router";
 
 
-interface Props {
-  render: (computedMatch) => ReactNode,
+interface Props extends RouteProps {
   authorizationStatus: string,
-  path: string,
-  exact: boolean,
-  computedMatch: {
-    params: {
-      id: string,
-    }
-  },
 }
 
 const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {
-  const {render, authorizationStatus, path, exact, computedMatch} = props;
+  const {authorizationStatus} = props;
 
-  return (
-    <Route
-      exact={exact}
-      path={path}
-      render={() => {
-        if (authorizationStatus === AuthorizationStatus.AUTH) {
-          return render(computedMatch);
-        } else if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-          return <Redirect to={AppRoute.LOGIN} />;
-        }
+  if (authorizationStatus === AuthorizationStatus.AUTH) {
+    return <Route {...props} />;
+  } else if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+    return <Redirect to={AppRoute.LOGIN} />;
+  }
 
-        return <h2>Loading...</h2>;
-      }}
-    />
-  );
+  return <h2>Loading...</h2>;
 };
 
 
