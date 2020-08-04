@@ -112,7 +112,7 @@ const filmPromo = {
 const mockFilmsStore = {
   films,
   filmPromo,
-  favoriteFilms: [],
+  favoriteFilms: films,
 };
 
 const mockFilterStore = {

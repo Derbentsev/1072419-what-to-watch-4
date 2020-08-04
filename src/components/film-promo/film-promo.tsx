@@ -7,7 +7,7 @@ import {Film} from '@src/types/film.types';
 
 interface Props {
   authorizationStatus: string,
-  setFavoriteFilm: (boolean, number) => {},
+  setFavoriteFilm: (boolean, number) => void,
   filmPromo: Film,
 }
 
