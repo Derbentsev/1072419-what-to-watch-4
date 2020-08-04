@@ -1,5 +1,5 @@
 import {getRunTimeFromMinutes} from '@utils/';
-import {Film} from '@src/typiies/film.types';
+import {Film} from '@src/types/film.types';
 
 
 interface Props {
@@ -21,7 +21,7 @@ const TabDetails: React.FunctionComponent<Props> = (props: Props) => {
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Starring</strong>
             <span className="movie-card__details-value">
-              {film.actors.join(`, `).split()}
+              {film.actors.join(`, `).split(``)}
             </span>
           </p>
         </div>

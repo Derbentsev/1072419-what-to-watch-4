@@ -6,7 +6,7 @@ import {Film} from '@src/types/film.types';
 
 
 const ReviewParams = {
-  MIN_COMMENT_LENGTH: 5,
+  MIN_COMMENT_LENGTH: 50,
   MAX_COMMENT_LENGTH: 400,
   MIN_RATING: 1,
   MAX_RATING: 5,

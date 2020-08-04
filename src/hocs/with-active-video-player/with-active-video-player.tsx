@@ -1,6 +1,6 @@
 import Player from '@components/video-player/video-player';
 import withVideoPlayer from '@hocs/with-video-player/with-video-player';
-import {Subtract} from "utility-types";
+import {Subtract} from 'utility-types';
 
 
 interface InjectingProps {

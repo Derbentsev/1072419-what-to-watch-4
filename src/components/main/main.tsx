@@ -6,7 +6,7 @@ import {Film} from '@src/types/film.types';
 
 
 interface Props {
-  setShowedFilmsCount: () => void,
+  setShowedFilmsCount: (number) => void,
   showedFilmsCount: number,
   currentFilter: string,
   films: Film[],

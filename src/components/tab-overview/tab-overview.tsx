@@ -23,7 +23,7 @@ const TabOverview: React.FunctionComponent<Props> = (props: Props) => {
       <div className="movie-card__text">
         {film.description}
         <p className="movie-card__director"><strong>Director: {film.director}</strong></p>
-        <p className="movie-card__starring"><strong>Starring: {film.actors.join(`, `).split()}</strong></p>
+        <p className="movie-card__starring"><strong>Starring: {film.actors.join(`, `).split(``)}</strong></p>
       </div>
     </>
   );

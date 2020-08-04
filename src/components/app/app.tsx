@@ -7,7 +7,6 @@ import history from '@history/history';
 import {AppRoute} from '@consts/';
 import MyList from '@components/my-list/my-list.connect';
 import PrivateRoute from '@components/private-route/private-route.connect';
-import {Film} from '@src/types/film.types';
 
 
 interface Props {
