@@ -132,4 +132,5 @@ export {
   mockFilterStore,
   mockUserStore,
   mockReviewsStore,
+  films,
 };

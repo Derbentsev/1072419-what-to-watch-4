@@ -20,18 +20,22 @@ module.exports = (env) => {
     module: {
       rules: [
         {
-          test: /\.(tsx|ts)$/,
+          test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: {
-            loader: `ts-loader`,
+            loader: `babel-loader`,
           },
+        },
+        {
+          test: /\.(tsx|ts)?$/,
+          loader: `ts-loader`
         }
       ],
     },
     devtool: `source-map`,
     resolve: {
       modules: [`node_modules`, path.resolve(path.join(__dirname, `public`))],
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.webm'],
+      extensions: [`.js`, `.ts`, `.tsx`, `.json`],
       alias: {
         '@components': path.resolve(__dirname, `./src/components/`),
         '@consts': path.resolve(__dirname, `./src/consts/`),

@@ -1,6 +1,7 @@
 ﻿import * as _react from 'react';
 import * as _reactDOM from 'react-dom';
 import {Link as _link, Route as _route, Router as _router, Switch as _switch} from 'react-router-dom';
+import * as _renderer from 'react-test-renderer';
 
 declare global {
     const React: typeof _react;
@@ -9,6 +10,7 @@ declare global {
     const Route: typeof _route;
     const Router: typeof _router;
     const Switch: typeof _switch;
+    const renderer: typeof _renderer;
     const JSX: any;
     const cx: any;
     const connect: any;
