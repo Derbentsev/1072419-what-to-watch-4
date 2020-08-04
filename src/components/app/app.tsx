@@ -10,18 +10,12 @@ import PrivateRoute from '@components/private-route/private-route.connect';
 
 
 interface Props {
-  checkAuth: () => string,
-  loadFilms: () => void,
-  loadFilmPromo: () => void,
+  init: () => void
 }
 
 export default class App extends React.PureComponent<Props, {}> {
   componentDidMount() {
-    const {checkAuth, loadFilms, loadFilmPromo} = this.props;
-
-    checkAuth();
-    loadFilms();
-    loadFilmPromo();
+    this.props.init();
   }
 
   render() {

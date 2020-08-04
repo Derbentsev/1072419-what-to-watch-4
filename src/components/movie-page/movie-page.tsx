@@ -72,7 +72,7 @@ export default class MoviePage extends React.Component<Props, {}> {
 
     const filmId = this.props.match.params.id;
     const currentFilm: Film = getFilmById(filmId) || null;
-    const sameFilms: [Film] = sameGenreFilms(currentFilm, films.slice()) || null;
+    const sameFilms: Film[] = sameGenreFilms(currentFilm, films.slice()) || null;
 
     if (!currentFilm) {
       return <h2>Loading...</h2>;

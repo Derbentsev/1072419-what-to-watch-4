@@ -5,15 +5,11 @@ import {Operation as UserOperation} from '@reducer/user/user';
 
 
 const mapDispatchToProps = (dispatch) => ({
-  checkAuth: () => {
+  init: () => {
     dispatch(UserOperation.checkAuth());
-  },
-  loadFilms: () => {
     dispatch(DataOperation.loadFilms());
-  },
-  loadFilmPromo: () => {
     dispatch(DataOperation.loadFilmPromo());
-  },
+  }
 });
 
 
