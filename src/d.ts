@@ -2,7 +2,7 @@
 import * as _reactDOM from 'react-dom';
 import {Link as _link, Route as _route, Router as _router, Switch as _switch} from 'react-router-dom';
 import * as _renderer from 'react-test-renderer';
-import Enzyme from 'enzyme';
+import * as Enzyme from 'enzyme';
 
 declare global {
     const React: typeof _react;

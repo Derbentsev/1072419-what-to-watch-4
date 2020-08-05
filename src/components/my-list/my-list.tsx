@@ -13,7 +13,7 @@ interface Props {
 const MoviesListWrapped = withMoviesList(MoviesList);
 
 export default class MyList extends React.PureComponent<Props, {}> {
-  componentWillMount() {
+  componentDidMount() {
     const {loadFavoriteFilms} = this.props;
     loadFavoriteFilms();
   }

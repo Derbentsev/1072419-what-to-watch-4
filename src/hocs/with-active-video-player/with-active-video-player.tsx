@@ -1,10 +1,12 @@
 import Player from '@components/video-player/video-player';
 import withVideoPlayer from '@hocs/with-video-player/with-video-player';
 import {Subtract} from 'utility-types';
+import {Film} from '@src/types/film.types';
 
 
 interface InjectingProps {
   renderPlayer: () => React.ReactNode,
+  film: Film,
 }
 
 interface State {
@@ -27,12 +29,15 @@ const withActiveVideoPlayer = (Component) => {
     }
 
     render() {
+      const {film} = this.props;
+
       return (
         <Component
           {...this.props}
           renderPlayer = {() => {
             return (
               <VideoPlayer
+                film = {film}
                 {...this.props}
               />
             );

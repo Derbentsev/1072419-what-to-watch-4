@@ -1,6 +1,6 @@
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 import App from '@components/app/app.connect';
-import {createStore, applyMiddleware, compose} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import {composeWithDevTools} from "redux-devtools-extension";
 import {Provider} from 'react-redux';
 import reducer from '@reducer/reducer';
