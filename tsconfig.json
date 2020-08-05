@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "rootDir": ".",
-    "outDir": "./dist",
-    "baseUrl": ".",
+    // "rootDir": "./src",
+    // "outDir": "./dist",
+    "baseUrl": "./",
 
     "paths": {
       "@components/*": ["src/components/*"],
-      "@consts/*": ["src/consts/*"],
+      "@consts": ["src/consts/index"],
       "@adapters/*": ["src/adapters/*"],
       "@hocs/*": ["src/hocs/*"],
       "@utils/*": ["src/utils/*"],
@@ -21,7 +21,7 @@
     "module": "commonjs",
     "target": "es2016",
     "jsx": "react",
-    "allowSyntheticDefaultImports": false,
+    "allowSyntheticDefaultImports": true,
     "removeComments": true,
     "preserveConstEnums": true,
     "alwaysStrict": true,

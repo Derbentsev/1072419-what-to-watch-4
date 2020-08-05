@@ -1,4 +1,4 @@
-import {KeyName} from '@consts/';
+import {KeyName} from '@consts';
 import history from '@history/history';
 import {Film} from '@src/types/film.types';
 

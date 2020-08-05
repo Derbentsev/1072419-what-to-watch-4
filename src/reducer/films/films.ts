@@ -1,4 +1,4 @@
-import {extend} from '@utils/';
+import {extend} from '@utils/utils';
 import {
   createFilms,
   createFilm,

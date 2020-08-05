@@ -21,7 +21,7 @@ Array [
       <span
         className="movie-rating__count"
       >
-        24
+        240
          ratings
       </span>
     </p>
@@ -43,7 +43,56 @@ Array [
     >
       <strong>
         Starring: 
-        Bill Murray, Edward Norton, Jude Law, Willem Dafoe
+        B
+        i
+        l
+        l
+         
+        M
+        u
+        r
+        r
+        a
+        y
+        ,
+         
+        E
+        d
+        w
+        a
+        r
+        d
+         
+        N
+        o
+        r
+        t
+        o
+        n
+        ,
+         
+        J
+        u
+        d
+        e
+         
+        L
+        a
+        w
+        ,
+         
+        W
+        i
+        l
+        l
+        e
+        m
+         
+        D
+        a
+        f
+        o
+        e
       </strong>
     </p>
   </div>,

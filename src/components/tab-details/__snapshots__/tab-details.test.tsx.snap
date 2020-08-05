@@ -32,7 +32,56 @@ exports[`Render Tab Details 1`] = `
       <span
         className="movie-card__details-value"
       >
-        Bill Murray, Edward Norton, Jude Law, Willem Dafoe
+        B
+        i
+        l
+        l
+         
+        M
+        u
+        r
+        r
+        a
+        y
+        ,
+         
+        E
+        d
+        w
+        a
+        r
+        d
+         
+        N
+        o
+        r
+        t
+        o
+        n
+        ,
+         
+        J
+        u
+        d
+        e
+         
+        L
+        a
+        w
+        ,
+         
+        W
+        i
+        l
+        l
+        e
+        m
+         
+        D
+        a
+        f
+        o
+        e
       </span>
     </p>
   </div>
@@ -50,7 +99,7 @@ exports[`Render Tab Details 1`] = `
       <span
         className="movie-card__details-value"
       >
-        1h 42m
+        1h 38m
       </span>
     </p>
     <p

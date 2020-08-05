@@ -1,5 +1,5 @@
 import {AuthorizationStatus} from '@reducer/user/user';
-import {AppRoute} from '@consts/';
+import {AppRoute} from '@consts';
 
 
 interface Props {

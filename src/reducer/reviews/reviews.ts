@@ -1,4 +1,4 @@
-import {extend} from '@utils/';
+import {extend} from '@utils/utils';
 import {createReviews, createPushReview} from '@adapters/reviews';
 
 

@@ -1,4 +1,4 @@
-import {getTextRating} from '@utils/';
+import {getTextRating} from '@utils/utils';
 import {Film} from '@src/types/film.types';
 
 

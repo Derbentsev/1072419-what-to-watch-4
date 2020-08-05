@@ -1,4 +1,4 @@
-import {extend, isValidEmail, isValidPassword} from '@utils/';
+import {extend, isValidEmail, isValidPassword} from '@utils/utils';
 
 
 const ErrorMessage = {

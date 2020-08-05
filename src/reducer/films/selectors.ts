@@ -1,5 +1,5 @@
 import NameSpace from '@reducer/name-space';
-import {FilterName} from '@consts/';
+import {FilterName} from '@consts';
 import {createSelector} from 'reselect';
 
 

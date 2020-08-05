@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import NameSpace from '@reducer/name-space';
 import {films} from '@utils/test-data';
 import PrivateRoute from '@components/private-route/private-route.connect';
-import {AppRoute} from '@consts/';
+import {AppRoute} from '@consts';
 import {MemoryRouter} from "react-router-dom";
 import {
   mockFilmsStore,
@@ -40,4 +40,3 @@ it(`Render App`, () => {
 
   expect(tree).toMatchSnapshot();
 });
-

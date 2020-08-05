@@ -1,4 +1,4 @@
-import {FilterName} from '@consts/';
+import {FilterName} from '@consts';
 import {getUniqueGenres} from '@reducer/films/selectors';
 import {Film} from '@src/types/film.types';
 

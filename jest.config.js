@@ -1,4 +1,5 @@
 module.exports = {
+  "rootDir": `.`,
   "setupFiles": [`<rootDir>/jest.setup.js`],
   "transform": {
     "^.+\\.tsx?$": `ts-jest`,

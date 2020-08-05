@@ -1,4 +1,4 @@
-import {getRunTimeFromMinutes} from '@utils/';
+import {getRunTimeFromMinutes} from '@utils/utils';
 import {Film} from '@src/types/film.types';
 
 
