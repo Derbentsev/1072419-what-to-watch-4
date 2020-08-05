@@ -12,8 +12,8 @@ Array [
         className="movie-card__bg"
       >
         <img
-          alt="The Grand Budapest Hotel"
-          src="img/bg-the-grand-budapest-hotel.jpg"
+          alt="title1"
+          src=""
         />
       </div>
       <h1
@@ -29,6 +29,8 @@ Array [
         >
           <a
             className="logo__link"
+            href="/"
+            onClick={[Function]}
           >
             <span
               className="logo__letter logo__letter--1"
@@ -52,7 +54,8 @@ Array [
         >
           <a
             className="user-block__link"
-            href="sign-in.html"
+            href="/login"
+            onClick={[Function]}
           >
             Sign in
           </a>
@@ -106,15 +109,16 @@ Array [
             </button>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
-                height="20"
-                viewBox="0 0 19 20"
-                width="19"
+                height="14"
+                viewBox="0 0 18 14"
+                width="18"
               >
                 <use
-                  href="#add"
+                  href="#in-list"
                 />
               </svg>
               <span>
@@ -124,6 +128,7 @@ Array [
             <a
               className="btn movie-card__button"
               href="add-review.html"
+              onClick={[Function]}
             >
               Add review
             </a>
@@ -210,7 +215,8 @@ Array [
               <span
                 className="movie-rating__count"
               >
-                24
+                240
+                 ratings
               </span>
             </p>
           </div>
@@ -231,7 +237,56 @@ Array [
             >
               <strong>
                 Starring: 
-                Bill Murray, Edward Norton, Jude Law, Willem Dafoe
+                B
+                i
+                l
+                l
+                 
+                M
+                u
+                r
+                r
+                a
+                y
+                ,
+                 
+                E
+                d
+                w
+                a
+                r
+                d
+                 
+                N
+                o
+                r
+                t
+                o
+                n
+                ,
+                 
+                J
+                u
+                d
+                e
+                 
+                L
+                a
+                w
+                ,
+                 
+                W
+                i
+                l
+                l
+                e
+                m
+                 
+                D
+                a
+                f
+                o
+                e
               </strong>
             </p>
           </div>

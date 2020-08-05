@@ -120,11 +120,6 @@ const mockUserStore = {
   authorizationError: ``,
 };
 
-const mockReviewsStore = {
-  reviews: [],
-  pushReviewStatus: ``,
-};
-
 const reviews = [
   {
     comment: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
@@ -151,6 +146,11 @@ const reviews = [
     date: `December 20, 2016`,
   },
 ];
+
+const mockReviewsStore = {
+  reviews,
+  pushReviewStatus: ``,
+};
 
 
 export {

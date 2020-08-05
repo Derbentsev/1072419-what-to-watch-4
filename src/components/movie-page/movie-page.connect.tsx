@@ -8,7 +8,6 @@ import {getFilmById} from '@reducer/films/selectors';
 
 const mapStateToProps = (state) => ({
   films: state[NameSpace.FILMS].films,
-  reviews: state[NameSpace.REVIEWS].reviews,
   authorizationStatus: state[NameSpace.USER].authorizationStatus,
   getFilmById: (filmId) => getFilmById(state, filmId),
 });
