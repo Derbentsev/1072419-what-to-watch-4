@@ -1,7 +1,3 @@
-const FilterName = {
-  ALL: `All genres`,
-};
-
 const films = [
   {
     id: 1,
@@ -116,7 +112,7 @@ const mockFilmsStore = {
 };
 
 const mockFilterStore = {
-  currentFilter: FilterName.ALL,
+  currentFilter: `All genres`,
 };
 
 const mockUserStore = {

@@ -10,7 +10,7 @@ import {
 } from '@utils/test-data';
 
 
-const mockStore = configureStore([]);
+const mockStore = configureStore();
 
 it(`Should Main screen render correctly`, () => {
   const store = mockStore({

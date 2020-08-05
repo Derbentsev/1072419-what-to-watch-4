@@ -5,18 +5,16 @@ import NameSpace from '@reducer/name-space';
 import {MemoryRouter} from 'react-router-dom';
 import {
   mockFilmsStore,
-  mockFilterStore,
   mockUserStore,
   mockReviewsStore,
 } from '@utils/test-data';
 
 
-const mockStore = configureStore([]);
+const mockStore = configureStore();
 
 it(`Render Movie Page`, () => {
   const store = mockStore({
     [NameSpace.FILMS]: mockFilmsStore,
-    [NameSpace.FILTER]: mockFilterStore,
     [NameSpace.USER]: mockUserStore,
     [NameSpace.REVIEWS]: mockReviewsStore,
   });

@@ -1,4 +1,4 @@
-import App from './app.connect';
+import App from './app';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import NameSpace from '@reducer/name-space';
@@ -9,7 +9,7 @@ import {
 } from '@utils/test-data';
 
 
-const mockStore = configureStore([]);
+const mockStore = configureStore();
 
 it(`Render App`, () => {
   const store = mockStore({
@@ -20,8 +20,8 @@ it(`Render App`, () => {
 
   const tree = renderer
     .create(
-        <Provider store = {store}>
-          <App/>
+        <Provider store={store}>
+          <App init={() => {}}/>
         </Provider>
     ).toJSON();
 
