@@ -28,4 +28,3 @@ it(`Render Movie Page`, () => {
 
   expect(tree).toMatchSnapshot();
 });
-
