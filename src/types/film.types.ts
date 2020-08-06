@@ -1,6 +1,3 @@
-import {Review} from './review.types';
-
-
 export interface Film {
   id: number,
   title: string,
