@@ -1,4 +1,4 @@
-import {reducer, ActionCreator as FilmsActions, Operation, ActionType} from './films';
+import {reducer, Operation, ActionType} from './films';
 import {rawFilms, films} from '@utils/test-data';
 import {createAPI} from '@api/api';
 import MockAdapter from "axios-mock-adapter";

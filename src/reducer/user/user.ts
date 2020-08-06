@@ -20,7 +20,7 @@ const initialState = {
 const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   SET_AUTHORIZATION_ERROR: `SET_AUTHORIZATION_ERROR`,
-  SET_AUTHORIZATION_STATUS: `SET_CURRENT_CONNECT_STATUS`,
+  SET_AUTHORIZATION_STATUS: `SET_AUTHORIZATION_STATUS`,
 };
 
 const ActionCreator = {
@@ -106,4 +106,5 @@ export {
   ActionType,
   Operation,
   reducer,
+  ErrorMessage,
 };

@@ -115,21 +115,6 @@ const rawFilms = [
   }
 ];
 
-const reviews = [
-  {
-    comment: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
-    rating: 8.9,
-    author: `Kate Muir`,
-    date: `December 24, 2016`,
-  },
-  {
-    comment: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
-    rating: 8.9,
-    author: `Kate Muir`,
-    date: `December 24, 2016`,
-  },
-]
-
 const filmPromo = {
   id: 10,
   title: `title1`,
@@ -149,6 +134,60 @@ const filmPromo = {
   description: `description1`,
   runTime: 99,
 };
+
+const reviews = [
+  {
+    filmId: 1,
+    userId: 1,
+    comment: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+    rating: 8.9,
+    author: `Kate Muir`,
+    date: `2019-05-08T14:13:56.569Z`,
+  },
+  {
+    filmId: 2,
+    userId: 3,
+    comment: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+    rating: 8.9,
+    author: `Kate Muir`,
+    date: `2019-05-08T14:13:56.569Z`,
+  },
+]
+
+const rawReviews = [
+  {
+    id: 1,
+    user: {
+      id: 1,
+      name: "Kate Muir"
+    },
+    rating: 8.9,
+    comment: "Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.",
+    date: "2019-05-08T14:13:56.569Z"
+  },
+  {
+    id: 2,
+    user: {
+      id: 3,
+      name: "Kate Muir"
+    },
+    rating: 8.9,
+    comment: "Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.",
+    date: "2019-05-08T14:13:56.569Z"
+  },
+]
+
+const user = {
+  email: `Oliver.conner@gmail.com`,
+  password: `12345678`
+}
+
+const rawUser = {
+  id: 1,
+  email: "Oliver.conner@gmail.com",
+  name: "Oliver.conner",
+  avatar_url: "img/1.png"
+}
 
 const mockFilmsStore = {
   films,
@@ -177,6 +216,9 @@ export {
   mockUserStore,
   mockReviewsStore,
   films,
-  reviews,
   rawFilms,
+  reviews,
+  rawReviews,
+  user,
+  rawUser,
 };

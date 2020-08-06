@@ -18,5 +18,4 @@ export interface Film {
   ratingCount: number,
   description: string,
   runTime: number,
-  reviews: Review[],
 }
