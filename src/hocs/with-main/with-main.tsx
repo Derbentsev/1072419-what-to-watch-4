@@ -8,7 +8,7 @@ interface State {
 }
 
 interface InjectingProps {
-  setShowedFilmsCount: () => {},
+  setShowedFilmsCount: () => void,
   showedFilmsCount: number,
 }
 
