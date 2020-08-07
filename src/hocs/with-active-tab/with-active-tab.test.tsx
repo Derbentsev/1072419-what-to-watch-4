@@ -21,9 +21,9 @@ const MockWrappedComponent = withActiveTab(MockComponent);
 it(`Render Movie Page`, () => {
   const tree = renderer
     .create(
-      <MockWrappedComponent
-        film = {films[0]}
-      />
+        <MockWrappedComponent
+          film = {films[0]}
+        />
     ).toJSON();
 
   expect(tree).toMatchSnapshot();

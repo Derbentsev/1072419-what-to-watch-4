@@ -3,7 +3,7 @@ import {Subtract} from "utility-types";
 
 
 interface InjectingProps {
-  film: Film,
+  film: Film;
 }
 
 

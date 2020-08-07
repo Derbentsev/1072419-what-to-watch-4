@@ -10,7 +10,7 @@ it(`When cursor on the movie card, has movie info`, () => {
   const movieCard = shallow(<MovieCard
     film = {mock}
     handleMovieCardMouseEnter = {handleMovieCardMouseEnterSpy}
-    renderPlayer = {() => {}}
+    renderPlayer = {() => null}
     currentFilter = 'All'
   />);
 

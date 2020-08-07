@@ -14,21 +14,21 @@ const ReviewParams = {
 };
 
 interface Props {
-  setFalseReviewPushStatus: () => void,
-  pushReview: (rating: number, comment: number, id: string) => void,
-  getFilmById: (number) => Film,
-  pushReviewStatus: boolean,
+  setFalseReviewPushStatus: () => void;
+  pushReview: (rating: number, comment: number, id: string) => void;
+  getFilmById: (number) => Film;
+  pushReviewStatus: boolean;
   match: {
     params: {
-      id: string,
-    }
-  },
+      id: string;
+    };
+  };
 }
 
 interface State {
-  rating: number,
-  comment: number,
-  isValid: boolean,
+  rating: number;
+  comment: number;
+  isValid: boolean;
 }
 
 export default class AddReview extends React.PureComponent<Props, State> {
@@ -123,7 +123,7 @@ export default class AddReview extends React.PureComponent<Props, State> {
                 </ul>
               </nav>
 
-              <UserLogo/>
+              <UserLogo />
             </header>
 
             <div className="movie-card__poster movie-card__poster--small">
@@ -143,7 +143,7 @@ export default class AddReview extends React.PureComponent<Props, State> {
             >
               <div className="rating">
                 <div className="rating__stars">
-                  <input className="rating__input" id="star-1" type="radio" name="rating" value="1"/>
+                  <input className="rating__input" id="star-1" type="radio" name="rating" value="1" />
                   <label className="rating__label" htmlFor="star-1">Rating 1</label>
 
                   <input className="rating__input" id="star-2" type="radio" name="rating" value="2" />

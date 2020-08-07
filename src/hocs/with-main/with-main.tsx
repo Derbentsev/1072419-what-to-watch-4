@@ -4,12 +4,12 @@ import {Subtract} from 'utility-types';
 const SHOW_FILM_CARD_BY_START = 8;
 
 interface State {
-  showedFilmsCount: number,
+  showedFilmsCount: number;
 }
 
 interface InjectingProps {
-  setShowedFilmsCount: () => void,
-  showedFilmsCount: number,
+  setShowedFilmsCount: () => void;
+  showedFilmsCount: number;
 }
 
 

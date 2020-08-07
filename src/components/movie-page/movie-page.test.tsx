@@ -12,7 +12,7 @@ import {
 
 
 const mockStore = configureStore();
-const authStatus = `AUTH`
+const authStatus = `AUTH`;
 
 it(`Render Movie Page`, () => {
   const store = mockStore({
@@ -29,8 +29,8 @@ it(`Render Movie Page`, () => {
               films = {films}
               authorizationStatus = {authStatus}
               match={{params: {id: `3`}}}
-              loadReviews={() => {}}
-              setFavoriteFilm={() => {}}
+              loadReviews={() => null}
+              setFavoriteFilm={() => null}
               getFilmById={() => films[0]}
             />
           </Provider>

@@ -3,7 +3,7 @@ import {Film} from '@src/types/film.types';
 
 
 interface Props {
-  film: Film,
+  film: Film;
 }
 
 const TabDetails: React.FunctionComponent<Props> = (props: Props) => {

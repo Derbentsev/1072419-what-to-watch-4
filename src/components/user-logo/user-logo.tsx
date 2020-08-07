@@ -3,8 +3,8 @@ import {AppRoute} from '@consts';
 
 
 interface Props {
-  authorizationStatus: string,
-};
+  authorizationStatus: string;
+}
 
 const UserLogo: React.FunctionComponent<Props> = (props: Props) => {
   const {authorizationStatus} = props;

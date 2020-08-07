@@ -4,11 +4,11 @@ import {Subtract} from "utility-types";
 
 
 interface InjectingProps {
-  film: Film,
+  film: Film;
 }
 
 interface State {
-  activeTab: string,
+  activeTab: string;
 }
 
 const withActiveTab = (Component) => {

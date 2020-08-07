@@ -4,8 +4,8 @@ import {Film} from '@src/types/film.types';
 
 
 interface Props {
-  handleMovieCardMouseEnter: () => void,
-  films: Film[],
+  handleMovieCardMouseEnter: () => void;
+  films: Film[];
 }
 
 const MovieCardWrapped = withActiveVideoPlayer(MovieCard);

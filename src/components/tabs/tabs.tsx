@@ -11,10 +11,10 @@ const TabNames = {
 };
 
 interface Props {
-  handleOnTab: () => void,
-  activeTab: string,
-  currentFilter: string,
-  film: Film,
+  handleOnTab: () => void;
+  activeTab: string;
+  currentFilter: string;
+  film: Film;
 }
 
 const Tabs: React.FunctionComponent<Props> = (props: Props) => {

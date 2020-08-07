@@ -5,12 +5,12 @@ import {Film} from '@src/types/film.types';
 
 
 interface InjectingProps {
-  renderPlayer: () => React.ReactNode,
-  film: Film,
+  renderPlayer: () => React.ReactNode;
+  film: Film;
 }
 
 interface State {
-  isPlaying: boolean,
+  isPlaying: boolean;
 }
 
 const VideoPlayer = withVideoPlayer(Player);

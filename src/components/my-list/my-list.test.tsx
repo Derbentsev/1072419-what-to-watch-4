@@ -19,14 +19,14 @@ it(`Render App`, () => {
   });
 
   const tree = renderer.create(
-    <Provider store = {store}>
-      <MemoryRouter>
-        <MyList
-          loadFavoriteFilms = {() => {}}
-          favoriteFilms = {films}
-        />
-      </MemoryRouter>
-    </Provider>
+      <Provider store = {store}>
+        <MemoryRouter>
+          <MyList
+            loadFavoriteFilms = {() => null}
+            favoriteFilms = {films}
+          />
+        </MemoryRouter>
+      </Provider>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

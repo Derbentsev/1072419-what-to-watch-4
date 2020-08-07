@@ -1,5 +1,5 @@
 import TabDetails from './tab-details';
-import {films} from '@utils/test-data'
+import {films} from '@utils/test-data';
 
 
 const mocks = films[0];

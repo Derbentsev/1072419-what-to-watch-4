@@ -6,9 +6,9 @@ it(`Render Filters By Genre`, () => {
   const tree = renderer
     .create(<FiltersByGenre
       films = {films}
-      onFilterClick = {() => {}}
+      onFilterClick = {() => null}
       currentFilter = 'All'
-      setShowedFilmsCount = {() => {}}
+      setShowedFilmsCount = {() => null}
     />).toJSON();
 
   expect(tree).toMatchSnapshot();

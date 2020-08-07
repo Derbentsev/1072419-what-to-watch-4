@@ -4,10 +4,10 @@ import {Film} from '@src/types/film.types';
 
 
 interface Props {
-  setShowedFilmsCount: () => void,
-  onFilterClick: (string) => void,
-  currentFilter: string,
-  films: Film[],
+  setShowedFilmsCount: () => void;
+  onFilterClick: (string) => void;
+  currentFilter: string;
+  films: Film[];
 }
 
 const FiltersByGenre: React.FunctionComponent<Props> = (props: Props) => {

@@ -18,7 +18,7 @@ it(`Render Movies List`, () => {
         <Provider store = {store}>
           <MoviesList
             films = {films}
-            handleMovieCardMouseEnter = {() => {}}
+            handleMovieCardMouseEnter = {() => null}
           />
         </Provider>
     ).toJSON();

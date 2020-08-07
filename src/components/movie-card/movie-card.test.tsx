@@ -11,10 +11,9 @@ it(`Render Movie Card`, () => {
     .create(<MovieCard
       film = {mock}
       handleMovieCardMouseEnter = {onMovieCardMouseEnterSpy}
-      renderPlayer = {() => {}}
+      renderPlayer = {() => null}
       currentFilter = 'All'
-    />)
-      .toJSON();
+    />).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

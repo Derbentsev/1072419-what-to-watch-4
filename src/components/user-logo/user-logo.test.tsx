@@ -15,13 +15,13 @@ it(`Render App`, () => {
   });
 
   const tree = renderer.create(
-    <MemoryRouter>
-      <Provider store = {store}>
-        <UserLogo
-          authorizationStatus = {authStatus}
-        />
-      </Provider>
-    </MemoryRouter>
+      <MemoryRouter>
+        <Provider store = {store}>
+          <UserLogo
+            authorizationStatus = {authStatus}
+          />
+        </Provider>
+      </MemoryRouter>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

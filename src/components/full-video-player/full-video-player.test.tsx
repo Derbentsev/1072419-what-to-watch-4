@@ -18,12 +18,12 @@ it(`Render App`, () => {
   });
 
   const tree = renderer.create(
-    <Provider store = {store}>
-      <FullVideoPlayer
-        getFilmById = {() => films[0]}
-        match={{params: {id: films[0].id.toString()}}}
-      />
-    </Provider>
+      <Provider store = {store}>
+        <FullVideoPlayer
+          getFilmById = {() => films[0]}
+          match={{params: {id: films[0].id.toString()}}}
+        />
+      </Provider>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

@@ -6,9 +6,9 @@ import {Film} from '@src/types/film.types';
 
 
 interface Props {
-  authorizationStatus: string,
-  setFavoriteFilm: (boolean, number) => void,
-  filmPromo: Film,
+  authorizationStatus: string;
+  setFavoriteFilm: (boolean, number) => void;
+  filmPromo: Film;
 }
 
 export default class FilmPromo extends React.PureComponent<Props, {}> {

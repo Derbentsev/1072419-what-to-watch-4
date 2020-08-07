@@ -1,9 +1,9 @@
 import * as moment from 'moment';
-import {Review} from '@src/types/review.types';
+import {Review as ReviewType} from '@src/types/review.types';
 
 
 interface Props {
-  review: Review,
+  review: ReviewType;
 }
 
 const Review: React.FunctionComponent<Props> = (props: Props) => {

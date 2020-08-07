@@ -5,7 +5,7 @@ import {RouteProps} from "react-router";
 
 
 interface Props extends RouteProps {
-  authorizationStatus: string,
+  authorizationStatus: string;
 }
 
 const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {

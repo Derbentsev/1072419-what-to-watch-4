@@ -4,11 +4,11 @@ import {Film} from '@src/types/film.types';
 const DELAY_ON_MOUSE_ENTER = 2000;
 
 interface Props {
-  film: Film,
+  film: Film;
 }
 
 interface State {
-  isPlaying: boolean,
+  isPlaying: boolean;
 }
 
 const withVideoPlayer = (Component) => {
@@ -32,7 +32,7 @@ const withVideoPlayer = (Component) => {
     }
 
     componentWillUnmount() {
-      clearTimeout(this.timeout!);
+      this.timeout && clearTimeout(this.timeout);
     }
 
     componentDidUpdate() {

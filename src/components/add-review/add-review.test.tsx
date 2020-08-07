@@ -20,13 +20,13 @@ it(`Render App`, () => {
   });
 
   const tree = renderer.create(
-    <Provider store = {store}>
-      <MemoryRouter initialEntries={[`/films/1/review`]}>
+      <Provider store = {store}>
+        <MemoryRouter initialEntries={[`/films/1/review`]}>
           <AddReview
             match={{params: {id: films[0].id.toString()}}}
           />
-      </MemoryRouter>
-    </Provider>
+        </MemoryRouter>
+      </Provider>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

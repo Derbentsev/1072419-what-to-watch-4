@@ -4,12 +4,12 @@ import {Film} from '@src/types/film.types';
 
 
 interface Props {
-  getFilmById: (number) => Film,
+  getFilmById: (number) => Film;
   match: {
     params: {
-      id: string,
-    }
-  },
+      id: string;
+    };
+  };
 }
 
 export default class FullVideoPlayer extends React.PureComponent<Props, {}> {

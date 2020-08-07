@@ -3,10 +3,10 @@ import {Film} from '@src/types/film.types';
 
 
 interface Props {
-  handleMovieCardMouseEnter: () => void,
-  renderPlayer: (videoSrc: string, poster: string) => void,
-  currentFilter: string,
-  film: Film,
+  handleMovieCardMouseEnter: () => void;
+  renderPlayer: (videoSrc: string, poster: string) => void;
+  currentFilter: string;
+  film: Film;
 }
 
 const MovieCard: React.FunctionComponent<Props> = (props: Props) => {

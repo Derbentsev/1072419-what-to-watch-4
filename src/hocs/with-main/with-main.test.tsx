@@ -20,10 +20,10 @@ const MockWrappedComponent = withMain(MockComponent);
 it(`Render Movie Page`, () => {
   const tree = renderer
     .create(
-      <MockWrappedComponent
-      setShowedFilmsCount = {() => {}}
-      showedFilmsCount = {8}
-      />
+        <MockWrappedComponent
+          setShowedFilmsCount = {() => null}
+          showedFilmsCount = {8}
+        />
     ).toJSON();
 
   expect(tree).toMatchSnapshot();

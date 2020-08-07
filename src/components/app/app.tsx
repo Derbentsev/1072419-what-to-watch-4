@@ -10,7 +10,7 @@ import PrivateRoute from '@components/private-route/private-route.connect';
 
 
 interface Props {
-  init: () => void
+  init: () => void;
 }
 
 export default class App extends React.PureComponent<Props, {}> {

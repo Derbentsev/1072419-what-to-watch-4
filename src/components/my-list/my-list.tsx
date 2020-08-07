@@ -6,8 +6,8 @@ import {Film} from '@src/types/film.types';
 
 
 interface Props {
-  loadFavoriteFilms: () => void,
-  favoriteFilms: Film[],
+  loadFavoriteFilms: () => void;
+  favoriteFilms: Film[];
 }
 
 const MoviesListWrapped = withMoviesList(MoviesList);

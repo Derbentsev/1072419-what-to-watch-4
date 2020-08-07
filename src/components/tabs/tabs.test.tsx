@@ -9,7 +9,7 @@ it(`Render Tabs`, () => {
   const tree = renderer
     .create(<Tabs
       film = {mockfilm}
-      handleOnTab = {() => {}}
+      handleOnTab = {() => null}
       activeTab = 'genre1'
       currentFilter = 'All'
     />)

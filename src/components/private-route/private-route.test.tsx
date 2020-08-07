@@ -3,9 +3,7 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import NameSpace from '@reducer/name-space';
 import {MemoryRouter} from 'react-router-dom';
-import {
-  mockUserStore,
-} from '@utils/test-data';
+import {mockUserStore} from '@utils/test-data';
 
 
 const mockStore = configureStore();
@@ -16,11 +14,11 @@ it(`Render App`, () => {
   });
 
   const tree = renderer.create(
-    <MemoryRouter>
-      <Provider store = {store}>
-        <PrivateRoute/>
-      </Provider>
-    </MemoryRouter>
+      <MemoryRouter>
+        <Provider store = {store}>
+          <PrivateRoute/>
+        </Provider>
+      </MemoryRouter>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

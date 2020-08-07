@@ -10,16 +10,16 @@ import {Film} from '@src/types/film.types';
 
 
 interface Props {
-  authorizationStatus: string,
-  getFilmById: (number) => Film,
-  loadReviews: (number) => void,
-  setFavoriteFilm: (boolean, number) => void,
+  authorizationStatus: string;
+  getFilmById: (number) => Film;
+  loadReviews: (number) => void;
+  setFavoriteFilm: (boolean, number) => void;
   match: {
     params: {
-      id: string,
-    }
-  },
-  films: Film[],
+      id: string;
+    };
+  };
+  films: Film[];
 }
 
 const SAME_FILMS_COUNT = 4;

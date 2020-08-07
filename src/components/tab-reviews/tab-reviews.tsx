@@ -3,10 +3,10 @@ import {Review as ReviewType} from '@src/types/review.types';
 
 
 interface Props {
-  reviews: ReviewType[],
-};
+  reviews: ReviewType[];
+}
 
-const createReviewColumn = (reviews) => {  
+const createReviewColumn = (reviews) => {
   return (
     <div className="movie-card__reviews-col">
       {reviews.map((review, i) => (

@@ -5,8 +5,8 @@ it(`Render Video Player`, () => {
   const tree = renderer
     .create(
         <VideoPlayer
-          handleMouseEnter = {() => {}}
-          handleMouseLeave = {() => {}}
+          handleMouseEnter = {() => null}
+          handleMouseLeave = {() => null}
         >
           <video />
         </VideoPlayer>, {

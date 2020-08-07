@@ -21,7 +21,7 @@ it(`Render App`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <App init={() => {}}/>
+          <App init={() => null}/>
         </Provider>
     ).toJSON();
 

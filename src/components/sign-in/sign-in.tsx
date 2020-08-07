@@ -4,9 +4,9 @@ import {Redirect} from 'react-router-dom';
 
 
 interface Props {
-  login: ({}) => void,
-  authorizationError: string,
-  authorizationStatus: string,
+  login: ({}) => void;
+  authorizationError: string;
+  authorizationStatus: string;
 }
 
 export default class SignIn extends React.PureComponent<Props, {}> {

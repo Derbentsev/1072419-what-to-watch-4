@@ -6,10 +6,10 @@ import {Film} from '@src/types/film.types';
 
 
 interface Props {
-  setShowedFilmsCount: (number?) => void,
-  showedFilmsCount: number,
-  currentFilter: string,
-  films: Film[],
+  setShowedFilmsCount: (number?) => void;
+  showedFilmsCount: number;
+  currentFilter: string;
+  films: Film[];
 }
 
 const SHOW_FILM_CARD_BY_BUTTON = 8;

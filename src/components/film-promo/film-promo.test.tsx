@@ -18,11 +18,11 @@ it(`Render App`, () => {
   });
 
   const tree = renderer.create(
-    <MemoryRouter>
-      <Provider store = {store}>
-        <FilmPromo/>
-      </Provider>
-    </MemoryRouter>
+      <MemoryRouter>
+        <Provider store = {store}>
+          <FilmPromo/>
+        </Provider>
+      </MemoryRouter>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();
