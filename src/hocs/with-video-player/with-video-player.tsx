@@ -32,11 +32,11 @@ const withVideoPlayer = (Component) => {
     }
 
     componentWillUnmount() {
-      this.timeout && clearTimeout(this.timeout);
+      clearTimeout(this.timeout);
     }
 
     componentDidUpdate() {
-      const video = this.videoRef.current!;
+      const video = this.videoRef.current;
 
       if (this.state.isPlaying) {
         video.play();
@@ -56,7 +56,7 @@ const withVideoPlayer = (Component) => {
 
     _handleMouseLeave() {
       if (this.state.isPlaying || this.timeout) {
-        clearTimeout(this.timeout!);
+        clearTimeout(this.timeout);
         this.timeout = null;
         this.setState({isPlaying: false});
       }

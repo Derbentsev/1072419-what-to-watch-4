@@ -67,7 +67,7 @@ export default class AddReview extends React.PureComponent<Props, State> {
       newState.rating <= ReviewParams.MAX_RATING
     );
 
-    this.buttonRef.current!.disabled = !isFormValid;
+    this.buttonRef.current.disabled = !isFormValid;
     this.setState({isValid: isFormValid});
   }
 

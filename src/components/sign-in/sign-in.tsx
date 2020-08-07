@@ -27,8 +27,8 @@ export default class SignIn extends React.PureComponent<Props, {}> {
     const {login} = this.props;
 
     login({
-      login: this.loginRef.current!.value,
-      password: this.passwordRef.current!.value,
+      login: this.loginRef.current.value,
+      password: this.passwordRef.current.value,
     });
   }
 
