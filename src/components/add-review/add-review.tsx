@@ -77,7 +77,7 @@ export default class AddReview extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const {pushReview, getFilmById, pushReviewStatus, setFalseReviewPushStatus} = this.props;
+    const {pushReview, getFilmById, pushReviewStatus} = this.props;
 
     if (pushReviewStatus) {
       history.goBack();
