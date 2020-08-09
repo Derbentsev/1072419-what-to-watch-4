@@ -3,7 +3,7 @@ import withActiveTab from '@hocs/with-active-tab/with-active-tab';
 import MoviesList from '@components/movies-list/movies-list';
 import withMoviesList from '@hocs/with-movies-list/with-movies-list';
 import UserLogo from '@components/user-logo/user-logo.connect';
-import {AppRoute, MyListButtonSettings} from '@consts';
+import {AppRoute, MyListButtonSettings} from '@src/consts/consts';
 import history from '@history/history';
 import {AuthorizationStatus} from '@reducer/user/user';
 import {Film} from '@src/types/film.types';

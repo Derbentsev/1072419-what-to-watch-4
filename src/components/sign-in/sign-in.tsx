@@ -1,4 +1,4 @@
-import {AppRoute} from '@consts';
+import {AppRoute} from '@src/consts/consts';
 import {AuthorizationStatus} from '@reducer/user/user';
 import {Redirect} from 'react-router-dom';
 

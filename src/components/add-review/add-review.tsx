@@ -1,7 +1,7 @@
 import UserLogo from '@components/user-logo/user-logo.connect';
 import {extend} from '@utils/utils';
 import history from '@history/history';
-import {AppRoute} from '@consts';
+import {AppRoute} from '@src/consts/consts';
 import {Film} from '@src/types/film.types';
 
 

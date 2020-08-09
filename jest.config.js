@@ -12,7 +12,7 @@ module.exports = {
   "moduleFileExtensions": [`ts`, `tsx`, `js`, `jsx`, `json`, `node`],
   "moduleNameMapper": {
     "^@components(.*)$": `<rootDir>/src/components/$1`,
-    "^@consts(.*)$": `<rootDir>/src/consts/index`,
+    "^@consts(.*)$": `<rootDir>/src/consts/$1`,
     "^@adapters(.*)$": `<rootDir>/src/adapters/$1`,
     "^@hocs(.*)$": `<rootDir>/src/hocs/$1`,
     "^@utils(.*)$": `<rootDir>/src/utils/$1`,

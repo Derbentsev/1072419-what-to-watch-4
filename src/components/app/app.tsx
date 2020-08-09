@@ -4,7 +4,7 @@ import SignIn from '@components/sign-in/sign-in.connect';
 import FullVideoPlayer from '@components/full-video-player/full-video-player.connect';
 import AddReview from '@components/add-review/add-review.connect';
 import history from '@history/history';
-import {AppRoute} from '@consts';
+import {AppRoute} from '@src/consts/consts';
 import MyList from '@components/my-list/my-list.connect';
 import PrivateRoute from '@components/private-route/private-route.connect';
 

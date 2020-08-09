@@ -1,5 +1,5 @@
 import {extend} from '@utils/utils';
-import {FilterName} from '@consts';
+import {FilterName} from '@src/consts/consts';
 
 
 const initialState = {
