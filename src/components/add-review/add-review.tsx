@@ -47,6 +47,11 @@ export default class AddReview extends React.PureComponent<Props, State> {
     this._onInput = this._onInput.bind(this);
   }
 
+  componentWillUnmount () {
+    const {setFalseReviewPushStatus} = this.props;
+    setFalseReviewPushStatus();
+  }
+
   _onInput(evt) {
     const newState = extend(this.state, ((element) => {
       switch (element.type) {
@@ -75,7 +80,6 @@ export default class AddReview extends React.PureComponent<Props, State> {
     const {pushReview, getFilmById, pushReviewStatus, setFalseReviewPushStatus} = this.props;
 
     if (pushReviewStatus) {
-      setFalseReviewPushStatus();
       history.goBack();
     }
 
@@ -174,7 +178,6 @@ export default class AddReview extends React.PureComponent<Props, State> {
                   Введите от {ReviewParams.MIN_COMMENT_LENGTH} до {ReviewParams.MAX_COMMENT_LENGTH} символов.
                 </div>
               }
-
             </form>
           </div>
         </section>
