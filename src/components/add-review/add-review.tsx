@@ -47,7 +47,7 @@ export default class AddReview extends React.PureComponent<Props, State> {
     this._onInput = this._onInput.bind(this);
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     const {setFalseReviewPushStatus} = this.props;
     setFalseReviewPushStatus();
   }
